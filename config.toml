@@ -4,17 +4,17 @@ theme = "book"
 # Enable 'Last Modified by' date and git author information
 enableGitInfo = true
 
-DefaultContentLanguage = "en"
+DefaultContentLanguage = "ko"
 [languages]
   [languages.en]
     title = "WebRTC for the Curious"
     languageName = "English"
-    weight = 1
+    weight = 2
   [languages.ko]
     title = "호기심 많은 이를 위한 WebRTC"
     languageName = "한국어"
     contentDir = "content.kr"
-    weight = 10
+    weight = 1
   [languages.ru]
     title = "WebRTC для любопытных"
     languageName = 'Русский'

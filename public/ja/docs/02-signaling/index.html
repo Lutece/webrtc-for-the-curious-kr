@@ -1,4 +1,9 @@
-<!doctype html><html lang=ja dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head><script src="/webrtc-for-the-curious-kr/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=webrtc-for-the-curious-kr/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
   シグナリング
   #
 
@@ -28,42 +33,537 @@ Session Description は、0 個以上のメディア記述を含みます。頭�
   SDPの読み方
   #
 
-Session Description の各行は、1 つの文字で始まります。その後、等号が続きます。この等号以降が値となります。値が完了すると、改行されます。"><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="https://lutece.github.io/webrtc-for-the-curious-kr/ja/docs/02-signaling/"><meta property="og:site_name" content="好奇心旺盛な人のためのWebRTC"><meta property="og:title" content="シグナリング"><meta property="og:description" content="シグナリング # WebRTCシグナリングとは？ # WebRTC エージェントを作成したとき、エージェントは他のピアについて何も知りません。誰と接続しようとしているのか、何を送ろうとしているのか、全くわかりません。 シグナリングは、通話を可能にする最初のブートストラップです。これらの値が交換されると、WebRTC エージェントはお互いに直接通信できるようになります。
+Session Description の各行は、1 つの文字で始まります。その後、等号が続きます。この等号以降が値となります。値が完了すると、改行されます。">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/webrtc-for-the-curious-kr/ja/docs/02-signaling/">
+  <meta property="og:site_name" content="好奇心旺盛な人のためのWebRTC">
+  <meta property="og:title" content="シグナリング">
+  <meta property="og:description" content="シグナリング # WebRTCシグナリングとは？ # WebRTC エージェントを作成したとき、エージェントは他のピアについて何も知りません。誰と接続しようとしているのか、何を送ろうとしているのか、全くわかりません。 シグナリングは、通話を可能にする最初のブートストラップです。これらの値が交換されると、WebRTC エージェントはお互いに直接通信できるようになります。
 シグナリングメッセージは単なるテキストです。WebRTC エージェントは、メッセージの転送方法を気にしません。一般的には WebSocket で共有されますが、これは必須ではありません。
 WebRTC のシグナリングはどのように動作しますか？ # WebRTC は、Session Description Protocol と呼ばれる既存のプロトコルを使用しています。このプロトコルにより、2 つの WebRTC エージェントは、接続を確立するために必要なすべての状態を共有します。このプロトコル自体は、読んで理解するのは簡単です。 複雑なのは、WebRTC がこのプロトコルに入力するすべての値を理解することです。
 このプロトコルは WebRTC 固有のものではありません。WebRTC の話をしなくても、まず Session Description Protocol を学びます。WebRTC はこのプロトコルのサブセットを実際に利用するだけなので、ここでは必要なものだけを取り上げます。 プロトコルを理解した後は、WebRTC での応用的な使い方に進みます。
 Session Description Protocol (SDP)とは？ # SDP は、RFC 8866で定義されています。SDP はキーと値で構成されるプロトコルで、各値の後には改行が入ります。これは、INI ファイルに似ています。 Session Description は、0 個以上のメディア記述を含みます。頭の中では、Session Description にメディア記述の配列が含まれているようにモデル化できます。
 メディア記述は通常、メディアの 1 つのストリームに対応しています。つまり、3 つのビデオストリームと 2 つのオーディオトラックを持つ通話を記述したい場合、5 つのメディア記述が必要になります。
-SDPの読み方 # Session Description の各行は、1 つの文字で始まります。その後、等号が続きます。この等号以降が値となります。値が完了すると、改行されます。"><meta property="og:locale" content="ja"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2022-03-14T22:23:10+09:00"><title>シグナリング | 好奇心旺盛な人のためのWebRTC</title><link rel=manifest href=/webrtc-for-the-curious-kr/manifest.json><link rel=icon href=/webrtc-for-the-curious-kr/favicon.png><link rel=canonical href=https://lutece.github.io/webrtc-for-the-curious-kr/ja/docs/02-signaling/><link rel=alternate hreflang=en href=https://lutece.github.io/webrtc-for-the-curious-kr/docs/02-signaling/ title=Signaling><link rel=alternate hreflang=sv href=https://lutece.github.io/webrtc-for-the-curious-kr/sv/docs/02-signaling/ title=Signalering><link rel=alternate hreflang=ru href=https://lutece.github.io/webrtc-for-the-curious-kr/ru/docs/02-signaling/ title=Signaling><link rel=alternate hreflang=zh href=https://lutece.github.io/webrtc-for-the-curious-kr/zh/docs/02-signaling/ title=信令><link rel=alternate hreflang=fa href=https://lutece.github.io/webrtc-for-the-curious-kr/fa/docs/02-signaling/ title=سیگنالینگ><link rel=alternate hreflang=fr href=https://lutece.github.io/webrtc-for-the-curious-kr/fr/docs/02-signaling/ title=Signaling><link rel=alternate hreflang=id href=https://lutece.github.io/webrtc-for-the-curious-kr/id/docs/02-signaling/ title=Signaling><link rel=alternate hreflang=es href=https://lutece.github.io/webrtc-for-the-curious-kr/es/docs/02-signaling/ title=Signaling><link rel=alternate hreflang=tr href=https://lutece.github.io/webrtc-for-the-curious-kr/tr/docs/02-signaling/ title=Sinyalleşme><link rel=alternate hreflang=ko href=https://lutece.github.io/webrtc-for-the-curious-kr/ko/docs/02-signaling/ title=시그널링><link rel=stylesheet href=/webrtc-for-the-curious-kr/book.min.a1f8103544a99b89cb7808ead8d43817d98d4f3e608b9e0e5ff491b382e3434d.css integrity="sha256-ofgQNUSpm4nLeAjq2NQ4F9mNTz5gi54OX/SRs4LjQ00=" crossorigin=anonymous><script defer src=/webrtc-for-the-curious-kr/fuse.min.js></script><script defer src=/webrtc-for-the-curious-kr/ja.search.min.614ddd571a9094cada92f64b8eb49eaf5d1d56dc19ddc04b0fca2410e148b0f8.js integrity="sha256-YU3dVxqQlMrakvZLjrSer10dVtwZ3cBLD8okEOFIsPg=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/webrtc-for-the-curious-kr/ja/><span>好奇心旺盛な人のためのWebRTC</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=検索 aria-label=検索 maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul class=book-languages><li><input type=checkbox id=languages class=toggle>
-<label for=languages class="flex justify-between"><a role=button class="flex align-center"><img src=/webrtc-for-the-curious-kr/svg/translate.svg class=book-icon alt=Languages>
-日本語</a></label><ul><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/docs/02-signaling/>English</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/ru/docs/02-signaling/>Русский</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/sv/docs/02-signaling/>Svenska</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/zh/docs/02-signaling/>简体中文</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/fa/docs/02-signaling/>Persian</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/fr/docs/02-signaling/>Français</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/id/docs/02-signaling/>Bahasa Indonesia</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/es/docs/02-signaling/>Español</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/tr/docs/02-signaling/>Türkçe</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/ko/docs/02-signaling/>한국어</a></li></ul></li></ul><ul><li><a href=/webrtc-for-the-curious-kr/ja/docs/01-what-why-and-how/>何を、なぜ、どのように</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/02-signaling/ class=active>シグナリング</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/03-connecting/>接続</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/04-securing/>セキュリティ対策</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/05-real-time-networking/>リアルタイム・ネットワーキング</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/06-media-communication/>メディア・コミュニケーション</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/07-data-communication/>データ・コミュニケーション</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/08-applied-webrtc/>応用WebRTC</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/09-debugging/>デバッグ</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/10-history-of-webrtc/>歴史</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/11-faq/>FAQ</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/12-glossary/>用語集</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/13-reference/>参考文献</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/webrtc-for-the-curious-kr/svg/menu.svg class=book-icon alt=Menu>
-</label><strong>シグナリング</strong>
-<label for=toc-control><img src=/webrtc-for-the-curious-kr/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#webrtcシグナリングとは>WebRTCシグナリングとは？</a></li><li><a href=#webrtc-のシグナリングはどのように動作しますか>WebRTC のシグナリングはどのように動作しますか？</a></li><li><a href=#session-description-protocol-sdpとは><em>Session Description Protocol</em> (SDP)とは？</a><ul><li><a href=#sdpの読み方>SDPの読み方</a></li><li><a href=#webrtcは一部のsdpキーしか使用しない>WebRTCは一部のSDPキーしか使用しない</a></li><li><a href=#session-description-に含まれるメディアの説明文>Session Description に含まれるメディアの説明文</a></li><li><a href=#full-example>Full Example</a></li><li><a href=#完全な例>完全な例</a></li></ul></li><li><a href=#sdpsession-description-protocol-と-webrtc-の連携について><em>SDP(Session Description Protocol)</em> と WebRTC の連携について</a><ul><li><a href=#オファーとアンサーとは>オファーとアンサーとは？</a></li><li><a href=#トランシーバーは送受信用>トランシーバーは送受信用</a></li><li><a href=#webrtc-で使用される-sdp-の値>WebRTC で使用される SDP の値</a></li><li><a href=#webrtc-session-description-の例>WebRTC Session Description の例</a></li><li><a href=#その他のトピック>その他のトピック</a></li></ul></li></ul></nav></aside></header><article class="markdown book-article"><h1 id=シグナリング>シグナリング
-<a class=anchor href=#%e3%82%b7%e3%82%b0%e3%83%8a%e3%83%aa%e3%83%b3%e3%82%b0>#</a></h1><h2 id=webrtcシグナリングとは>WebRTCシグナリングとは？
-<a class=anchor href=#webrtc%e3%82%b7%e3%82%b0%e3%83%8a%e3%83%aa%e3%83%b3%e3%82%b0%e3%81%a8%e3%81%af>#</a></h2><p>WebRTC エージェントを作成したとき、エージェントは他のピアについて何も知りません。誰と接続しようとしているのか、何を送ろうとしているのか、全くわかりません。
-シグナリングは、通話を可能にする最初のブートストラップです。これらの値が交換されると、WebRTC エージェントはお互いに直接通信できるようになります。</p><p>シグナリングメッセージは単なるテキストです。WebRTC エージェントは、メッセージの転送方法を気にしません。一般的には WebSocket で共有されますが、これは必須ではありません。</p><h2 id=webrtc-のシグナリングはどのように動作しますか>WebRTC のシグナリングはどのように動作しますか？
-<a class=anchor href=#webrtc-%e3%81%ae%e3%82%b7%e3%82%b0%e3%83%8a%e3%83%aa%e3%83%b3%e3%82%b0%e3%81%af%e3%81%a9%e3%81%ae%e3%82%88%e3%81%86%e3%81%ab%e5%8b%95%e4%bd%9c%e3%81%97%e3%81%be%e3%81%99%e3%81%8b>#</a></h2><p>WebRTC は、Session Description Protocol と呼ばれる既存のプロトコルを使用しています。このプロトコルにより、2 つの WebRTC エージェントは、接続を確立するために必要なすべての状態を共有します。このプロトコル自体は、読んで理解するのは簡単です。
-複雑なのは、WebRTC がこのプロトコルに入力するすべての値を理解することです。</p><p>このプロトコルは WebRTC 固有のものではありません。WebRTC の話をしなくても、まず Session Description Protocol を学びます。WebRTC はこのプロトコルのサブセットを実際に利用するだけなので、ここでは必要なものだけを取り上げます。
-プロトコルを理解した後は、WebRTC での応用的な使い方に進みます。</p><h2 id=session-description-protocol-sdpとは><em>Session Description Protocol</em> (SDP)とは？
-<a class=anchor href=#session-description-protocol-sdp%e3%81%a8%e3%81%af>#</a></h2><p>SDP は、<a href=https://tools.ietf.org/html/rfc8866>RFC 8866</a>で定義されています。SDP はキーと値で構成されるプロトコルで、各値の後には改行が入ります。これは、INI ファイルに似ています。
-Session Description は、0 個以上のメディア記述を含みます。頭の中では、Session Description にメディア記述の配列が含まれているようにモデル化できます。</p><p>メディア記述は通常、メディアの 1 つのストリームに対応しています。つまり、3 つのビデオストリームと 2 つのオーディオトラックを持つ通話を記述したい場合、5 つのメディア記述が必要になります。</p><h3 id=sdpの読み方>SDPの読み方
-<a class=anchor href=#sdp%e3%81%ae%e8%aa%ad%e3%81%bf%e6%96%b9>#</a></h3><p>Session Description の各行は、1 つの文字で始まります。その後、等号が続きます。この等号以降が値となります。値が完了すると、改行されます。</p><p>SDP では、有効なキーをすべて定義しています。プロトコルで定義されているキーには、文字しか使用できません。これらのキーにはすべて重要な意味がありますが、それについては後ほど説明します。</p><p>Session Description の例を見てみましょう。</p><pre tabindex=0><code>a=my-sdp-value
+SDPの読み方 # Session Description の各行は、1 つの文字で始まります。その後、等号が続きます。この等号以降が値となります。値が完了すると、改行されます。">
+  <meta property="og:locale" content="ja">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:modified_time" content="2022-03-14T22:23:10+09:00">
+<title>シグナリング | 好奇心旺盛な人のためのWebRTC</title>
+<link rel="manifest" href="/webrtc-for-the-curious-kr/manifest.json">
+<link rel="icon" href="/webrtc-for-the-curious-kr/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/webrtc-for-the-curious-kr/ja/docs/02-signaling/">
+  <link rel="alternate" hreflang="ko" href="http://localhost:1313/webrtc-for-the-curious-kr/docs/02-signaling/" title="시그널링">
+  <link rel="alternate" hreflang="sv" href="http://localhost:1313/webrtc-for-the-curious-kr/sv/docs/02-signaling/" title="Signalering">
+  <link rel="alternate" hreflang="ru" href="http://localhost:1313/webrtc-for-the-curious-kr/ru/docs/02-signaling/" title="Signaling">
+  <link rel="alternate" hreflang="zh" href="http://localhost:1313/webrtc-for-the-curious-kr/zh/docs/02-signaling/" title="信令">
+  <link rel="alternate" hreflang="fa" href="http://localhost:1313/webrtc-for-the-curious-kr/fa/docs/02-signaling/" title="سیگنالینگ">
+  <link rel="alternate" hreflang="fr" href="http://localhost:1313/webrtc-for-the-curious-kr/fr/docs/02-signaling/" title="Signaling">
+  <link rel="alternate" hreflang="id" href="http://localhost:1313/webrtc-for-the-curious-kr/id/docs/02-signaling/" title="Signaling">
+  <link rel="alternate" hreflang="es" href="http://localhost:1313/webrtc-for-the-curious-kr/es/docs/02-signaling/" title="Signaling">
+  <link rel="alternate" hreflang="tr" href="http://localhost:1313/webrtc-for-the-curious-kr/tr/docs/02-signaling/" title="Sinyalleşme">
+<link rel="stylesheet" href="/webrtc-for-the-curious-kr/book.min.a1f8103544a99b89cb7808ead8d43817d98d4f3e608b9e0e5ff491b382e3434d.css" integrity="sha256-ofgQNUSpm4nLeAjq2NQ4F9mNTz5gi54OX/SRs4LjQ00=" crossorigin="anonymous">
+  <script defer src="/webrtc-for-the-curious-kr/fuse.min.js"></script>
+  <script defer src="/webrtc-for-the-curious-kr/ja.search.min.614ddd571a9094cada92f64b8eb49eaf5d1d56dc19ddc04b0fca2410e148b0f8.js" integrity="sha256-YU3dVxqQlMrakvZLjrSer10dVtwZ3cBLD8okEOFIsPg=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/webrtc-for-the-curious-kr/ja/"><span>好奇心旺盛な人のためのWebRTC</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="検索" aria-label="検索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/webrtc-for-the-curious-kr/svg/translate.svg" class="book-icon" alt="Languages" />
+        日本語
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/docs/02-signaling/">
+          한국어
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/en/">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/ru/docs/02-signaling/">
+          Русский
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/sv/docs/02-signaling/">
+          Svenska
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/zh/docs/02-signaling/">
+          简体中文
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/fa/docs/02-signaling/">
+          Persian
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/fr/docs/02-signaling/">
+          Français
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/id/docs/02-signaling/">
+          Bahasa Indonesia
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/es/docs/02-signaling/">
+          Español
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/tr/docs/02-signaling/">
+          Türkçe
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/01-what-why-and-how/" class="">何を、なぜ、どのように</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/02-signaling/" class="active">シグナリング</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/03-connecting/" class="">接続</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/04-securing/" class="">セキュリティ対策</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/05-real-time-networking/" class="">リアルタイム・ネットワーキング</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/06-media-communication/" class="">メディア・コミュニケーション</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/07-data-communication/" class="">データ・コミュニケーション</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/08-applied-webrtc/" class="">応用WebRTC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/09-debugging/" class="">デバッグ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/10-history-of-webrtc/" class="">歴史</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/11-faq/" class="">FAQ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/12-glossary/" class="">用語集</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/13-reference/" class="">参考文献</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/webrtc-for-the-curious-kr/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>シグナリング</strong>
+
+  <label for="toc-control">
+    
+    <img src="/webrtc-for-the-curious-kr/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#webrtcシグナリングとは">WebRTCシグナリングとは？</a></li>
+    <li><a href="#webrtc-のシグナリングはどのように動作しますか">WebRTC のシグナリングはどのように動作しますか？</a></li>
+    <li><a href="#session-description-protocol-sdpとは"><em>Session Description Protocol</em> (SDP)とは？</a>
+      <ul>
+        <li><a href="#sdpの読み方">SDPの読み方</a></li>
+        <li><a href="#webrtcは一部のsdpキーしか使用しない">WebRTCは一部のSDPキーしか使用しない</a></li>
+        <li><a href="#session-description-に含まれるメディアの説明文">Session Description に含まれるメディアの説明文</a></li>
+        <li><a href="#full-example">Full Example</a></li>
+        <li><a href="#完全な例">完全な例</a></li>
+      </ul>
+    </li>
+    <li><a href="#sdpsession-description-protocol-と-webrtc-の連携について"><em>SDP(Session Description Protocol)</em> と WebRTC の連携について</a>
+      <ul>
+        <li><a href="#オファーとアンサーとは">オファーとアンサーとは？</a></li>
+        <li><a href="#トランシーバーは送受信用">トランシーバーは送受信用</a></li>
+        <li><a href="#webrtc-で使用される-sdp-の値">WebRTC で使用される SDP の値</a></li>
+        <li><a href="#webrtc-session-description-の例">WebRTC Session Description の例</a></li>
+        <li><a href="#その他のトピック">その他のトピック</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="シグナリング">
+  シグナリング
+  <a class="anchor" href="#%e3%82%b7%e3%82%b0%e3%83%8a%e3%83%aa%e3%83%b3%e3%82%b0">#</a>
+</h1>
+<h2 id="webrtcシグナリングとは">
+  WebRTCシグナリングとは？
+  <a class="anchor" href="#webrtc%e3%82%b7%e3%82%b0%e3%83%8a%e3%83%aa%e3%83%b3%e3%82%b0%e3%81%a8%e3%81%af">#</a>
+</h2>
+<p>WebRTC エージェントを作成したとき、エージェントは他のピアについて何も知りません。誰と接続しようとしているのか、何を送ろうとしているのか、全くわかりません。
+シグナリングは、通話を可能にする最初のブートストラップです。これらの値が交換されると、WebRTC エージェントはお互いに直接通信できるようになります。</p>
+<p>シグナリングメッセージは単なるテキストです。WebRTC エージェントは、メッセージの転送方法を気にしません。一般的には WebSocket で共有されますが、これは必須ではありません。</p>
+<h2 id="webrtc-のシグナリングはどのように動作しますか">
+  WebRTC のシグナリングはどのように動作しますか？
+  <a class="anchor" href="#webrtc-%e3%81%ae%e3%82%b7%e3%82%b0%e3%83%8a%e3%83%aa%e3%83%b3%e3%82%b0%e3%81%af%e3%81%a9%e3%81%ae%e3%82%88%e3%81%86%e3%81%ab%e5%8b%95%e4%bd%9c%e3%81%97%e3%81%be%e3%81%99%e3%81%8b">#</a>
+</h2>
+<p>WebRTC は、Session Description Protocol と呼ばれる既存のプロトコルを使用しています。このプロトコルにより、2 つの WebRTC エージェントは、接続を確立するために必要なすべての状態を共有します。このプロトコル自体は、読んで理解するのは簡単です。
+複雑なのは、WebRTC がこのプロトコルに入力するすべての値を理解することです。</p>
+<p>このプロトコルは WebRTC 固有のものではありません。WebRTC の話をしなくても、まず Session Description Protocol を学びます。WebRTC はこのプロトコルのサブセットを実際に利用するだけなので、ここでは必要なものだけを取り上げます。
+プロトコルを理解した後は、WebRTC での応用的な使い方に進みます。</p>
+<h2 id="session-description-protocol-sdpとは">
+  <em>Session Description Protocol</em> (SDP)とは？
+  <a class="anchor" href="#session-description-protocol-sdp%e3%81%a8%e3%81%af">#</a>
+</h2>
+<p>SDP は、<a href="https://tools.ietf.org/html/rfc8866">RFC 8866</a>で定義されています。SDP はキーと値で構成されるプロトコルで、各値の後には改行が入ります。これは、INI ファイルに似ています。
+Session Description は、0 個以上のメディア記述を含みます。頭の中では、Session Description にメディア記述の配列が含まれているようにモデル化できます。</p>
+<p>メディア記述は通常、メディアの 1 つのストリームに対応しています。つまり、3 つのビデオストリームと 2 つのオーディオトラックを持つ通話を記述したい場合、5 つのメディア記述が必要になります。</p>
+<h3 id="sdpの読み方">
+  SDPの読み方
+  <a class="anchor" href="#sdp%e3%81%ae%e8%aa%ad%e3%81%bf%e6%96%b9">#</a>
+</h3>
+<p>Session Description の各行は、1 つの文字で始まります。その後、等号が続きます。この等号以降が値となります。値が完了すると、改行されます。</p>
+<p>SDP では、有効なキーをすべて定義しています。プロトコルで定義されているキーには、文字しか使用できません。これらのキーにはすべて重要な意味がありますが、それについては後ほど説明します。</p>
+<p>Session Description の例を見てみましょう。</p>
+<pre tabindex="0"><code>a=my-sdp-value
 a=second-value
-</code></pre><p>2 つの行がありますね。それぞれがキー <code>a</code> を持っています。1 行目には <code>my-sdp-value</code> という値があり、2 行目には <code>second-value</code> という値があります。</p><h3 id=webrtcは一部のsdpキーしか使用しない>WebRTCは一部のSDPキーしか使用しない
-<a class=anchor href=#webrtc%e3%81%af%e4%b8%80%e9%83%a8%e3%81%aesdp%e3%82%ad%e3%83%bc%e3%81%97%e3%81%8b%e4%bd%bf%e7%94%a8%e3%81%97%e3%81%aa%e3%81%84>#</a></h3><p>WebRTC では、SDP で定義されているすべてのキー値を使用しているわけではありません。<a href=https://datatracker.ietf.org/doc/html/rfc8829>RFC 8829</a> JavaScriptセッション確立規約 (JavaScript Session Establishment Protocol (JSEP)) で定義されたキーのみが重要です。以下の 7 つのキーだけは、今すぐ理解しておく必要があります。</p><ul><li><code>v</code> - バージョン(Version)、<code>0</code> と同じでなければなりません。</li><li><code>o</code> - オリジン(Origin)、再交渉に便利なユニークな ID を含む。</li><li><code>s</code> - セッション名(Session Name)、<code>-</code> と同じでなければなりません。</li><li><code>t</code> - タイミング(Timing)、<code>0 0</code> と同じでなければなりません。</li><li><code>m</code> - メディア記述(Media Description: <code>m=&lt;media> &lt;port> &lt;proto> &lt;fmt> ...</code>)、詳細は以下の通りです。</li><li><code>a</code> - 属性(Attribute)、フリーテキストのフィールドです。これは WebRTC で最も一般的な行です。</li><li><code>c</code> - 接続データ(Connection Data)、 <code>IN IP4 0.0.0.0</code> と等しくなければなりません。</li></ul><h3 id=session-description-に含まれるメディアの説明文>Session Description に含まれるメディアの説明文
-<a class=anchor href=#session-description-%e3%81%ab%e5%90%ab%e3%81%be%e3%82%8c%e3%82%8b%e3%83%a1%e3%83%87%e3%82%a3%e3%82%a2%e3%81%ae%e8%aa%ac%e6%98%8e%e6%96%87>#</a></h3><p>Session Description には、メディア記述を無制限に含めることができます。</p><p>メディア記述の定義には、フォーマットのリストが含まれます。これらのフォーマットは RTP ペイロードタイプに対応しています。実際のコーデックは、メディア記述の中の <code>rtpmap</code> という値を持つ属性によって定義されます。
-RTP と RTP Payload Type の重要性については、「メディア」の章で後述します。各メディア記述には、無制限の数の属性を含めることができます。</p><p>Session Description を例に挙げてみましょう。</p><pre tabindex=0><code>v=0
+</code></pre><p>2 つの行がありますね。それぞれがキー <code>a</code> を持っています。1 行目には <code>my-sdp-value</code> という値があり、2 行目には <code>second-value</code> という値があります。</p>
+<h3 id="webrtcは一部のsdpキーしか使用しない">
+  WebRTCは一部のSDPキーしか使用しない
+  <a class="anchor" href="#webrtc%e3%81%af%e4%b8%80%e9%83%a8%e3%81%aesdp%e3%82%ad%e3%83%bc%e3%81%97%e3%81%8b%e4%bd%bf%e7%94%a8%e3%81%97%e3%81%aa%e3%81%84">#</a>
+</h3>
+<p>WebRTC では、SDP で定義されているすべてのキー値を使用しているわけではありません。<a href="https://datatracker.ietf.org/doc/html/rfc8829">RFC 8829</a> JavaScriptセッション確立規約 (JavaScript Session Establishment Protocol (JSEP)) で定義されたキーのみが重要です。以下の 7 つのキーだけは、今すぐ理解しておく必要があります。</p>
+<ul>
+<li><code>v</code> - バージョン(Version)、<code>0</code> と同じでなければなりません。</li>
+<li><code>o</code> - オリジン(Origin)、再交渉に便利なユニークな ID を含む。</li>
+<li><code>s</code> - セッション名(Session Name)、<code>-</code> と同じでなければなりません。</li>
+<li><code>t</code> - タイミング(Timing)、<code>0 0</code> と同じでなければなりません。</li>
+<li><code>m</code> - メディア記述(Media Description: <code>m=&lt;media&gt; &lt;port&gt; &lt;proto&gt; &lt;fmt&gt; ...</code>)、詳細は以下の通りです。</li>
+<li><code>a</code> - 属性(Attribute)、フリーテキストのフィールドです。これは WebRTC で最も一般的な行です。</li>
+<li><code>c</code> - 接続データ(Connection Data)、 <code>IN IP4 0.0.0.0</code> と等しくなければなりません。</li>
+</ul>
+<h3 id="session-description-に含まれるメディアの説明文">
+  Session Description に含まれるメディアの説明文
+  <a class="anchor" href="#session-description-%e3%81%ab%e5%90%ab%e3%81%be%e3%82%8c%e3%82%8b%e3%83%a1%e3%83%87%e3%82%a3%e3%82%a2%e3%81%ae%e8%aa%ac%e6%98%8e%e6%96%87">#</a>
+</h3>
+<p>Session Description には、メディア記述を無制限に含めることができます。</p>
+<p>メディア記述の定義には、フォーマットのリストが含まれます。これらのフォーマットは RTP ペイロードタイプに対応しています。実際のコーデックは、メディア記述の中の <code>rtpmap</code> という値を持つ属性によって定義されます。
+RTP と RTP Payload Type の重要性については、「メディア」の章で後述します。各メディア記述には、無制限の数の属性を含めることができます。</p>
+<p>Session Description を例に挙げてみましょう。</p>
+<pre tabindex="0"><code>v=0
 m=audio 4000 RTP/AVP 111
 a=rtpmap:111 OPUS/48000/2
 m=video 4000 RTP/AVP 96
 a=rtpmap:96 VP8/90000
 a=my-sdp-value
 </code></pre><p>2つのメディア記述があります。1つはfmt<code>111</code>のaudioタイプで、もう1つはfmt<code>96</code>のvideoタイプです。1つ目のメディア記述には1つの属性しかありません。この属性は、ペイロードタイプ <code>111</code> をOpusにマッピングします。
-2つ目のメディア記述には2つの属性があります。1つ目の属性は、Payload Type <code>96</code> を VP8 にマップし、2つ目の属性は単なる <code>my-sdp-value</code> です。</p><h3 id=full-example>Full Example
-<a class=anchor href=#full-example>#</a></h3><h3 id=完全な例>完全な例
-<a class=anchor href=#%e5%ae%8c%e5%85%a8%e3%81%aa%e4%be%8b>#</a></h3><p>次の例では、これまで説明してきたすべての概念をまとめています。これらはすべて、WebRTC が使用する SDP の機能です。
-これが読めれば、どんな WebRTC の Session Description でも読めます。</p><pre tabindex=0><code>v=0
+2つ目のメディア記述には2つの属性があります。1つ目の属性は、Payload Type <code>96</code> を VP8 にマップし、2つ目の属性は単なる <code>my-sdp-value</code> です。</p>
+<h3 id="full-example">
+  Full Example
+  <a class="anchor" href="#full-example">#</a>
+</h3>
+<h3 id="完全な例">
+  完全な例
+  <a class="anchor" href="#%e5%ae%8c%e5%85%a8%e3%81%aa%e4%be%8b">#</a>
+</h3>
+<p>次の例では、これまで説明してきたすべての概念をまとめています。これらはすべて、WebRTC が使用する SDP の機能です。
+これが読めれば、どんな WebRTC の Session Description でも読めます。</p>
+<pre tabindex="0"><code>v=0
 o=- 0 0 IN IP4 127.0.0.1
 s=-
 c=IN IP4 127.0.0.1
@@ -72,23 +572,102 @@ m=audio 4000 RTP/AVP 111
 a=rtpmap:111 OPUS/48000/2
 m=video 4002 RTP/AVP 96
 a=rtpmap:96 VP8/90000
-</code></pre><ul><li><code>v</code>, <code>o</code>, <code>s</code>, <code>c</code>, <code>t</code> が定義されていますが、WebRTC セッションには影響しません。</li><li>2つのメディア記述があります。1つは <code>audio</code> タイプで、もう1つは <code>video</code> タイプです。</li><li>それぞれに1つの属性があります。この属性は RTP パイプラインの詳細を設定するもので、「メディアコミュニケーション」の章で説明します。</li></ul><h2 id=sdpsession-description-protocol-と-webrtc-の連携について><em>SDP(Session Description Protocol)</em> と WebRTC の連携について
-<a class=anchor href=#sdpsession-description-protocol-%e3%81%a8-webrtc-%e3%81%ae%e9%80%a3%e6%90%ba%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6>#</a></h2><p>次のパズルのピースは、WebRTC が SDP をどのように使用するかを理解することです。</p><h3 id=オファーとアンサーとは>オファーとアンサーとは？
-<a class=anchor href=#%e3%82%aa%e3%83%95%e3%82%a1%e3%83%bc%e3%81%a8%e3%82%a2%e3%83%b3%e3%82%b5%e3%83%bc%e3%81%a8%e3%81%af>#</a></h3><p>WebRTCでは、オファー/アンサーモデルを採用しています。つまり、一方の WebRTC エージェントが「オファー」を出して通話を開始し、他方の WebRTC エージェントがオファーされた内容を受け入れるかどうかを「アンサー」します。</p><p>これにより、回答者はコーデックやメディア記述を拒否する機会が与えられます。このようにして、2つのピアが何を交換しようとしているのかを理解できます。</p><h3 id=トランシーバーは送受信用>トランシーバーは送受信用
-<a class=anchor href=#%e3%83%88%e3%83%a9%e3%83%b3%e3%82%b7%e3%83%bc%e3%83%90%e3%83%bc%e3%81%af%e9%80%81%e5%8f%97%e4%bf%a1%e7%94%a8>#</a></h3><p>トランシーバーはWebRTC特有の概念で、APIの中にも出てきます。これは、「メディア記述」を JavaScript API に公開するものです。各メディア記述は、トランシーバーになります。
-トランシーバーを作成するたびに、新しいメディア記述がローカルの Session Description に追加されます</p><p>WebRTCの各メディア記述は、direction属性を持ちます。これにより、WebRTCエージェントは「このコーデックを送信するが、何も受信しない」と宣言できます。有効な値は4つあります。</p><ul><li><code>send</code> (送信)</li><li><code>recv</code> (受信)</li><li><code>sendrecv</code> (送受信)</li><li><code>inactive</code> (非アクティブ)</li></ul><h3 id=webrtc-で使用される-sdp-の値>WebRTC で使用される SDP の値
-<a class=anchor href=#webrtc-%e3%81%a7%e4%bd%bf%e7%94%a8%e3%81%95%e3%82%8c%e3%82%8b-sdp-%e3%81%ae%e5%80%a4>#</a></h3><p>ここでは、WebRTC エージェントの Session Description で見られる一般的な属性の一覧を示します。これらの値の多くは、これまで説明してこなかったサブシステムを制御するものです。</p><h4 id=groupbundle><code>group:BUNDLE</code>
-<a class=anchor href=#groupbundle>#</a></h4><p>バンドルとは、複数の種類のトラフィックを1つの接続で実行することです。WebRTCの実装によっては、メディアストリームごとに専用の接続を使用するものもあります。バンドルが望ましいです。</p><h4 id=fingerprintsha-256><code>fingerprint:sha-256</code>
-<a class=anchor href=#fingerprintsha-256>#</a></h4><p>これは、ピアがDTLSに使用している証明書のハッシュ値です。DTLSのハンドシェイクが完了した後、これを実際の証明書と比較して、期待通りの相手と通信していることを確認します。</p><h4 id=setup><code>setup:</code>
-<a class=anchor href=#setup>#</a></h4><p>これは、DTLSエージェントの動作を制御します。ICEが接続した後に、クライアントとして実行するか、サーバーとして実行するかを決定します。設定可能な値は以下の通りです。</p><ul><li><code>setup:active</code> - DTLSクライアントとして動作します。</li><li><code>setup:passive</code> - DTLSサーバーとして動作します。</li><li><code>setup:actpass</code> - 他の WebRTC エージェントに選択を依頼します。</li></ul><h4 id=mid><code>mid:</code>
-<a class=anchor href=#mid>#</a></h4><p><code>mid</code> 属性は Session Description 内のメディアストリームを識別するために使われます。</p><h4 id=ice-ufrag><code>ice-ufrag</code>
-<a class=anchor href=#ice-ufrag>#</a></h4><p>ICEエージェントのユーザーフラグメント値です。ICEトラフィックの認証に使用されます。</p><h4 id=ice-pwd><code>ice-pwd</code>
-<a class=anchor href=#ice-pwd>#</a></h4><p>ICEエージェントのパスワードです。ICEトラフィックの認証に使用されます。</p><h4 id=rtpmap><code>rtpmap</code>
-<a class=anchor href=#rtpmap>#</a></h4><p>この値は、特定のコーデックをRTPペイロードタイプにマッピングするために使用されます。ペイロードタイプは固定されていないので、通話ごとにオファー側が各コーデックのペイロードタイプを決定します。</p><h4 id=fmtp><code>fmtp</code>
-<a class=anchor href=#fmtp>#</a></h4><p>1つのPayload Typeに対して追加の値を定義します。これは、特定のビデオプロファイルやエンコーダの設定を伝えるのに便利です。</p><h4 id=candidate-候補><code>candidate</code> (候補)
-<a class=anchor href=#candidate-%e5%80%99%e8%a3%9c>#</a></h4><p>ICE エージェントから送られてくる ICE キャンディデートです。これは、WebRTCエージェントが利用可能なアドレスの1つです。これらについては、次の章で詳しく説明します。</p><h4 id=ssrc><code>ssrc</code>
-<a class=anchor href=#ssrc>#</a></h4><p>同期ソース（SSRC）は、1つのメディアストリームトラックを定義します。</p><p><code>label</code> は、この個々のストリームの ID です。 <code>mslabel</code> は、内部に複数のストリームを持つことができるコンテナの ID です。</p><h3 id=webrtc-session-description-の例>WebRTC Session Description の例
-<a class=anchor href=#webrtc-session-description-%e3%81%ae%e4%be%8b>#</a></h3><p>WebRTCクライアントが生成する Session Description の例を以下に示します。</p><pre tabindex=0><code>v=0
+</code></pre><ul>
+<li><code>v</code>, <code>o</code>, <code>s</code>, <code>c</code>, <code>t</code> が定義されていますが、WebRTC セッションには影響しません。</li>
+<li>2つのメディア記述があります。1つは <code>audio</code> タイプで、もう1つは <code>video</code> タイプです。</li>
+<li>それぞれに1つの属性があります。この属性は RTP パイプラインの詳細を設定するもので、「メディアコミュニケーション」の章で説明します。</li>
+</ul>
+<h2 id="sdpsession-description-protocol-と-webrtc-の連携について">
+  <em>SDP(Session Description Protocol)</em> と WebRTC の連携について
+  <a class="anchor" href="#sdpsession-description-protocol-%e3%81%a8-webrtc-%e3%81%ae%e9%80%a3%e6%90%ba%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6">#</a>
+</h2>
+<p>次のパズルのピースは、WebRTC が SDP をどのように使用するかを理解することです。</p>
+<h3 id="オファーとアンサーとは">
+  オファーとアンサーとは？
+  <a class="anchor" href="#%e3%82%aa%e3%83%95%e3%82%a1%e3%83%bc%e3%81%a8%e3%82%a2%e3%83%b3%e3%82%b5%e3%83%bc%e3%81%a8%e3%81%af">#</a>
+</h3>
+<p>WebRTCでは、オファー/アンサーモデルを採用しています。つまり、一方の WebRTC エージェントが「オファー」を出して通話を開始し、他方の WebRTC エージェントがオファーされた内容を受け入れるかどうかを「アンサー」します。</p>
+<p>これにより、回答者はコーデックやメディア記述を拒否する機会が与えられます。このようにして、2つのピアが何を交換しようとしているのかを理解できます。</p>
+<h3 id="トランシーバーは送受信用">
+  トランシーバーは送受信用
+  <a class="anchor" href="#%e3%83%88%e3%83%a9%e3%83%b3%e3%82%b7%e3%83%bc%e3%83%90%e3%83%bc%e3%81%af%e9%80%81%e5%8f%97%e4%bf%a1%e7%94%a8">#</a>
+</h3>
+<p>トランシーバーはWebRTC特有の概念で、APIの中にも出てきます。これは、「メディア記述」を JavaScript API に公開するものです。各メディア記述は、トランシーバーになります。
+トランシーバーを作成するたびに、新しいメディア記述がローカルの Session Description に追加されます</p>
+<p>WebRTCの各メディア記述は、direction属性を持ちます。これにより、WebRTCエージェントは「このコーデックを送信するが、何も受信しない」と宣言できます。有効な値は4つあります。</p>
+<ul>
+<li><code>send</code> (送信)</li>
+<li><code>recv</code> (受信)</li>
+<li><code>sendrecv</code> (送受信)</li>
+<li><code>inactive</code> (非アクティブ)</li>
+</ul>
+<h3 id="webrtc-で使用される-sdp-の値">
+  WebRTC で使用される SDP の値
+  <a class="anchor" href="#webrtc-%e3%81%a7%e4%bd%bf%e7%94%a8%e3%81%95%e3%82%8c%e3%82%8b-sdp-%e3%81%ae%e5%80%a4">#</a>
+</h3>
+<p>ここでは、WebRTC エージェントの Session Description で見られる一般的な属性の一覧を示します。これらの値の多くは、これまで説明してこなかったサブシステムを制御するものです。</p>
+<h4 id="groupbundle">
+  <code>group:BUNDLE</code>
+  <a class="anchor" href="#groupbundle">#</a>
+</h4>
+<p>バンドルとは、複数の種類のトラフィックを1つの接続で実行することです。WebRTCの実装によっては、メディアストリームごとに専用の接続を使用するものもあります。バンドルが望ましいです。</p>
+<h4 id="fingerprintsha-256">
+  <code>fingerprint:sha-256</code>
+  <a class="anchor" href="#fingerprintsha-256">#</a>
+</h4>
+<p>これは、ピアがDTLSに使用している証明書のハッシュ値です。DTLSのハンドシェイクが完了した後、これを実際の証明書と比較して、期待通りの相手と通信していることを確認します。</p>
+<h4 id="setup">
+  <code>setup:</code>
+  <a class="anchor" href="#setup">#</a>
+</h4>
+<p>これは、DTLSエージェントの動作を制御します。ICEが接続した後に、クライアントとして実行するか、サーバーとして実行するかを決定します。設定可能な値は以下の通りです。</p>
+<ul>
+<li><code>setup:active</code> - DTLSクライアントとして動作します。</li>
+<li><code>setup:passive</code> - DTLSサーバーとして動作します。</li>
+<li><code>setup:actpass</code> - 他の WebRTC エージェントに選択を依頼します。</li>
+</ul>
+<h4 id="mid">
+  <code>mid:</code>
+  <a class="anchor" href="#mid">#</a>
+</h4>
+<p><code>mid</code> 属性は Session Description 内のメディアストリームを識別するために使われます。</p>
+<h4 id="ice-ufrag">
+  <code>ice-ufrag</code>
+  <a class="anchor" href="#ice-ufrag">#</a>
+</h4>
+<p>ICEエージェントのユーザーフラグメント値です。ICEトラフィックの認証に使用されます。</p>
+<h4 id="ice-pwd">
+  <code>ice-pwd</code>
+  <a class="anchor" href="#ice-pwd">#</a>
+</h4>
+<p>ICEエージェントのパスワードです。ICEトラフィックの認証に使用されます。</p>
+<h4 id="rtpmap">
+  <code>rtpmap</code>
+  <a class="anchor" href="#rtpmap">#</a>
+</h4>
+<p>この値は、特定のコーデックをRTPペイロードタイプにマッピングするために使用されます。ペイロードタイプは固定されていないので、通話ごとにオファー側が各コーデックのペイロードタイプを決定します。</p>
+<h4 id="fmtp">
+  <code>fmtp</code>
+  <a class="anchor" href="#fmtp">#</a>
+</h4>
+<p>1つのPayload Typeに対して追加の値を定義します。これは、特定のビデオプロファイルやエンコーダの設定を伝えるのに便利です。</p>
+<h4 id="candidate-候補">
+  <code>candidate</code> (候補)
+  <a class="anchor" href="#candidate-%e5%80%99%e8%a3%9c">#</a>
+</h4>
+<p>ICE エージェントから送られてくる ICE キャンディデートです。これは、WebRTCエージェントが利用可能なアドレスの1つです。これらについては、次の章で詳しく説明します。</p>
+<h4 id="ssrc">
+  <code>ssrc</code>
+  <a class="anchor" href="#ssrc">#</a>
+</h4>
+<p>同期ソース（SSRC）は、1つのメディアストリームトラックを定義します。</p>
+<p><code>label</code> は、この個々のストリームの ID です。 <code>mslabel</code> は、内部に複数のストリームを持つことができるコンテナの ID です。</p>
+<h3 id="webrtc-session-description-の例">
+  WebRTC Session Description の例
+  <a class="anchor" href="#webrtc-session-description-%e3%81%ae%e4%be%8b">#</a>
+</h3>
+<p>WebRTCクライアントが生成する Session Description の例を以下に示します。</p>
+<pre tabindex="0"><code>v=0
 o=- 3546004397921447048 1596742744 IN IP4 0.0.0.0
 s=-
 t=0 0
@@ -130,7 +709,118 @@ a=ssrc:2180035812 mslabel:XHbOTNRFnLtesHwJ
 a=ssrc:2180035812 label:JgtwEhBWNEiOnhuW
 a=msid:XHbOTNRFnLtesHwJ JgtwEhBWNEiOnhuW
 a=sendrecv
-</code></pre><p>このメッセージからわかったことは以下の通りです。</p><ul><li>オーディオとビデオの2つのメディアセクションがあります。</li><li>どちらも <code>sendrecv</code> トランシーバーです。2つのストリームを受信しているので、2つのストリームを送り返すことができます。</li><li>ICE CandidatesとAuthenticationの詳細があるので、接続を試みることができます。</li><li>証明書のフィンガープリントがあるので、安全な通話ができます。</li></ul><h3 id=その他のトピック>その他のトピック
-<a class=anchor href=#%e3%81%9d%e3%81%ae%e4%bb%96%e3%81%ae%e3%83%88%e3%83%94%e3%83%83%e3%82%af>#</a></h3><p>本書の次のバージョンでは、以下のトピックについても説明します。疑問点があれば、Pull Request を提出してください。</p><ul><li>リネゴシエーション</li><li>サイマルキャスト</li></ul></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/commit/906a3afd78860dd62dabb516e754bde300c6e562 title='最終更新者 Hiroyuki Sato | 3月 14, 2022' target=_blank rel=noopener><img src=/webrtc-for-the-curious-kr/svg/calendar.svg class=book-icon alt>
-<span>3月 14, 2022</span></a></div><div><a class="flex align-center" href=https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/edit/master/content/docs/02-signaling.md target=_blank rel=noopener><img src=/webrtc-for-the-curious-kr/svg/edit.svg class=book-icon alt>
-<span>このページを編集する</span></a></div></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#webrtcシグナリングとは>WebRTCシグナリングとは？</a></li><li><a href=#webrtc-のシグナリングはどのように動作しますか>WebRTC のシグナリングはどのように動作しますか？</a></li><li><a href=#session-description-protocol-sdpとは><em>Session Description Protocol</em> (SDP)とは？</a><ul><li><a href=#sdpの読み方>SDPの読み方</a></li><li><a href=#webrtcは一部のsdpキーしか使用しない>WebRTCは一部のSDPキーしか使用しない</a></li><li><a href=#session-description-に含まれるメディアの説明文>Session Description に含まれるメディアの説明文</a></li><li><a href=#full-example>Full Example</a></li><li><a href=#完全な例>完全な例</a></li></ul></li><li><a href=#sdpsession-description-protocol-と-webrtc-の連携について><em>SDP(Session Description Protocol)</em> と WebRTC の連携について</a><ul><li><a href=#オファーとアンサーとは>オファーとアンサーとは？</a></li><li><a href=#トランシーバーは送受信用>トランシーバーは送受信用</a></li><li><a href=#webrtc-で使用される-sdp-の値>WebRTC で使用される SDP の値</a></li><li><a href=#webrtc-session-description-の例>WebRTC Session Description の例</a></li><li><a href=#その他のトピック>その他のトピック</a></li></ul></li></ul></nav></div></aside></main></body></html>
+</code></pre><p>このメッセージからわかったことは以下の通りです。</p>
+<ul>
+<li>オーディオとビデオの2つのメディアセクションがあります。</li>
+<li>どちらも <code>sendrecv</code> トランシーバーです。2つのストリームを受信しているので、2つのストリームを送り返すことができます。</li>
+<li>ICE CandidatesとAuthenticationの詳細があるので、接続を試みることができます。</li>
+<li>証明書のフィンガープリントがあるので、安全な通話ができます。</li>
+</ul>
+<h3 id="その他のトピック">
+  その他のトピック
+  <a class="anchor" href="#%e3%81%9d%e3%81%ae%e4%bb%96%e3%81%ae%e3%83%88%e3%83%94%e3%83%83%e3%82%af">#</a>
+</h3>
+<p>本書の次のバージョンでは、以下のトピックについても説明します。疑問点があれば、Pull Request を提出してください。</p>
+<ul>
+<li>リネゴシエーション</li>
+<li>サイマルキャスト</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+  <div><a class="flex align-center" href="https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/commit/906a3afd78860dd62dabb516e754bde300c6e562" title='最終更新者 Hiroyuki Sato | 3月 14, 2022' target="_blank" rel="noopener">
+      <img src="/webrtc-for-the-curious-kr/svg/calendar.svg" class="book-icon" alt="" />
+      <span>3月 14, 2022</span>
+    </a>
+  </div>
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/edit/master/content/docs/02-signaling.md" target="_blank" rel="noopener">
+      <img src="/webrtc-for-the-curious-kr/svg/edit.svg" class="book-icon" alt="" />
+      <span>このページを編集する</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#webrtcシグナリングとは">WebRTCシグナリングとは？</a></li>
+    <li><a href="#webrtc-のシグナリングはどのように動作しますか">WebRTC のシグナリングはどのように動作しますか？</a></li>
+    <li><a href="#session-description-protocol-sdpとは"><em>Session Description Protocol</em> (SDP)とは？</a>
+      <ul>
+        <li><a href="#sdpの読み方">SDPの読み方</a></li>
+        <li><a href="#webrtcは一部のsdpキーしか使用しない">WebRTCは一部のSDPキーしか使用しない</a></li>
+        <li><a href="#session-description-に含まれるメディアの説明文">Session Description に含まれるメディアの説明文</a></li>
+        <li><a href="#full-example">Full Example</a></li>
+        <li><a href="#完全な例">完全な例</a></li>
+      </ul>
+    </li>
+    <li><a href="#sdpsession-description-protocol-と-webrtc-の連携について"><em>SDP(Session Description Protocol)</em> と WebRTC の連携について</a>
+      <ul>
+        <li><a href="#オファーとアンサーとは">オファーとアンサーとは？</a></li>
+        <li><a href="#トランシーバーは送受信用">トランシーバーは送受信用</a></li>
+        <li><a href="#webrtc-で使用される-sdp-の値">WebRTC で使用される SDP の値</a></li>
+        <li><a href="#webrtc-session-description-の例">WebRTC Session Description の例</a></li>
+        <li><a href="#その他のトピック">その他のトピック</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

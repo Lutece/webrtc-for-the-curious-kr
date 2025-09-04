@@ -1,61 +1,752 @@
-<!doctype html><html lang=en dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="
-  Securing
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+<head><script src="/webrtc-for-the-curious-kr/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=webrtc-for-the-curious-kr/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  보안
   #
 
 
-  What security does WebRTC have?
+  WebRTC는 어떤 보안을 제공하나요?
   #
 
-Every WebRTC connection is authenticated and encrypted. You can be confident that a 3rd party can&rsquo;t see what you are sending or insert bogus messages. You can also be sure that the WebRTC Agent that generated the Session Description is the one you are communicating with.
-It is very important that no one tampers with those messages. It is ok if a 3rd party reads the Session Description in transit. However, WebRTC has no protection against it being modified. An attacker could perform a man-in-the-middle attack on you by changing the ICE Candidates and update the Certificate Fingerprint."><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="https://lutece.github.io/webrtc-for-the-curious-kr/docs/04-securing/"><meta property="og:site_name" content="WebRTC for the Curious"><meta property="og:title" content="Securing"><meta property="og:description" content="Securing # What security does WebRTC have? # Every WebRTC connection is authenticated and encrypted. You can be confident that a 3rd party can’t see what you are sending or insert bogus messages. You can also be sure that the WebRTC Agent that generated the Session Description is the one you are communicating with.
-It is very important that no one tampers with those messages. It is ok if a 3rd party reads the Session Description in transit. However, WebRTC has no protection against it being modified. An attacker could perform a man-in-the-middle attack on you by changing the ICE Candidates and update the Certificate Fingerprint."><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2022-11-23T17:55:06+04:00"><title>Securing | WebRTC for the Curious</title><link rel=manifest href=/webrtc-for-the-curious-kr/manifest.json><link rel=icon href=/webrtc-for-the-curious-kr/favicon.png><link rel=canonical href=https://lutece.github.io/webrtc-for-the-curious-kr/docs/04-securing/><link rel=alternate hreflang=ru href=https://lutece.github.io/webrtc-for-the-curious-kr/ru/docs/04-securing/ title=Securing><link rel=alternate hreflang=sv href=https://lutece.github.io/webrtc-for-the-curious-kr/sv/docs/04-securing/ title=Säkerhet><link rel=alternate hreflang=zh href=https://lutece.github.io/webrtc-for-the-curious-kr/zh/docs/04-securing/ title=安全性><link rel=alternate hreflang=ja href=https://lutece.github.io/webrtc-for-the-curious-kr/ja/docs/04-securing/ title=セキュリティ対策><link rel=alternate hreflang=fa href=https://lutece.github.io/webrtc-for-the-curious-kr/fa/docs/04-securing/ title=امنیت><link rel=alternate hreflang=fr href=https://lutece.github.io/webrtc-for-the-curious-kr/fr/docs/04-securing/ title=Securing><link rel=alternate hreflang=id href=https://lutece.github.io/webrtc-for-the-curious-kr/id/docs/04-securing/ title=Securing><link rel=alternate hreflang=es href=https://lutece.github.io/webrtc-for-the-curious-kr/es/docs/04-securing/ title=Securing><link rel=alternate hreflang=tr href=https://lutece.github.io/webrtc-for-the-curious-kr/tr/docs/04-securing/ title=Güvenlik><link rel=alternate hreflang=ko href=https://lutece.github.io/webrtc-for-the-curious-kr/ko/docs/04-securing/ title=보안><link rel=stylesheet href=/webrtc-for-the-curious-kr/book.min.a1f8103544a99b89cb7808ead8d43817d98d4f3e608b9e0e5ff491b382e3434d.css integrity="sha256-ofgQNUSpm4nLeAjq2NQ4F9mNTz5gi54OX/SRs4LjQ00=" crossorigin=anonymous><script defer src=/webrtc-for-the-curious-kr/fuse.min.js></script><script defer src=/webrtc-for-the-curious-kr/en.search.min.7124ee00de215853f86ec4384f46ed1972e1ad442629e038a48a7fd51e6f5179.js integrity="sha256-cSTuAN4hWFP4bsQ4T0btGXLhrUQmKeA4pIp/1R5vUXk=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/webrtc-for-the-curious-kr/><span>WebRTC for the Curious</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul class=book-languages><li><input type=checkbox id=languages class=toggle>
-<label for=languages class="flex justify-between"><a role=button class="flex align-center"><img src=/webrtc-for-the-curious-kr/svg/translate.svg class=book-icon alt=Languages>
-English</a></label><ul><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/ru/docs/04-securing/>Русский</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/sv/docs/04-securing/>Svenska</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/zh/docs/04-securing/>简体中文</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/ja/docs/04-securing/>日本語</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/fa/docs/04-securing/>Persian</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/fr/docs/04-securing/>Français</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/id/docs/04-securing/>Bahasa Indonesia</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/es/docs/04-securing/>Español</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/tr/docs/04-securing/>Türkçe</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/ko/docs/04-securing/>한국어</a></li></ul></li></ul><ul><li><a href=/webrtc-for-the-curious-kr/docs/01-what-why-and-how/>What, Why and How</a></li><li><a href=/webrtc-for-the-curious-kr/docs/02-signaling/>Signaling</a></li><li><a href=/webrtc-for-the-curious-kr/docs/03-connecting/>Connecting</a></li><li><a href=/webrtc-for-the-curious-kr/docs/04-securing/ class=active>Securing</a></li><li><a href=/webrtc-for-the-curious-kr/docs/05-real-time-networking/>Real-time Networking</a></li><li><a href=/webrtc-for-the-curious-kr/docs/06-media-communication/>Media Communication</a></li><li><a href=/webrtc-for-the-curious-kr/docs/07-data-communication/>Data Communication</a></li><li><a href=/webrtc-for-the-curious-kr/docs/08-applied-webrtc/>Applied WebRTC</a></li><li><a href=/webrtc-for-the-curious-kr/docs/09-debugging/>Debugging</a></li><li><a href=/webrtc-for-the-curious-kr/docs/10-history-of-webrtc/>History</a></li><li><a href=/webrtc-for-the-curious-kr/docs/11-faq/>FAQ</a></li><li><a href=/webrtc-for-the-curious-kr/docs/12-glossary/>Glossary</a></li><li><a href=/webrtc-for-the-curious-kr/docs/13-reference/>Reference</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/webrtc-for-the-curious-kr/svg/menu.svg class=book-icon alt=Menu>
-</label><strong>Securing</strong>
-<label for=toc-control><img src=/webrtc-for-the-curious-kr/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#what-security-does-webrtc-have>What security does WebRTC have?</a></li><li><a href=#how-does-it-work>How does it work?</a></li><li><a href=#security-101>Security 101</a><ul><li><a href=#plaintext-and-ciphertext>Plaintext and Ciphertext</a></li><li><a href=#cipher>Cipher</a></li><li><a href=#hash-functions>Hash functions</a></li><li><a href=#publicprivate-key-cryptography>Public/Private Key Cryptography</a></li><li><a href=#diffiehellman-exchange>Diffie–Hellman exchange</a></li><li><a href=#pseudorandom-function>Pseudorandom Function</a></li><li><a href=#key-derivation-function>Key Derivation Function</a></li><li><a href=#nonce>Nonce</a></li><li><a href=#message-authentication-code>Message Authentication Code</a></li><li><a href=#key-rotation>Key Rotation</a></li></ul></li><li><a href=#dtls>DTLS</a><ul><li><a href=#packet-format>Packet Format</a></li><li><a href=#handshake-state-machine>Handshake State Machine</a></li><li><a href=#key-generation>Key Generation</a></li><li><a href=#exchanging-applicationdata>Exchanging ApplicationData</a></li></ul></li><li><a href=#srtp>SRTP</a><ul><li><a href=#session-creation>Session Creation</a></li><li><a href=#exchanging-media>Exchanging Media</a></li></ul></li></ul></nav></aside></header><article class="markdown book-article"><h1 id=securing>Securing
-<a class=anchor href=#securing>#</a></h1><h2 id=what-security-does-webrtc-have>What security does WebRTC have?
-<a class=anchor href=#what-security-does-webrtc-have>#</a></h2><p>Every WebRTC connection is authenticated and encrypted. You can be confident that a 3rd party can&rsquo;t see what you are sending or insert bogus messages. You can also be sure that the WebRTC Agent that generated the Session Description is the one you are communicating with.</p><p>It is very important that no one tampers with those messages. It is ok if a 3rd party reads the Session Description in transit. However, WebRTC has no protection against it being modified. An attacker could perform a man-in-the-middle attack on you by changing the ICE Candidates and update the Certificate Fingerprint.</p><h2 id=how-does-it-work>How does it work?
-<a class=anchor href=#how-does-it-work>#</a></h2><p>WebRTC uses two pre-existing protocols, Datagram Transport Layer Security (<a href=https://tools.ietf.org/html/rfc6347>DTLS</a>) and the Secure Real-time Transport Protocol (<a href=https://tools.ietf.org/html/rfc3711>SRTP</a>).</p><p>DTLS allows you to negotiate a session and then exchange data securely between two peers. It is a sibling of TLS, the same technology that powers HTTPS, but DTLS uses UDP instead of TCP as the transport layer. That means the protocol has to handle unreliable delivery. SRTP is specifically designed for exchanging media securely. There are some optimizations we can make by using it instead of DTLS.</p><p>DTLS is used first. It does a handshake over the connection provided by ICE. DTLS is a client/server protocol, so one side needs to start the handshake. The Client/Server roles are chosen during signaling. During the DTLS handshake, both sides offer a certificate.
-After the handshake is complete, this certificate is compared to the certificate hash in the Session Description. This is to ensure that the handshake happened with the WebRTC Agent you expected. The DTLS connection is then available to be used for DataChannel communication.</p><p>To create an SRTP session we initialize it using the keys generated by DTLS. SRTP does not have a handshake mechanism, so has to be bootstrapped with external keys. Once this is done, media can be exchanged that is encrypted using SRTP!</p><h2 id=security-101>Security 101
-<a class=anchor href=#security-101>#</a></h2><p>To understand the technology presented in this chapter you will need to understand these terms first. Cryptography is a tricky subject, so it would be worth consulting other sources as well!</p><h3 id=plaintext-and-ciphertext>Plaintext and Ciphertext
-<a class=anchor href=#plaintext-and-ciphertext>#</a></h3><p>Plaintext is the input to a cipher. Ciphertext is the output of a cipher.</p><h3 id=cipher>Cipher
-<a class=anchor href=#cipher>#</a></h3><p>Cipher is a series of steps that takes plaintext to ciphertext. The cipher can then be reversed, so you can take your ciphertext back to plaintext. A cipher usually has a key to change its behavior. Another term for this is encrypting and decrypting.</p><p>A simple cipher is ROT13. Each letter is moved 13 characters forward. To undo the cipher you move 13 characters backward. The plaintext <code>HELLO</code> would become the ciphertext <code>URYYB</code>. In this case, the Cipher is ROT, and the key is 13.</p><h3 id=hash-functions>Hash functions
-<a class=anchor href=#hash-functions>#</a></h3><p>A cryptographic hash function is a one-way process that generates a digest. Given an input, it generates the same output every time. It is important that the output is <em>not</em> reversible. If you have an output, you should not be able to determine its input. Hashing is useful when you want to confirm that a message hasn&rsquo;t been tampered with.</p><p>A simple (although certainly not suitable for real cryptography) hash function would be to only take every other letter. <code>HELLO</code> would become <code>HLO</code>. You can&rsquo;t assume <code>HELLO</code> was the input, but you can confirm that <code>HELLO</code> would be a match to the hash digest.</p><h3 id=publicprivate-key-cryptography>Public/Private Key Cryptography
-<a class=anchor href=#publicprivate-key-cryptography>#</a></h3><p>Public/Private Key Cryptography describes the type of ciphers that DTLS and SRTP uses. In this system, you have two keys, a public and private key. The public key is for encrypting messages and is safe to share.
-The private key is for decrypting, and should never be shared. It is the only key that can decrypt the messages encrypted with the public key.</p><h3 id=diffiehellman-exchange>Diffie–Hellman exchange
-<a class=anchor href=#diffiehellman-exchange>#</a></h3><p>Diffie–Hellman exchange allows two users who have never met before to create a shared secret securely over the internet. User <code>A</code> can send a secret to User <code>B</code> without worrying about eavesdropping. This depends on the difficulty of breaking the discrete logarithm problem.
-You don&rsquo;t need to fully understand how this works, but it helps to know this is what makes the DTLS handshake possible.</p><p>Wikipedia has an example of this in action <a href=https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange#Cryptographic_explanation>here</a>.</p><h3 id=pseudorandom-function>Pseudorandom Function
-<a class=anchor href=#pseudorandom-function>#</a></h3><p>A Pseudorandom Function (PRF) is a pre-defined function to generate a value that appears random. It may take multiple inputs and generate a single output.</p><h3 id=key-derivation-function>Key Derivation Function
-<a class=anchor href=#key-derivation-function>#</a></h3><p>Key Derivation is a type of Pseudorandom Function. Key Derivation is a function that is used to make a key stronger. One common pattern is key stretching.</p><p>Let&rsquo;s say you are given a key that is 8 bytes. You could use a KDF to make it stronger.</p><h3 id=nonce>Nonce
-<a class=anchor href=#nonce>#</a></h3><p>A nonce is an additional input to a cipher. This is used so that you can get different output from the cipher, even if you are encrypting the same message multiple times.</p><p>If you encrypt the same message 10 times, the cipher will give you the same ciphertext 10 times. By using a nonce you can get different output, while still using the same key. It is important you use a different nonce for each message! Otherwise, it negates much of the value.</p><h3 id=message-authentication-code>Message Authentication Code
-<a class=anchor href=#message-authentication-code>#</a></h3><p>A Message Authentication Code is a hash that is placed at the end of a message. A MAC proves that the message comes from the user you expected.</p><p>If you don&rsquo;t use a MAC, an attacker could insert invalid messages. After decrypting you would just have garbage because they don&rsquo;t know the key.</p><h3 id=key-rotation>Key Rotation
-<a class=anchor href=#key-rotation>#</a></h3><p>Key Rotation is the practice of changing your key on an interval. This makes a stolen key less impactful. If a key is stolen or leaked, fewer data can be decrypted.</p><h2 id=dtls>DTLS
-<a class=anchor href=#dtls>#</a></h2><p>DTLS (Datagram Transport Layer Security) allows two peers to establish secure communication with no pre-existing configuration. Even if someone is eavesdropping on the conversation, they will not be able to decrypt the messages.</p><p>For a DTLS Client and a Server to communicate, they need to agree on a cipher and the key. They determine these values by doing a DTLS handshake. During the handshake, the messages are in plaintext.
-When a DTLS Client/Server has exchanged enough details to start encrypting it sends a <code>Change Cipher Spec</code>. After this message, each subsequent message will be encrypted!</p><h3 id=packet-format>Packet Format
-<a class=anchor href=#packet-format>#</a></h3><p>Every DTLS packet starts with a header.</p><h4 id=content-type>Content Type
-<a class=anchor href=#content-type>#</a></h4><p>You can expect the following types:</p><ul><li><code>20</code> - Change Cipher Spec</li><li><code>22</code> - Handshake</li><li><code>23</code> - Application Data</li></ul><p><code>Handshake</code> is used to exchange the details to start the session. <code>Change Cipher Spec</code> is used to notify the other side that everything will be encrypted. <code>Application Data</code> are the encrypted messages.</p><h4 id=version>Version
-<a class=anchor href=#version>#</a></h4><p>Version can either be <code>0x0000feff</code> (DTLS v1.0) or <code>0x0000fefd</code> (DTLS v1.2) there is no v1.1.</p><h4 id=epoch>Epoch
-<a class=anchor href=#epoch>#</a></h4><p>The epoch starts at <code>0</code>, but becomes <code>1</code> after a <code>Change Cipher Spec</code>. Any message with a non-zero epoch is encrypted.</p><h4 id=sequence-number>Sequence Number
-<a class=anchor href=#sequence-number>#</a></h4><p>Sequence Number is used to keep messages in order. Each message increases the Sequence Number. When the epoch is incremented, the Sequence Number starts over.</p><h4 id=length-and-payload>Length and Payload
-<a class=anchor href=#length-and-payload>#</a></h4><p>The Payload is <code>Content Type</code> specific. For a <code>Application Data</code> the <code>Payload</code> is the encrypted data. For <code>Handshake</code> it will be different depending on the message. The length is for how big the <code>Payload</code> is.</p><h3 id=handshake-state-machine>Handshake State Machine
-<a class=anchor href=#handshake-state-machine>#</a></h3><p>During the handshake, the Client/Server exchanges a series of messages. These messages are grouped into flights. Each flight may have multiple messages in it (or just one).
-A Flight is not complete until all the messages in the flight have been received. We will describe the purpose of each message in greater detail below.</p><p><img src=../images/04-handshake.png alt=Handshake title=Handshake></p><h4 id=clienthello>ClientHello
-<a class=anchor href=#clienthello>#</a></h4><p>ClientHello is the initial message sent by the client. It contains a list of attributes. These attributes tell the server the ciphers and features the client supports. For WebRTC this is how we choose the SRTP Cipher as well. It also contains random data that will be used to generate the keys for the session.</p><h4 id=helloverifyrequest>HelloVerifyRequest
-<a class=anchor href=#helloverifyrequest>#</a></h4><p>HelloVerifyRequest is sent by the server to the client. It is to make sure that the client intended to send the request. The Client then re-sends the ClientHello, but with a token provided in the HelloVerifyRequest.</p><h4 id=serverhello>ServerHello
-<a class=anchor href=#serverhello>#</a></h4><p>ServerHello is the response by the server for the configuration of this session. It contains what cipher will be used when this session is over. It also contains the server random data.</p><h4 id=certificate>Certificate
-<a class=anchor href=#certificate>#</a></h4><p>Certificate contains the certificate for the Client or Server. This is used to uniquely identify who we were communicating with. After the handshake is over we will make sure this certificate when hashed matches the fingerprint in the <code>SessionDescription</code>.</p><h4 id=serverkeyexchangeclientkeyexchange>ServerKeyExchange/ClientKeyExchange
-<a class=anchor href=#serverkeyexchangeclientkeyexchange>#</a></h4><p>These messages are used to transmit the public key. On startup, the client and server both generate a keypair. After the handshake these values will be used to generate the <code>Pre-Master Secret</code>.</p><h4 id=certificaterequest>CertificateRequest
-<a class=anchor href=#certificaterequest>#</a></h4><p>A CertificateRequest is sent by the server notifying the client that it wants a certificate. The server can either Request or Require a certificate.</p><h4 id=serverhellodone>ServerHelloDone
-<a class=anchor href=#serverhellodone>#</a></h4><p>ServerHelloDone notifies the client that the server is done with the handshake.</p><h4 id=certificateverify>CertificateVerify
-<a class=anchor href=#certificateverify>#</a></h4><p>CertificateVerify is how the sender proves that it has the private key sent in the Certificate message.</p><h4 id=changecipherspec>ChangeCipherSpec
-<a class=anchor href=#changecipherspec>#</a></h4><p>ChangeCipherSpec informs the receiver that everything sent after this message will be encrypted.</p><h4 id=finished>Finished
-<a class=anchor href=#finished>#</a></h4><p>Finished is encrypted and contains a hash of all messages. This is to assert that the handshake was not tampered with.</p><h3 id=key-generation>Key Generation
-<a class=anchor href=#key-generation>#</a></h3><p>After the Handshake is complete, you can start sending encrypted data. The Cipher was chosen by the server and is in the ServerHello. How was the key chosen though?</p><p>First we generate the <code>Pre-Master Secret</code>. To obtain this value Diffie–Hellman is used on the keys exchanged by the <code>ServerKeyExchange</code> and <code>ClientKeyExchange</code>. The details differ depending on the chosen Cipher.</p><p>Next the <code>Master Secret</code> is generated. Each version of DTLS has a defined <code>Pseudorandom function</code>. For DTLS 1.2 the function takes the <code>Pre-Master Secret</code> and random values in the <code>ClientHello</code> and <code>ServerHello</code>.
-The output from running the <code>Pseudorandom Function</code> is the <code>Master Secret</code>. The <code>Master Secret</code> is the value that is used for the Cipher.</p><h3 id=exchanging-applicationdata>Exchanging ApplicationData
-<a class=anchor href=#exchanging-applicationdata>#</a></h3><p>The workhorse of DTLS is <code>ApplicationData</code>. Now that we have an initialized cipher, we can start encrypting and sending values.</p><p><code>ApplicationData</code> messages use a DTLS header as described earlier. The <code>Payload</code> is populated with ciphertext. You now have a working DTLS Session and can communicate securely.</p><p>DTLS has many more interesting features like renegotiation. They are not used by WebRTC, so they will not be covered here.</p><h2 id=srtp>SRTP
-<a class=anchor href=#srtp>#</a></h2><p>SRTP is a protocol designed specifically for encrypting RTP packets. To start an SRTP session you specify your keys and cipher. Unlike DTLS it has no handshake mechanism. All the configuration and keys were generated during the DTLS handshake.</p><p>DTLS provides a dedicated API to export the keys to be used by another process. This is defined in <a href=https://tools.ietf.org/html/rfc5705>RFC 5705</a>.</p><h3 id=session-creation>Session Creation
-<a class=anchor href=#session-creation>#</a></h3><p>SRTP defines a Key Derivation Function that is used on the inputs. When creating an SRTP Session the inputs are run through this to generate our keys for our SRTP Cipher. After this you can move on to processing media.</p><h3 id=exchanging-media>Exchanging Media
-<a class=anchor href=#exchanging-media>#</a></h3><p>Each RTP packet has a 16 bit SequenceNumber. These Sequence Numbers are used to keep packets in order, like a Primary Key. During a call these will rollover. SRTP keeps track of it and calls this the rollover counter.</p><p>When encrypting a packet SRTP uses the rollover counter and sequence number as a nonce. This is to ensure that even if you send the same data twice, the ciphertext will be different. This is important to prevent an attacker from identifying patterns or attempting a replay attack.</p></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/commit/5ed04bb8a925d8ff40a565b5362e85ae9f045fb5 title='Last modified by WofWca | November 23, 2022' target=_blank rel=noopener><img src=/webrtc-for-the-curious-kr/svg/calendar.svg class=book-icon alt>
-<span>November 23, 2022</span></a></div><div><a class="flex align-center" href=https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/edit/master/content/docs/04-securing.md target=_blank rel=noopener><img src=/webrtc-for-the-curious-kr/svg/edit.svg class=book-icon alt>
-<span>Edit this page</span></a></div></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#what-security-does-webrtc-have>What security does WebRTC have?</a></li><li><a href=#how-does-it-work>How does it work?</a></li><li><a href=#security-101>Security 101</a><ul><li><a href=#plaintext-and-ciphertext>Plaintext and Ciphertext</a></li><li><a href=#cipher>Cipher</a></li><li><a href=#hash-functions>Hash functions</a></li><li><a href=#publicprivate-key-cryptography>Public/Private Key Cryptography</a></li><li><a href=#diffiehellman-exchange>Diffie–Hellman exchange</a></li><li><a href=#pseudorandom-function>Pseudorandom Function</a></li><li><a href=#key-derivation-function>Key Derivation Function</a></li><li><a href=#nonce>Nonce</a></li><li><a href=#message-authentication-code>Message Authentication Code</a></li><li><a href=#key-rotation>Key Rotation</a></li></ul></li><li><a href=#dtls>DTLS</a><ul><li><a href=#packet-format>Packet Format</a></li><li><a href=#handshake-state-machine>Handshake State Machine</a></li><li><a href=#key-generation>Key Generation</a></li><li><a href=#exchanging-applicationdata>Exchanging ApplicationData</a></li></ul></li><li><a href=#srtp>SRTP</a><ul><li><a href=#session-creation>Session Creation</a></li><li><a href=#exchanging-media>Exchanging Media</a></li></ul></li></ul></nav></div></aside></main></body></html>
+모든 WebRTC 연결은 인증되고 암호화됩니다. 제3자가 당신이 보내는 내용을 엿보거나 가짜 메시지를 삽입할 수 없습니다.
+또한 세션 설명(Session Description)을 생성한 바로 그 WebRTC 에이전트와 통신하고 있음을 보장할 수 있습니다.
+이 메시지들이 변조되지 않는 것이 매우 중요합니다. 전송 중 세션 설명을 제3자가 읽는 것은 괜찮지만,
+WebRTC는 그 내용이 수정되는 것에 대해 자체 보호 장치가 없습니다. 공격자는 ICE 후보를 바꾸고 인증서 지문을 바꿔
+중간자 공격을 시도할 수 있습니다.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/webrtc-for-the-curious-kr/docs/04-securing/">
+  <meta property="og:site_name" content="호기심 많은 이를 위한 WebRTC">
+  <meta property="og:title" content="보안">
+  <meta property="og:description" content="보안 # WebRTC는 어떤 보안을 제공하나요? # 모든 WebRTC 연결은 인증되고 암호화됩니다. 제3자가 당신이 보내는 내용을 엿보거나 가짜 메시지를 삽입할 수 없습니다. 또한 세션 설명(Session Description)을 생성한 바로 그 WebRTC 에이전트와 통신하고 있음을 보장할 수 있습니다.
+이 메시지들이 변조되지 않는 것이 매우 중요합니다. 전송 중 세션 설명을 제3자가 읽는 것은 괜찮지만, WebRTC는 그 내용이 수정되는 것에 대해 자체 보호 장치가 없습니다. 공격자는 ICE 후보를 바꾸고 인증서 지문을 바꿔 중간자 공격을 시도할 수 있습니다.">
+  <meta property="og:locale" content="ko">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:modified_time" content="2025-09-05T05:58:35+09:00">
+<title>보안 | 호기심 많은 이를 위한 WebRTC</title>
+<link rel="manifest" href="/webrtc-for-the-curious-kr/manifest.json">
+<link rel="icon" href="/webrtc-for-the-curious-kr/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/webrtc-for-the-curious-kr/docs/04-securing/">
+  <link rel="alternate" hreflang="ru" href="http://localhost:1313/webrtc-for-the-curious-kr/ru/docs/04-securing/" title="Securing">
+  <link rel="alternate" hreflang="sv" href="http://localhost:1313/webrtc-for-the-curious-kr/sv/docs/04-securing/" title="Säkerhet">
+  <link rel="alternate" hreflang="zh" href="http://localhost:1313/webrtc-for-the-curious-kr/zh/docs/04-securing/" title="安全性">
+  <link rel="alternate" hreflang="ja" href="http://localhost:1313/webrtc-for-the-curious-kr/ja/docs/04-securing/" title="セキュリティ対策">
+  <link rel="alternate" hreflang="fa" href="http://localhost:1313/webrtc-for-the-curious-kr/fa/docs/04-securing/" title="امنیت">
+  <link rel="alternate" hreflang="fr" href="http://localhost:1313/webrtc-for-the-curious-kr/fr/docs/04-securing/" title="Securing">
+  <link rel="alternate" hreflang="id" href="http://localhost:1313/webrtc-for-the-curious-kr/id/docs/04-securing/" title="Securing">
+  <link rel="alternate" hreflang="es" href="http://localhost:1313/webrtc-for-the-curious-kr/es/docs/04-securing/" title="Securing">
+  <link rel="alternate" hreflang="tr" href="http://localhost:1313/webrtc-for-the-curious-kr/tr/docs/04-securing/" title="Güvenlik">
+<link rel="stylesheet" href="/webrtc-for-the-curious-kr/book.min.a1f8103544a99b89cb7808ead8d43817d98d4f3e608b9e0e5ff491b382e3434d.css" integrity="sha256-ofgQNUSpm4nLeAjq2NQ4F9mNTz5gi54OX/SRs4LjQ00=" crossorigin="anonymous">
+  <script defer src="/webrtc-for-the-curious-kr/fuse.min.js"></script>
+  <script defer src="/webrtc-for-the-curious-kr/ko.search.min.b0c3e082a1e64bd7bac8aeb6d083f4ceb9d7305e1117b44f7e0a078d8e910dba.js" integrity="sha256-sMPggqHmS9e6yK620IP0zrnXMF4RF7RPfgoHjY6RDbo=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/webrtc-for-the-curious-kr/"><span>호기심 많은 이를 위한 WebRTC</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/webrtc-for-the-curious-kr/svg/translate.svg" class="book-icon" alt="Languages" />
+        한국어
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/en/">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/ru/docs/04-securing/">
+          Русский
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/sv/docs/04-securing/">
+          Svenska
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/zh/docs/04-securing/">
+          简体中文
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/ja/docs/04-securing/">
+          日本語
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/fa/docs/04-securing/">
+          Persian
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/fr/docs/04-securing/">
+          Français
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/id/docs/04-securing/">
+          Bahasa Indonesia
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/es/docs/04-securing/">
+          Español
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/tr/docs/04-securing/">
+          Türkçe
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/01-what-why-and-how/" class="">무엇, 왜, 어떻게?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/02-signaling/" class="">시그널링</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/03-connecting/" class="">연결</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/04-securing/" class="active">보안</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/05-real-time-networking/" class="">실시간 네트워킹</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/06-media-communication/" class="">미디어 통신</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/07-data-communication/" class="">데이터 통신</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/08-applied-webrtc/" class="">적용 WebRTC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/09-debugging/" class="">디버깅</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/10-history-of-webrtc/" class="">역사</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/11-faq/" class="">자주 묻는 질문(FAQ)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/12-glossary/" class="">용어집</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/13-reference/" class="">참고 자료</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/webrtc-for-the-curious-kr/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>보안</strong>
+
+  <label for="toc-control">
+    
+    <img src="/webrtc-for-the-curious-kr/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#webrtc는-어떤-보안을-제공하나요">WebRTC는 어떤 보안을 제공하나요?</a></li>
+    <li><a href="#어떻게-동작하나요">어떻게 동작하나요?</a></li>
+    <li><a href="#보안-101">보안 101</a>
+      <ul>
+        <li><a href="#평문과-암호문">평문과 암호문</a></li>
+        <li><a href="#암호cipher">암호(Cipher)</a></li>
+        <li><a href="#해시-함수">해시 함수</a></li>
+        <li><a href="#공개키개인키-암호">공개키/개인키 암호</a></li>
+        <li><a href="#디피-헬먼-교환">디피-헬먼 교환</a></li>
+        <li><a href="#의사난수-함수prf">의사난수 함수(PRF)</a></li>
+        <li><a href="#키-유도-함수kdf">키 유도 함수(KDF)</a></li>
+        <li><a href="#논스nonce">논스(Nonce)</a></li>
+      </ul>
+    </li>
+    <li><a href="#dtls">DTLS</a>
+      <ul>
+        <li><a href="#핸드셰이크-절차">핸드셰이크 절차</a></li>
+        <li><a href="#키-생성">키 생성</a></li>
+        <li><a href="#애플리케이션-데이터-교환">애플리케이션 데이터 교환</a></li>
+      </ul>
+    </li>
+    <li><a href="#srtp">SRTP</a>
+      <ul>
+        <li><a href="#세션-생성">세션 생성</a></li>
+        <li><a href="#미디어-교환">미디어 교환</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="보안">
+  보안
+  <a class="anchor" href="#%eb%b3%b4%ec%95%88">#</a>
+</h1>
+<h2 id="webrtc는-어떤-보안을-제공하나요">
+  WebRTC는 어떤 보안을 제공하나요?
+  <a class="anchor" href="#webrtc%eb%8a%94-%ec%96%b4%eb%96%a4-%eb%b3%b4%ec%95%88%ec%9d%84-%ec%a0%9c%ea%b3%b5%ed%95%98%eb%82%98%ec%9a%94">#</a>
+</h2>
+<p>모든 WebRTC 연결은 인증되고 암호화됩니다. 제3자가 당신이 보내는 내용을 엿보거나 가짜 메시지를 삽입할 수 없습니다.
+또한 세션 설명(Session Description)을 생성한 바로 그 WebRTC 에이전트와 통신하고 있음을 보장할 수 있습니다.</p>
+<p>이 메시지들이 변조되지 않는 것이 매우 중요합니다. 전송 중 세션 설명을 제3자가 읽는 것은 괜찮지만,
+WebRTC는 그 내용이 수정되는 것에 대해 자체 보호 장치가 없습니다. 공격자는 ICE 후보를 바꾸고 인증서 지문을 바꿔
+중간자 공격을 시도할 수 있습니다.</p>
+<h2 id="어떻게-동작하나요">
+  어떻게 동작하나요?
+  <a class="anchor" href="#%ec%96%b4%eb%96%bb%ea%b2%8c-%eb%8f%99%ec%9e%91%ed%95%98%eb%82%98%ec%9a%94">#</a>
+</h2>
+<p>WebRTC는 두 가지 기성 프로토콜을 사용합니다. Datagram Transport Layer Security(<a href="https://tools.ietf.org/html/rfc6347">DTLS</a>)와
+Secure Real-time Transport Protocol(<a href="https://tools.ietf.org/html/rfc3711">SRTP</a>)입니다.</p>
+<p>DTLS는 두 피어 간에 세션을 협상하고 데이터를 안전하게 교환할 수 있게 합니다. HTTPS에 쓰이는 TLS의 형제 격 기술이지만,
+DTLS는 전송 계층으로 TCP 대신 UDP를 사용하므로 비신뢰성 전달을 자체적으로 처리해야 합니다. SRTP는 미디어를 안전하게 교환하도록
+특화된 프로토콜로, DTLS 대신 사용할 때 가능한 최적화가 있습니다.</p>
+<p>DTLS가 먼저 사용됩니다. ICE로 마련된 연결 위에서 핸드셰이크를 수행합니다. DTLS는 클라이언트/서버 프로토콜이므로
+한쪽이 핸드셰이크를 시작해야 합니다. 이 역할은 시그널링 단계에서 결정됩니다. DTLS 핸드셰이크 중 양쪽은 인증서를 제시합니다.
+핸드셰이크가 끝나면 이 인증서를 세션 설명에 있는 인증서 해시와 비교합니다. 기대한 WebRTC 에이전트와 핸드셰이크가 이루어졌는지
+확인하기 위함입니다. 이후 이 DTLS 연결은 DataChannel 통신에 사용됩니다.</p>
+<p>SRTP 세션을 만들 때는 DTLS가 생성한 키로 초기화합니다. SRTP는 핸드셰이크 메커니즘이 없으므로 외부 키로 부트스트랩해야 합니다.
+준비가 끝나면 SRTP로 암호화된 미디어 교환이 시작됩니다!</p>
+<h2 id="보안-101">
+  보안 101
+  <a class="anchor" href="#%eb%b3%b4%ec%95%88-101">#</a>
+</h2>
+<p>이 장의 기술을 이해하려면 먼저 다음 용어를 알아야 합니다. 암호학은 까다로운 주제이므로 다른 자료도 함께 참고하길 권합니다.</p>
+<h3 id="평문과-암호문">
+  평문과 암호문
+  <a class="anchor" href="#%ed%8f%89%eb%ac%b8%ea%b3%bc-%ec%95%94%ed%98%b8%eb%ac%b8">#</a>
+</h3>
+<p>평문(plaintext)은 암호화기의 입력, 암호문(ciphertext)은 출력입니다.</p>
+<h3 id="암호cipher">
+  암호(Cipher)
+  <a class="anchor" href="#%ec%95%94%ed%98%b8cipher">#</a>
+</h3>
+<p>암호는 평문을 암호문으로 변환하는 절차입니다. 이 절차는 역으로 적용 가능하여 암호문을 평문으로 되돌릴 수 있습니다.
+대부분의 암호는 동작을 바꾸는 ‘키’를 사용합니다. 흔히 말하는 암호화/복호화입니다.</p>
+<p>간단한 예로 ROT13이 있습니다. 각 문자를 13글자씩 밀어내는 방식입니다. 되돌릴 때는 13글자 뒤로 이동합니다.
+평문 <code>HELLO</code>는 암호문 <code>URYYB</code>가 됩니다. 이 경우 암호는 ROT, 키는 13입니다.</p>
+<h3 id="해시-함수">
+  해시 함수
+  <a class="anchor" href="#%ed%95%b4%ec%8b%9c-%ed%95%a8%ec%88%98">#</a>
+</h3>
+<p>해시 함수는 일방향으로 동작하여 다이제스트를 생성합니다. 같은 입력에 대해 항상 같은 출력이 나오며, 출력으로부터 입력을
+역으로 알아낼 수 없어야 합니다. 해시는 메시지가 변조되지 않았음을 확인할 때 유용합니다.</p>
+<p>아주 단순한 해시 예로 ‘한 글자 건너뛰기’를 생각해볼 수 있습니다. <code>HELLO</code> → <code>HLO</code>.
+이 값만으로 입력이 <code>HELLO</code>였다고 단정할 수는 없지만, <code>HELLO</code>가 이 해시와 일치하는지는 확인할 수 있습니다.</p>
+<h3 id="공개키개인키-암호">
+  공개키/개인키 암호
+  <a class="anchor" href="#%ea%b3%b5%ea%b0%9c%ed%82%a4%ea%b0%9c%ec%9d%b8%ed%82%a4-%ec%95%94%ed%98%b8">#</a>
+</h3>
+<p>DTLS와 SRTP가 사용하는 암호 방식입니다. 공개키와 개인키 두 개의 키를 사용합니다. 공개키는 메시지 암호화에 쓰이며 공유해도 안전합니다.
+개인키는 복호화에 사용하며 절대 공유하면 안 됩니다. 공개키로 암호화된 메시지는 개인키로만 복호화할 수 있습니다.</p>
+<h3 id="디피-헬먼-교환">
+  디피-헬먼 교환
+  <a class="anchor" href="#%eb%94%94%ed%94%bc-%ed%97%ac%eb%a8%bc-%ea%b5%90%ed%99%98">#</a>
+</h3>
+<p>디피-헬먼 교환은 서로 처음 만난 두 사용자가 인터넷을 통해 안전하게 공유 비밀을 만드는 방법입니다. 이는 이산 로그 문제의 난이도에
+기댑니다. 이 메커니즘이 DTLS 핸드셰이크를 가능하게 한다는 점만 알아두면 충분합니다.</p>
+<p>자세한 설명은 <a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange#Cryptographic_explanation">위키피디아</a>를 참고하세요.</p>
+<h3 id="의사난수-함수prf">
+  의사난수 함수(PRF)
+  <a class="anchor" href="#%ec%9d%98%ec%82%ac%eb%82%9c%ec%88%98-%ed%95%a8%ec%88%98prf">#</a>
+</h3>
+<p>의사난수 함수는 겉보기엔 무작위처럼 보이는 값을 생성하는 정해진 함수로, 여러 입력을 받아 단일 출력을 만듭니다.</p>
+<h3 id="키-유도-함수kdf">
+  키 유도 함수(KDF)
+  <a class="anchor" href="#%ed%82%a4-%ec%9c%a0%eb%8f%84-%ed%95%a8%ec%88%98kdf">#</a>
+</h3>
+<p>키 유도는 PRF의 한 형태입니다. 더 강한 키를 만들기 위해 사용하는 함수로, 대표적으로 키 스트레칭이 있습니다.</p>
+<p>예를 들어 8바이트 길이의 키를 더 강하게 만들고 싶을 때 KDF를 사용할 수 있습니다.</p>
+<h3 id="논스nonce">
+  논스(Nonce)
+  <a class="anchor" href="#%eb%85%bc%ec%8a%a4nonce">#</a>
+</h3>
+<p>논스는 암호에 추가로 제공하는 입력입니다. 같은 메시지를 여러 번 암호화하더라도 서로 다른 출력을 얻게 해 줍니다.</p>
+<p>같은 메시지를 10번 암호화해도, 논스를 다르게 주면 각기 다른 암호문이 생성됩니다. 이는 패턴 식별이나 재전송 공격을 어렵게 합니다.</p>
+<h2 id="dtls">
+  DTLS
+  <a class="anchor" href="#dtls">#</a>
+</h2>
+<p>DTLS는 TLS와 유사하지만 UDP 위에서 동작합니다. WebRTC에서는 ICE가 만들어 준 연결 위에서 DTLS 핸드셰이크가 진행됩니다.
+핸드셰이크를 위해 여러 메시지가 오가며, 성공하면 애플리케이션 데이터 교환이 시작됩니다.</p>
+<h3 id="핸드셰이크-절차">
+  핸드셰이크 절차
+  <a class="anchor" href="#%ed%95%b8%eb%93%9c%ec%85%b0%ec%9d%b4%ed%81%ac-%ec%a0%88%ec%b0%a8">#</a>
+</h3>
+<p>DTLS 핸드셰이크는 다음과 같은 메시지로 구성됩니다(주요 항목만 요약).</p>
+<h4 id="helloverifyrequest">
+  HelloVerifyRequest
+  <a class="anchor" href="#helloverifyrequest">#</a>
+</h4>
+<p>서버가 클라이언트의 출처를 확인하기 위한 응답으로, 재전송 공격 방지에 도움이 됩니다.</p>
+<h4 id="clienthello--serverhello">
+  ClientHello / ServerHello
+  <a class="anchor" href="#clienthello--serverhello">#</a>
+</h4>
+<p>지원하는 프로토콜 버전과 암호군 목록, 랜덤 값 등을 교환합니다. 서버는 선택된 암호군을 통지합니다.</p>
+<h4 id="certificate">
+  Certificate
+  <a class="anchor" href="#certificate">#</a>
+</h4>
+<p>상대에게 자신의 공개키 인증서를 보냅니다.</p>
+<h4 id="serverkeyexchange--clientkeyexchange">
+  ServerKeyExchange / ClientKeyExchange
+  <a class="anchor" href="#serverkeyexchange--clientkeyexchange">#</a>
+</h4>
+<p>공개키 교환에 사용됩니다. 핸드셰이크 이후 두 값으로 <code>Pre-Master Secret</code>을 생성합니다.</p>
+<h4 id="certificaterequest">
+  CertificateRequest
+  <a class="anchor" href="#certificaterequest">#</a>
+</h4>
+<p>서버가 클라이언트에게 인증서를 요구할 때 전송합니다(요청 또는 필수).</p>
+<h4 id="serverhellodone">
+  ServerHelloDone
+  <a class="anchor" href="#serverhellodone">#</a>
+</h4>
+<p>서버 측 핸드셰이크 단계가 끝났음을 알립니다.</p>
+<h4 id="certificateverify">
+  CertificateVerify
+  <a class="anchor" href="#certificateverify">#</a>
+</h4>
+<p>인증서에 대응하는 개인키를 소유하고 있음을 증명합니다.</p>
+<h4 id="changecipherspec">
+  ChangeCipherSpec
+  <a class="anchor" href="#changecipherspec">#</a>
+</h4>
+<p>이 메시지 이후로는 암호화가 적용됨을 알립니다.</p>
+<h4 id="finished">
+  Finished
+  <a class="anchor" href="#finished">#</a>
+</h4>
+<p>암호화된 상태로 전송되며, 지금까지의 모든 메시지 해시를 포함합니다. 핸드셰이크 변조 여부를 검증합니다.</p>
+<h3 id="키-생성">
+  키 생성
+  <a class="anchor" href="#%ed%82%a4-%ec%83%9d%ec%84%b1">#</a>
+</h3>
+<p>핸드셰이크가 끝나면 암호화된 데이터 전송을 시작할 수 있습니다. 구체적인 암호군은 <code>ServerHello</code>에서 결정됩니다.</p>
+<p>먼저 <code>Pre-Master Secret</code>을 생성합니다. <code>ServerKeyExchange</code>와 <code>ClientKeyExchange</code>에서 교환한 키로 디피-헬먼 과정을 수행해 얻습니다.</p>
+<p>다음으로 <code>Master Secret</code>을 생성합니다. DTLS 버전마다 정의된 의사난수 함수가 있으며, DTLS 1.2에서는 <code>Pre-Master Secret</code>과
+<code>ClientHello</code>/<code>ServerHello</code>의 랜덤 값을 입력으로 사용합니다. 이 함수의 출력이 <code>Master Secret</code>이며, 실제 암호에 쓰이는 키가 됩니다.</p>
+<h3 id="애플리케이션-데이터-교환">
+  애플리케이션 데이터 교환
+  <a class="anchor" href="#%ec%95%a0%ed%94%8c%eb%a6%ac%ec%bc%80%ec%9d%b4%ec%85%98-%eb%8d%b0%ec%9d%b4%ed%84%b0-%ea%b5%90%ed%99%98">#</a>
+</h3>
+<p>DTLS의 주력 메시지는 <code>ApplicationData</code>입니다. 초기화된 암호로 페이로드를 암호화해 송수신하면, 보안 채널이 완성됩니다.</p>
+<p>DTLS에는 재협상 등 흥미로운 기능이 더 있지만, WebRTC에서는 사용하지 않으므로 여기서는 다루지 않습니다.</p>
+<h2 id="srtp">
+  SRTP
+  <a class="anchor" href="#srtp">#</a>
+</h2>
+<p>SRTP는 RTP 패킷 암호화를 위해 설계된 프로토콜입니다. 세션을 시작하려면 키와 암호를 지정해야 합니다. DTLS와 달리 자체 핸드셰이크가 없으므로,
+필요한 키와 설정은 DTLS 핸드셰이크 과정에서 생성한 것을 사용합니다. DTLS는 다른 프로세스가 사용할 키를 내보내는 API를 제공하며,
+<a href="https://tools.ietf.org/html/rfc5705">RFC 5705</a>에 정의되어 있습니다.</p>
+<h3 id="세션-생성">
+  세션 생성
+  <a class="anchor" href="#%ec%84%b8%ec%85%98-%ec%83%9d%ec%84%b1">#</a>
+</h3>
+<p>SRTP는 입력 값에 키 유도 함수를 적용해 실제로 사용할 키를 생성합니다. 세션 생성이 끝나면 미디어 처리를 시작할 수 있습니다.</p>
+<h3 id="미디어-교환">
+  미디어 교환
+  <a class="anchor" href="#%eb%af%b8%eb%94%94%ec%96%b4-%ea%b5%90%ed%99%98">#</a>
+</h3>
+<p>각 RTP 패킷에는 16비트 <code>SequenceNumber</code>가 있습니다. 이는 패킷 순서를 유지하는 데 사용되며, 통화 중에는 값이 순환합니다.
+SRTP는 이 순환을 추적하며 롤오버 카운터라고 부릅니다. 패킷을 암호화할 때 SRTP는 롤오버 카운터와 시퀀스 번호를 논스로 사용하여,
+같은 데이터를 두 번 보내더라도 암호문이 달라지게 합니다. 이는 패턴 식별 및 재전송 공격을 방지하는 데 중요합니다.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+  <div><a class="flex align-center" href="https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/commit/01066a6a0e2101e6d28825a0c5cc210c8ff91d0d" title='Last modified by seonghoon.baek | 9월 5, 2025' target="_blank" rel="noopener">
+      <img src="/webrtc-for-the-curious-kr/svg/calendar.svg" class="book-icon" alt="" />
+      <span>9월 5, 2025</span>
+    </a>
+  </div>
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/edit/master/content/docs/04-securing.md" target="_blank" rel="noopener">
+      <img src="/webrtc-for-the-curious-kr/svg/edit.svg" class="book-icon" alt="" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#webrtc는-어떤-보안을-제공하나요">WebRTC는 어떤 보안을 제공하나요?</a></li>
+    <li><a href="#어떻게-동작하나요">어떻게 동작하나요?</a></li>
+    <li><a href="#보안-101">보안 101</a>
+      <ul>
+        <li><a href="#평문과-암호문">평문과 암호문</a></li>
+        <li><a href="#암호cipher">암호(Cipher)</a></li>
+        <li><a href="#해시-함수">해시 함수</a></li>
+        <li><a href="#공개키개인키-암호">공개키/개인키 암호</a></li>
+        <li><a href="#디피-헬먼-교환">디피-헬먼 교환</a></li>
+        <li><a href="#의사난수-함수prf">의사난수 함수(PRF)</a></li>
+        <li><a href="#키-유도-함수kdf">키 유도 함수(KDF)</a></li>
+        <li><a href="#논스nonce">논스(Nonce)</a></li>
+      </ul>
+    </li>
+    <li><a href="#dtls">DTLS</a>
+      <ul>
+        <li><a href="#핸드셰이크-절차">핸드셰이크 절차</a></li>
+        <li><a href="#키-생성">키 생성</a></li>
+        <li><a href="#애플리케이션-데이터-교환">애플리케이션 데이터 교환</a></li>
+      </ul>
+    </li>
+    <li><a href="#srtp">SRTP</a>
+      <ul>
+        <li><a href="#세션-생성">세션 생성</a></li>
+        <li><a href="#미디어-교환">미디어 교환</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

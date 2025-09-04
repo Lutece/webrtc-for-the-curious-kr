@@ -1,95 +1,690 @@
-<!doctype html><html lang=en dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="
-  Real-time Networking
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+<head><script src="/webrtc-for-the-curious-kr/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=webrtc-for-the-curious-kr/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  실시간 네트워킹
   #
 
 
-  Why is networking so important in Real-time communication?
+  왜 실시간 통신에서 네트워킹이 중요한가요?
   #
 
-Networks are the limiting factor in Real-time communication. In an ideal world we would have unlimited bandwidth
-and packets would arrive instantaneously. This isn&rsquo;t the case though. Networks are limited, and the conditions
-could change at anytime. Measuring and observing network conditions is also a difficult problem. You can get different behaviors
-depending on hardware, software and the configuration of it."><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="https://lutece.github.io/webrtc-for-the-curious-kr/docs/05-real-time-networking/"><meta property="og:site_name" content="WebRTC for the Curious"><meta property="og:title" content="Real-time Networking"><meta property="og:description" content="Real-time Networking # Why is networking so important in Real-time communication? # Networks are the limiting factor in Real-time communication. In an ideal world we would have unlimited bandwidth and packets would arrive instantaneously. This isn’t the case though. Networks are limited, and the conditions could change at anytime. Measuring and observing network conditions is also a difficult problem. You can get different behaviors depending on hardware, software and the configuration of it."><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2022-03-16T23:46:07+08:00"><title>Real-time Networking | WebRTC for the Curious</title><link rel=manifest href=/webrtc-for-the-curious-kr/manifest.json><link rel=icon href=/webrtc-for-the-curious-kr/favicon.png><link rel=canonical href=https://lutece.github.io/webrtc-for-the-curious-kr/docs/05-real-time-networking/><link rel=alternate hreflang=ru href=https://lutece.github.io/webrtc-for-the-curious-kr/ru/docs/05-real-time-networking/ title="Real-time Networking"><link rel=alternate hreflang=sv href=https://lutece.github.io/webrtc-for-the-curious-kr/sv/docs/05-real-time-networking/ title=Realtidsnätverk><link rel=alternate hreflang=zh href=https://lutece.github.io/webrtc-for-the-curious-kr/zh/docs/05-real-time-networking/ title=搭建实时网络><link rel=alternate hreflang=ja href=https://lutece.github.io/webrtc-for-the-curious-kr/ja/docs/05-real-time-networking/ title=リアルタイム・ネットワーキング><link rel=alternate hreflang=fa href=https://lutece.github.io/webrtc-for-the-curious-kr/fa/docs/05-real-time-networking/ title="شبکه بی درنگ"><link rel=alternate hreflang=fr href=https://lutece.github.io/webrtc-for-the-curious-kr/fr/docs/05-real-time-networking/ title="Real-time Networking"><link rel=alternate hreflang=id href=https://lutece.github.io/webrtc-for-the-curious-kr/id/docs/05-real-time-networking/ title="Real-time Networking"><link rel=alternate hreflang=es href=https://lutece.github.io/webrtc-for-the-curious-kr/es/docs/05-real-time-networking/ title="Real-time Networking"><link rel=alternate hreflang=tr href=https://lutece.github.io/webrtc-for-the-curious-kr/tr/docs/05-real-time-networking/ title="Gerçek Zamanlı Ağ İletişimi"><link rel=alternate hreflang=ko href=https://lutece.github.io/webrtc-for-the-curious-kr/ko/docs/05-real-time-networking/ title="실시간 네트워킹"><link rel=stylesheet href=/webrtc-for-the-curious-kr/book.min.a1f8103544a99b89cb7808ead8d43817d98d4f3e608b9e0e5ff491b382e3434d.css integrity="sha256-ofgQNUSpm4nLeAjq2NQ4F9mNTz5gi54OX/SRs4LjQ00=" crossorigin=anonymous><script defer src=/webrtc-for-the-curious-kr/fuse.min.js></script><script defer src=/webrtc-for-the-curious-kr/en.search.min.7124ee00de215853f86ec4384f46ed1972e1ad442629e038a48a7fd51e6f5179.js integrity="sha256-cSTuAN4hWFP4bsQ4T0btGXLhrUQmKeA4pIp/1R5vUXk=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/webrtc-for-the-curious-kr/><span>WebRTC for the Curious</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul class=book-languages><li><input type=checkbox id=languages class=toggle>
-<label for=languages class="flex justify-between"><a role=button class="flex align-center"><img src=/webrtc-for-the-curious-kr/svg/translate.svg class=book-icon alt=Languages>
-English</a></label><ul><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/ru/docs/05-real-time-networking/>Русский</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/sv/docs/05-real-time-networking/>Svenska</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/zh/docs/05-real-time-networking/>简体中文</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/ja/docs/05-real-time-networking/>日本語</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/fa/docs/05-real-time-networking/>Persian</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/fr/docs/05-real-time-networking/>Français</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/id/docs/05-real-time-networking/>Bahasa Indonesia</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/es/docs/05-real-time-networking/>Español</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/tr/docs/05-real-time-networking/>Türkçe</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/ko/docs/05-real-time-networking/>한국어</a></li></ul></li></ul><ul><li><a href=/webrtc-for-the-curious-kr/docs/01-what-why-and-how/>What, Why and How</a></li><li><a href=/webrtc-for-the-curious-kr/docs/02-signaling/>Signaling</a></li><li><a href=/webrtc-for-the-curious-kr/docs/03-connecting/>Connecting</a></li><li><a href=/webrtc-for-the-curious-kr/docs/04-securing/>Securing</a></li><li><a href=/webrtc-for-the-curious-kr/docs/05-real-time-networking/ class=active>Real-time Networking</a></li><li><a href=/webrtc-for-the-curious-kr/docs/06-media-communication/>Media Communication</a></li><li><a href=/webrtc-for-the-curious-kr/docs/07-data-communication/>Data Communication</a></li><li><a href=/webrtc-for-the-curious-kr/docs/08-applied-webrtc/>Applied WebRTC</a></li><li><a href=/webrtc-for-the-curious-kr/docs/09-debugging/>Debugging</a></li><li><a href=/webrtc-for-the-curious-kr/docs/10-history-of-webrtc/>History</a></li><li><a href=/webrtc-for-the-curious-kr/docs/11-faq/>FAQ</a></li><li><a href=/webrtc-for-the-curious-kr/docs/12-glossary/>Glossary</a></li><li><a href=/webrtc-for-the-curious-kr/docs/13-reference/>Reference</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/webrtc-for-the-curious-kr/svg/menu.svg class=book-icon alt=Menu>
-</label><strong>Real-time Networking</strong>
-<label for=toc-control><img src=/webrtc-for-the-curious-kr/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#why-is-networking-so-important-in-real-time-communication>Why is networking so important in Real-time communication?</a></li><li><a href=#what-are-the-attributes-of-the-network-that-make-it-difficult>What are the attributes of the network that make it difficult?</a><ul><li></li><li><a href=#congestion>Congestion</a></li><li><a href=#dynamic>Dynamic</a></li></ul></li><li><a href=#solving-packet-loss>Solving Packet Loss</a><ul><li><a href=#acknowledgments>Acknowledgments</a></li><li><a href=#selective-acknowledgments>Selective Acknowledgments</a></li><li><a href=#negative-acknowledgments>Negative Acknowledgments</a></li><li><a href=#forward-error-correction>Forward Error Correction</a></li></ul></li><li><a href=#solving-jitter>Solving Jitter</a><ul><li><a href=#jitterbuffer-operation>JitterBuffer operation</a></li></ul></li><li><a href=#detecting-congestion>Detecting Congestion</a></li><li><a href=#resolving-congestion>Resolving Congestion</a><ul><li><a href=#sending-slower>Sending Slower</a></li><li><a href=#sending-less>Sending Less</a></li></ul></li></ul></nav></aside></header><article class="markdown book-article"><h1 id=real-time-networking>Real-time Networking
-<a class=anchor href=#real-time-networking>#</a></h1><h2 id=why-is-networking-so-important-in-real-time-communication>Why is networking so important in Real-time communication?
-<a class=anchor href=#why-is-networking-so-important-in-real-time-communication>#</a></h2><p>Networks are the limiting factor in Real-time communication. In an ideal world we would have unlimited bandwidth
-and packets would arrive instantaneously. This isn&rsquo;t the case though. Networks are limited, and the conditions
-could change at anytime. Measuring and observing network conditions is also a difficult problem. You can get different behaviors
-depending on hardware, software and the configuration of it.</p><p>Real-time communication also poses a problem that doesn&rsquo;t exist in most other domains. For a web developer it isn&rsquo;t fatal
-if your website is slower on some networks. As long as all the data arrives, users are happy. With WebRTC, if your data is
-late it is useless. No one cares about what was said in a conference call 5 seconds ago. So when developing a realtime communication system,
-you have to make a trade-off. What is my time limit, and how much data can I send?</p><p>This chapter covers the concepts that apply to both data and media communication. In later chapters we go beyond
-the theoretical and discuss how WebRTC&rsquo;s media and data subsystems solve these problems.</p><h2 id=what-are-the-attributes-of-the-network-that-make-it-difficult>What are the attributes of the network that make it difficult?
-<a class=anchor href=#what-are-the-attributes-of-the-network-that-make-it-difficult>#</a></h2><p>Code that effectively works across all networks is complicated. You have lots of different factors, and they
-can all affect each other subtly. These are the most common issues that developers will encounter.</p><h4 id=bandwidth>Bandwidth
-<a class=anchor href=#bandwidth>#</a></h4><p>Bandwidth is the maximum rate of data that can be transferred across a given path. It is important to remember
-this isn&rsquo;t a static number either. The bandwidth will change along the route as more (or less) people use it.</p><h4 id=transmission-time-and-round-trip-time>Transmission Time and Round Trip Time
-<a class=anchor href=#transmission-time-and-round-trip-time>#</a></h4><p>Transmission Time is how long it takes for a packet to arrive to its destination. Like Bandwidth this isn&rsquo;t constant. The Transmission Time can fluctuate at anytime.</p><p><code>transmission_time = receive_time - send_time</code></p><p>To compute transmission time, you need clocks on sender and receiver synchronized with millisecond precision.
-Even a small deviation would produce an unreliable transmission time measurement.
-Since WebRTC is operating in highly heterogeneous environments, it is next to impossible to rely on perfect time synchronization between hosts.</p><p>Round-trip time measurement is a workaround for imperfect clock synchronization.</p><p>Instead of operating on distributed clocks a WebRTC peer sends a special packet with its own timestamp <code>sendertime1</code>.
-A cooperating peer receives the packet and reflects the timestamp back to the sender.
-Once the original sender gets the reflected time it subtracts the timestamp <code>sendertime1</code> from the current time <code>sendertime2</code>.
-This time delta is called &ldquo;round-trip propagation delay&rdquo; or more commonly round-trip time.</p><p><code>rtt = sendertime2 - sendertime1</code></p><p>Half of the round trip time is considered to be a good enough approximation of transmission time.
-This workaround is not without drawbacks.
-It makes the assumption that it takes an equal amount of time to send and receive packets.
-However on cellular networks, send and receive operations may not be time-symmetrical.
-You may have noticed that upload speeds on your phone are almost always lower than download speeds.</p><p><code>transmission_time = rtt/2</code></p><p>The technicalities of round-trip time measurement are described in greater detail in <a href=../06-media-communication/#receiver-reports--sender-reports>RTCP Sender and Receiver Reports chapter</a>.</p><h4 id=jitter>Jitter
-<a class=anchor href=#jitter>#</a></h4><p>Jitter is the fact that <code>Transmission Time</code> may vary for each packet. Your packets could be delayed, but then arrive in bursts.</p><h4 id=packet-loss>Packet Loss
-<a class=anchor href=#packet-loss>#</a></h4><p>Packet Loss is when messages are lost in transmission. The loss could be steady, or it could come in spikes.
-This could be because of the network type like satellite or Wi-Fi. Or it could be introduced by the software along the way.</p><h4 id=maximum-transmission-unit>Maximum Transmission Unit
-<a class=anchor href=#maximum-transmission-unit>#</a></h4><p>Maximum Transmission Unit is the limit on how large a single packet can be. Networks don&rsquo;t allow you to send
-one giant message. At the protocol level, messages might have to be split into multiple smaller packets.</p><p>The MTU will also differ depending on what network path you take. You can
-use a protocol like <a href=https://tools.ietf.org/html/rfc1191>Path MTU Discovery</a> to figure out the largest packet size you can send.</p><h3 id=congestion>Congestion
-<a class=anchor href=#congestion>#</a></h3><p>Congestion is when the limits of the network have been reached. This is usually because you have reached the peak
-bandwidth that the current route can handle. Or it could be operator imposed like hourly limits your ISP configures.</p><p>Congestion exhibits itself in many different ways. There is no standardized behavior. In most cases when congestion is
-reached the network will drop excess packets. In other cases the network will buffer. This will cause the Transmission Time
-for your packets to increase. You could also see more jitter as your network becomes congested. This is a rapidly changing area
-and new algorithms for congestion detection are still being written.</p><h3 id=dynamic>Dynamic
-<a class=anchor href=#dynamic>#</a></h3><p>Networks are incredibly dynamic and conditions can change rapidly. During a call you may send and receive hundreds of thousands of packets.
-Those packets will be traveling through multiple hops. Those hops will be shared by millions of other users. Even in your local network you could have
-HD movies being downloaded or maybe a device decides to download a software update.</p><p>Having a good call isn&rsquo;t as simple as measuring your network on startup. You need to be constantly evaluating. You also need to handle all the different
-behaviors that come from a multitude of network hardware and software.</p><h2 id=solving-packet-loss>Solving Packet Loss
-<a class=anchor href=#solving-packet-loss>#</a></h2><p>Handling packet loss is the first problem to solve. There are multiple ways to solve it, each with their own benefits. It depends on what you are sending and how
-latency tolerant you are. It is also important to note that not all packet loss is fatal. Losing some video might not be a problem, the human eye might not
-even able to perceive it. Losing a users text messages are fatal.</p><p>Let&rsquo;s say you send 10 packets, and packets 5 and 6 are lost. Here are the ways you can solve it.</p><h3 id=acknowledgments>Acknowledgments
-<a class=anchor href=#acknowledgments>#</a></h3><p>Acknowledgments is when the receiver notifies the sender of every packet they have received. The sender is aware of packet loss when it gets an acknowledgment
-for a packet twice that isn&rsquo;t final. When the sender gets an <code>ACK</code> for packet 4 twice, it knows that packet 5 has not been seen yet.</p><h3 id=selective-acknowledgments>Selective Acknowledgments
-<a class=anchor href=#selective-acknowledgments>#</a></h3><p>Selective Acknowledgments is an improvement upon Acknowledgments. A receiver can send a <code>SACK</code> that acknowledges multiple packets and notifies the sender of gaps.
-Now the sender can get a <code>SACK</code> for packet 4 and 7. It then knows it needs to re-send packets 5 and 6.</p><h3 id=negative-acknowledgments>Negative Acknowledgments
-<a class=anchor href=#negative-acknowledgments>#</a></h3><p>Negative Acknowledgments solve the problem the opposite way. Instead of notifying the sender what it has received, the receiver notifies the sender what has been lost. In our case a <code>NACK</code>
-will be sent for packets 5 and 6. The sender only knows packets the receiver wishes to have sent again.</p><h3 id=forward-error-correction>Forward Error Correction
-<a class=anchor href=#forward-error-correction>#</a></h3><p>Forward Error Correction fixes packet loss pre-emptively. The sender sends redundant data, meaning a lost packet doesn&rsquo;t affect the final stream. One popular algorithm for
-this is Reed–Solomon error correction.</p><p>This reduces the latency/complexity of sending and handling Acknowledgments. Forward Error Correction is a waste of bandwidth if the network you are in has zero loss.</p><h2 id=solving-jitter>Solving Jitter
-<a class=anchor href=#solving-jitter>#</a></h2><p>Jitter is present in most networks. Even inside a LAN you have many devices sending data at fluctuating rates. You can easily observe jitter by pinging another device with the <code>ping</code> command and noticing the fluctuations in round-trip latency.</p><p>To solve jitter, clients use a JitterBuffer. The JitterBuffer ensures a steady delivery time of packets. The downside is that JitterBuffer adds some latency to packets that arrive early.
-The upside is that late packets don&rsquo;t cause jitter. Imagine that during a call, you see the following packet arrival times:</p><pre tabindex=0><code>* time=1.46 ms
-* time=1.93 ms
-* time=1.57 ms
-* time=1.55 ms
-* time=1.54 ms
-* time=1.72 ms
-* time=1.45 ms
-* time=1.73 ms
-* time=1.80 ms
-</code></pre><p>In this case, around 1.8 ms would be a good choice. Packets that arrive late will use our window of latency. Packets that arrive early will be delayed a bit and can
-fill the window depleted by late packets. This means we no longer have stuttering and provide a smooth delivery rate for the client.</p><h3 id=jitterbuffer-operation>JitterBuffer operation
-<a class=anchor href=#jitterbuffer-operation>#</a></h3><p><img src=../images/05-jitterbuffer.png alt=JitterBuffer title=JitterBuffer></p><p>Every packet gets added to the jitter buffer as soon as it is received.
-Once there are enough packets to reconstruct the frame, packets that make up the frame are released from the buffer and emitted for decoding.
-The decoder, in turn, decodes and draws the video frame on the user&rsquo;s screen.
-Since the jitter buffer has a limited capacity, packets that stay in the buffer for too long will be discarded.</p><p>Read more on how video frames are converted to RTP packets, and why reconstruction is necessary <a href=../06-media-communication/#rtp>in the media communication chapter</a>.</p><p><code>jitterBufferDelay</code> provides a great insight into your network performance and its influence on playback smoothness.
-It is a part of <a href=https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-jitterbufferdelay>WebRTC statistics API</a> relevant to the receiver&rsquo;s inbound stream.
-The delay defines the amount of time video frames spend in the jitter buffer before being emitted for decoding.
-A long jitter buffer delay means your network is highly congested.</p><h2 id=detecting-congestion>Detecting Congestion
-<a class=anchor href=#detecting-congestion>#</a></h2><p>Before we can even resolve congestion, we need to detect it. To detect it we use a congestion controller. This is a complicated subject, and is still rapidly changing.
-New algorithms are still being published and tested. At a high level they all operate the same. A congestion controller provides bandwidth estimates given some inputs.
-These are some possible inputs:</p><ul><li><strong>Packet Loss</strong> - Packets are dropped as the network becomes congested.</li><li><strong>Jitter</strong> - As network equipment becomes more overloaded packets queuing will cause the times to be erratic.</li><li><strong>Round Trip Time</strong> - Packets take longer to arrive when congested. Unlike jitter, the Round Trip Time just keeps increasing.</li><li><strong>Explicit Congestion Notification</strong> - Newer networks may tag packets as at risk for being dropped to relieve congestion.</li></ul><p>These values need to be measured continuously during the call. Utilization of the network may increase or decrease, so the available bandwidth could constantly be changing.</p><h2 id=resolving-congestion>Resolving Congestion
-<a class=anchor href=#resolving-congestion>#</a></h2><p>Now that we have an estimated bandwidth we need to adjust what we are sending. How we adjust depends on what kind of data we want to send.</p><h3 id=sending-slower>Sending Slower
-<a class=anchor href=#sending-slower>#</a></h3><p>Limiting the speed at which you send data is the first solution to preventing congestion. The Congestion Controller gives you an estimate, and it is the
-sender&rsquo;s responsibility to rate limit.</p><p>This is the method used for most data communication. With protocols like TCP this is all done by the operating system and completely transparent to both users and developers.</p><h3 id=sending-less>Sending Less
-<a class=anchor href=#sending-less>#</a></h3><p>In some cases we can send less information to satisfy our limits. We also have hard deadlines on the arrival of our data, so we can&rsquo;t send slower. These are the constraints
-that Real-time media falls under.</p><p>If we don&rsquo;t have enough bandwidth available, we can lower the quality of video we send. This requires a tight feedback loop between your video encoder and congestion controller.</p></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/commit/692b4d0d7c921414f224a6e9a2c4fcd1687e15b4 title='Last modified by Dw9 | March 17, 2022' target=_blank rel=noopener><img src=/webrtc-for-the-curious-kr/svg/calendar.svg class=book-icon alt>
-<span>March 17, 2022</span></a></div><div><a class="flex align-center" href=https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/edit/master/content/docs/05-real-time-networking.md target=_blank rel=noopener><img src=/webrtc-for-the-curious-kr/svg/edit.svg class=book-icon alt>
-<span>Edit this page</span></a></div></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#why-is-networking-so-important-in-real-time-communication>Why is networking so important in Real-time communication?</a></li><li><a href=#what-are-the-attributes-of-the-network-that-make-it-difficult>What are the attributes of the network that make it difficult?</a><ul><li></li><li><a href=#congestion>Congestion</a></li><li><a href=#dynamic>Dynamic</a></li></ul></li><li><a href=#solving-packet-loss>Solving Packet Loss</a><ul><li><a href=#acknowledgments>Acknowledgments</a></li><li><a href=#selective-acknowledgments>Selective Acknowledgments</a></li><li><a href=#negative-acknowledgments>Negative Acknowledgments</a></li><li><a href=#forward-error-correction>Forward Error Correction</a></li></ul></li><li><a href=#solving-jitter>Solving Jitter</a><ul><li><a href=#jitterbuffer-operation>JitterBuffer operation</a></li></ul></li><li><a href=#detecting-congestion>Detecting Congestion</a></li><li><a href=#resolving-congestion>Resolving Congestion</a><ul><li><a href=#sending-slower>Sending Slower</a></li><li><a href=#sending-less>Sending Less</a></li></ul></li></ul></nav></div></aside></main></body></html>
+네트워크는 실시간 통신의 한계 요소입니다. 이상적으로는 무한 대역폭과 즉시 도착하는 패킷이 있으면 좋겠지만, 현실은 다릅니다.
+네트워크는 제한적이며 언제든 조건이 변할 수 있습니다. 네트워크 상태를 측정/관찰하는 일도 어렵습니다. 하드웨어, 소프트웨어, 설정에 따라
+행동이 달라질 수 있습니다.
+실시간 통신에는 다른 영역에 없는 문제가 있습니다. 웹사이트가 어떤 네트워크에서 좀 느려도, 데이터만 모두 도착하면 사용자는 괜찮습니다.
+하지만 WebRTC에서는 데이터가 늦으면 무용지물입니다. 5초 전에 회의에서 한 말을 지금 받는 건 의미가 없습니다. 따라서 실시간 시스템을 만들 때는
+타협이 필요합니다. 시간 제한은 얼마이며, 그 안에 얼마나 보낼 수 있을까요?">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/webrtc-for-the-curious-kr/docs/05-real-time-networking/">
+  <meta property="og:site_name" content="호기심 많은 이를 위한 WebRTC">
+  <meta property="og:title" content="실시간 네트워킹">
+  <meta property="og:description" content="실시간 네트워킹 # 왜 실시간 통신에서 네트워킹이 중요한가요? # 네트워크는 실시간 통신의 한계 요소입니다. 이상적으로는 무한 대역폭과 즉시 도착하는 패킷이 있으면 좋겠지만, 현실은 다릅니다. 네트워크는 제한적이며 언제든 조건이 변할 수 있습니다. 네트워크 상태를 측정/관찰하는 일도 어렵습니다. 하드웨어, 소프트웨어, 설정에 따라 행동이 달라질 수 있습니다.
+실시간 통신에는 다른 영역에 없는 문제가 있습니다. 웹사이트가 어떤 네트워크에서 좀 느려도, 데이터만 모두 도착하면 사용자는 괜찮습니다. 하지만 WebRTC에서는 데이터가 늦으면 무용지물입니다. 5초 전에 회의에서 한 말을 지금 받는 건 의미가 없습니다. 따라서 실시간 시스템을 만들 때는 타협이 필요합니다. 시간 제한은 얼마이며, 그 안에 얼마나 보낼 수 있을까요?">
+  <meta property="og:locale" content="ko">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:modified_time" content="2025-09-05T05:58:35+09:00">
+<title>실시간 네트워킹 | 호기심 많은 이를 위한 WebRTC</title>
+<link rel="manifest" href="/webrtc-for-the-curious-kr/manifest.json">
+<link rel="icon" href="/webrtc-for-the-curious-kr/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/webrtc-for-the-curious-kr/docs/05-real-time-networking/">
+  <link rel="alternate" hreflang="ru" href="http://localhost:1313/webrtc-for-the-curious-kr/ru/docs/05-real-time-networking/" title="Real-time Networking">
+  <link rel="alternate" hreflang="sv" href="http://localhost:1313/webrtc-for-the-curious-kr/sv/docs/05-real-time-networking/" title="Realtidsnätverk">
+  <link rel="alternate" hreflang="zh" href="http://localhost:1313/webrtc-for-the-curious-kr/zh/docs/05-real-time-networking/" title="搭建实时网络">
+  <link rel="alternate" hreflang="ja" href="http://localhost:1313/webrtc-for-the-curious-kr/ja/docs/05-real-time-networking/" title="リアルタイム・ネットワーキング">
+  <link rel="alternate" hreflang="fa" href="http://localhost:1313/webrtc-for-the-curious-kr/fa/docs/05-real-time-networking/" title="شبکه بی درنگ">
+  <link rel="alternate" hreflang="fr" href="http://localhost:1313/webrtc-for-the-curious-kr/fr/docs/05-real-time-networking/" title="Real-time Networking">
+  <link rel="alternate" hreflang="id" href="http://localhost:1313/webrtc-for-the-curious-kr/id/docs/05-real-time-networking/" title="Real-time Networking">
+  <link rel="alternate" hreflang="es" href="http://localhost:1313/webrtc-for-the-curious-kr/es/docs/05-real-time-networking/" title="Real-time Networking">
+  <link rel="alternate" hreflang="tr" href="http://localhost:1313/webrtc-for-the-curious-kr/tr/docs/05-real-time-networking/" title="Gerçek Zamanlı Ağ İletişimi">
+<link rel="stylesheet" href="/webrtc-for-the-curious-kr/book.min.a1f8103544a99b89cb7808ead8d43817d98d4f3e608b9e0e5ff491b382e3434d.css" integrity="sha256-ofgQNUSpm4nLeAjq2NQ4F9mNTz5gi54OX/SRs4LjQ00=" crossorigin="anonymous">
+  <script defer src="/webrtc-for-the-curious-kr/fuse.min.js"></script>
+  <script defer src="/webrtc-for-the-curious-kr/ko.search.min.b0c3e082a1e64bd7bac8aeb6d083f4ceb9d7305e1117b44f7e0a078d8e910dba.js" integrity="sha256-sMPggqHmS9e6yK620IP0zrnXMF4RF7RPfgoHjY6RDbo=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/webrtc-for-the-curious-kr/"><span>호기심 많은 이를 위한 WebRTC</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/webrtc-for-the-curious-kr/svg/translate.svg" class="book-icon" alt="Languages" />
+        한국어
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/en/">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/ru/docs/05-real-time-networking/">
+          Русский
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/sv/docs/05-real-time-networking/">
+          Svenska
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/zh/docs/05-real-time-networking/">
+          简体中文
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/ja/docs/05-real-time-networking/">
+          日本語
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/fa/docs/05-real-time-networking/">
+          Persian
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/fr/docs/05-real-time-networking/">
+          Français
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/id/docs/05-real-time-networking/">
+          Bahasa Indonesia
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/es/docs/05-real-time-networking/">
+          Español
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/tr/docs/05-real-time-networking/">
+          Türkçe
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/01-what-why-and-how/" class="">무엇, 왜, 어떻게?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/02-signaling/" class="">시그널링</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/03-connecting/" class="">연결</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/04-securing/" class="">보안</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/05-real-time-networking/" class="active">실시간 네트워킹</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/06-media-communication/" class="">미디어 통신</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/07-data-communication/" class="">데이터 통신</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/08-applied-webrtc/" class="">적용 WebRTC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/09-debugging/" class="">디버깅</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/10-history-of-webrtc/" class="">역사</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/11-faq/" class="">자주 묻는 질문(FAQ)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/12-glossary/" class="">용어집</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/docs/13-reference/" class="">참고 자료</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/webrtc-for-the-curious-kr/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>실시간 네트워킹</strong>
+
+  <label for="toc-control">
+    
+    <img src="/webrtc-for-the-curious-kr/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#왜-실시간-통신에서-네트워킹이-중요한가요">왜 실시간 통신에서 네트워킹이 중요한가요?</a></li>
+    <li><a href="#네트워크를-어렵게-만드는-속성은-무엇인가요">네트워크를 어렵게 만드는 속성은 무엇인가요?</a>
+      <ul>
+        <li></li>
+        <li><a href="#혼잡congestion">혼잡(Congestion)</a></li>
+        <li><a href="#동적dynamic">동적(Dynamic)</a></li>
+      </ul>
+    </li>
+    <li><a href="#지터-버퍼jitter-buffer">지터 버퍼(Jitter Buffer)</a>
+      <ul>
+        <li><a href="#지터-버퍼-동작">지터 버퍼 동작</a></li>
+      </ul>
+    </li>
+    <li><a href="#혼잡-감지">혼잡 감지</a></li>
+    <li><a href="#혼잡-해결">혼잡 해결</a>
+      <ul>
+        <li><a href="#더-느리게-보내기">더 느리게 보내기</a></li>
+        <li><a href="#더-적게-보내기">더 적게 보내기</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="실시간-네트워킹">
+  실시간 네트워킹
+  <a class="anchor" href="#%ec%8b%a4%ec%8b%9c%ea%b0%84-%eb%84%a4%ed%8a%b8%ec%9b%8c%ed%82%b9">#</a>
+</h1>
+<h2 id="왜-실시간-통신에서-네트워킹이-중요한가요">
+  왜 실시간 통신에서 네트워킹이 중요한가요?
+  <a class="anchor" href="#%ec%99%9c-%ec%8b%a4%ec%8b%9c%ea%b0%84-%ed%86%b5%ec%8b%a0%ec%97%90%ec%84%9c-%eb%84%a4%ed%8a%b8%ec%9b%8c%ed%82%b9%ec%9d%b4-%ec%a4%91%ec%9a%94%ed%95%9c%ea%b0%80%ec%9a%94">#</a>
+</h2>
+<p>네트워크는 실시간 통신의 한계 요소입니다. 이상적으로는 무한 대역폭과 즉시 도착하는 패킷이 있으면 좋겠지만, 현실은 다릅니다.
+네트워크는 제한적이며 언제든 조건이 변할 수 있습니다. 네트워크 상태를 측정/관찰하는 일도 어렵습니다. 하드웨어, 소프트웨어, 설정에 따라
+행동이 달라질 수 있습니다.</p>
+<p>실시간 통신에는 다른 영역에 없는 문제가 있습니다. 웹사이트가 어떤 네트워크에서 좀 느려도, 데이터만 모두 도착하면 사용자는 괜찮습니다.
+하지만 WebRTC에서는 데이터가 늦으면 무용지물입니다. 5초 전에 회의에서 한 말을 지금 받는 건 의미가 없습니다. 따라서 실시간 시스템을 만들 때는
+타협이 필요합니다. 시간 제한은 얼마이며, 그 안에 얼마나 보낼 수 있을까요?</p>
+<p>이 장은 데이터와 미디어 모두에 적용되는 개념을 다룹니다. 이후 장에서는 이론을 넘어서 WebRTC의 미디어/데이터 하위 시스템이
+이 문제들을 어떻게 해결하는지 살펴봅니다.</p>
+<h2 id="네트워크를-어렵게-만드는-속성은-무엇인가요">
+  네트워크를 어렵게 만드는 속성은 무엇인가요?
+  <a class="anchor" href="#%eb%84%a4%ed%8a%b8%ec%9b%8c%ed%81%ac%eb%a5%bc-%ec%96%b4%eb%a0%b5%ea%b2%8c-%eb%a7%8c%eb%93%9c%eb%8a%94-%ec%86%8d%ec%84%b1%ec%9d%80-%eb%ac%b4%ec%97%87%ec%9d%b8%ea%b0%80%ec%9a%94">#</a>
+</h2>
+<p>모든 네트워크에서 잘 동작하는 코드를 만드는 일은 어렵습니다. 많은 요소가 있으며 서로 미묘하게 영향을 주고받습니다. 다음은 흔한 이슈들입니다.</p>
+<h4 id="대역폭bandwidth">
+  대역폭(Bandwidth)
+  <a class="anchor" href="#%eb%8c%80%ec%97%ad%ed%8f%adbandwidth">#</a>
+</h4>
+<p>대역폭은 경로를 따라 전송할 수 있는 최대 속도입니다. 정적 값이 아니라는 점이 중요합니다. 경로를 사용하는 사람이 늘거나 줄면 달라집니다.</p>
+<h4 id="전송-시간과-왕복-시간rtt">
+  전송 시간과 왕복 시간(RTT)
+  <a class="anchor" href="#%ec%a0%84%ec%86%a1-%ec%8b%9c%ea%b0%84%ea%b3%bc-%ec%99%95%eb%b3%b5-%ec%8b%9c%ea%b0%84rtt">#</a>
+</h4>
+<p>전송 시간은 패킷이 목적지에 도착하는 데 걸리는 시간입니다. 대역폭처럼 일정하지 않습니다. 언제든 변동할 수 있습니다.</p>
+<p><code>transmission_time = receive_time - send_time</code></p>
+<p>전송 시간을 계산하려면 송신측과 수신측의 시계를 밀리초 수준으로 동기화해야 합니다. 작은 오차도 신뢰할 수 없는 측정을 만듭니다.
+WebRTC는 이기종 환경에서 동작하므로 완벽한 동기화에 의존하기 어렵습니다.</p>
+<p>이를 우회하는 방법이 왕복 시간(RTT) 측정입니다.</p>
+<p>분산 시계 대신, WebRTC 피어가 자체 타임스탬프 <code>sendertime1</code>이 담긴 특수 패킷을 보냅니다. 협력 피어는 이를 받아 타임스탬프를 반사해 돌려줍니다.
+원 송신자가 반사된 패킷을 받으면 현재 시각 <code>sendertime2</code>에서 <code>sendertime1</code>을 뺍니다. 이 시간 차이가 RTT입니다.</p>
+<p><code>rtt = sendertime2 - sendertime1</code></p>
+<p>RTT의 절반을 전송 시간의 근사치로 사용합니다. 단, 이 방법은 전송/수신 시간이 대칭이라는 가정을 합니다. 셀룰러 네트워크에서는 대칭이 아닐 수 있습니다.
+휴대폰 업로드가 다운로드보다 느린 것을 떠올리면 됩니다.</p>
+<p><code>transmission_time = rtt/2</code></p>
+<p>왕복 시간 측정의 자세한 내용은 <a href="../06-media-communication/#receiver-reports--sender-reports">RTCP 송신/수신 리포트</a> 절을 참고하세요.</p>
+<h4 id="지터jitter">
+  지터(Jitter)
+  <a class="anchor" href="#%ec%a7%80%ed%84%b0jitter">#</a>
+</h4>
+<p>각 패킷의 전송 시간이 달라질 수 있다는 사실입니다. 지연되다 한꺼번에 도착하는 등 변동이 큽니다.</p>
+<h4 id="패킷-손실packet-loss">
+  패킷 손실(Packet Loss)
+  <a class="anchor" href="#%ed%8c%a8%ed%82%b7-%ec%86%90%ec%8b%a4packet-loss">#</a>
+</h4>
+<p>전송 중 메시지가 유실되는 것입니다. 꾸준히 손실될 수도, 스파이크로 나타날 수도 있습니다. 위성/와이파이 같은 매체 특성이나,
+경로상의 소프트웨어가 원인일 수 있습니다.</p>
+<h4 id="최대-전송-단위mtu">
+  최대 전송 단위(MTU)
+  <a class="anchor" href="#%ec%b5%9c%eb%8c%80-%ec%a0%84%ec%86%a1-%eb%8b%a8%ec%9c%84mtu">#</a>
+</h4>
+<p>단일 패킷의 최대 크기 제한입니다. 하나의 거대한 메시지를 보낼 수 없고, 프로토콜 수준에서 여러 패킷으로 쪼개야 할 수 있습니다.
+경로에 따라 MTU도 달라집니다. <a href="https://tools.ietf.org/html/rfc1191">Path MTU Discovery</a>로 전송 가능한 최대 크기를 파악할 수 있습니다.</p>
+<h3 id="혼잡congestion">
+  혼잡(Congestion)
+  <a class="anchor" href="#%ed%98%bc%ec%9e%a1congestion">#</a>
+</h3>
+<p>네트워크 한계에 도달한 상태입니다. 현재 경로가 처리할 수 있는 최대 대역폭을 넘겼거나, 사업자가 설정한 시간대 제약 등일 수 있습니다.</p>
+<p>혼잡의 모습은 다양하며 표준화되어 있지 않습니다. 보통 혼잡 시 초과 패킷을 드롭합니다. 어떤 경우에는 버퍼링이 발생해 전송 시간이 늘어납니다.
+혼잡해질수록 지터가 증가할 수도 있습니다. 이 영역은 변화가 빠르며, 혼잡 감지를 위한 새로운 알고리즘이 계속 제안됩니다.</p>
+<h3 id="동적dynamic">
+  동적(Dynamic)
+  <a class="anchor" href="#%eb%8f%99%ec%a0%81dynamic">#</a>
+</h3>
+<p>네트워크는 매우 동적이며, 조건이 빠르게 바뀝니다. 따라서 측정도 지속적이어야 합니다.</p>
+<h2 id="지터-버퍼jitter-buffer">
+  지터 버퍼(Jitter Buffer)
+  <a class="anchor" href="#%ec%a7%80%ed%84%b0-%eb%b2%84%ed%8d%bcjitter-buffer">#</a>
+</h2>
+<p>네트워크로 인한 변동을 흡수하려면 재생 전에 약간 지연을 두고 패킷을 재정렬해야 합니다. 이를 지터 버퍼가 담당합니다.</p>
+<p>간단한 예로, 다음과 같은 전송 시간을 관측했다고 합시다.</p>
+<pre tabindex="0"><code>time=1.00 ms
+time=1.45 ms
+time=1.73 ms
+time=1.80 ms
+</code></pre><p>이 경우 약 1.8ms 정도가 적절합니다. 늦게 도착한 패킷은 지연 창을 소모해 제시간에 재생하도록 하고, 일찍 도착한 패킷은 잠시 보류해 늦은 패킷으로 인해
+고갈된 창을 채웁니다. 이렇게 하면 어긋남 없이 부드럽게 전달할 수 있습니다.</p>
+<h3 id="지터-버퍼-동작">
+  지터 버퍼 동작
+  <a class="anchor" href="#%ec%a7%80%ed%84%b0-%eb%b2%84%ed%8d%bc-%eb%8f%99%ec%9e%91">#</a>
+</h3>
+<p><img src="../images/05-jitterbuffer.png" alt="JitterBuffer" title="JitterBuffer"/></p>
+<p>모든 패킷은 수신 즉시 지터 버퍼에 추가됩니다. 프레임을 재구성하기 충분한 패킷이 모이면 해당 패킷들이 버퍼에서 방출되어 디코더로 전달됩니다.
+디코더는 이를 디코드해 화면에 표시합니다. 버퍼 용량은 한정되어 있으므로, 너무 오래 머무는 패킷은 폐기됩니다.</p>
+<p>비디오 프레임이 RTP 패킷으로 바뀌는 과정과 재구성이 필요한 이유는 <a href="../06-media-communication/#rtp">미디어 통신 장</a>을 참고하세요.</p>
+<p><code>jitterBufferDelay</code>는 네트워크 성능과 재생 매끄러움에 대한 좋은 인사이트를 제공합니다. 이는 수신 스트림과 관련된
+<a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-jitterbufferdelay">WebRTC 통계 API</a>의 일부입니다. 디코딩 전 프레임이
+버퍼에서 대기한 시간을 의미하며, 값이 길수록 네트워크 혼잡이 심함을 나타냅니다.</p>
+<h2 id="혼잡-감지">
+  혼잡 감지
+  <a class="anchor" href="#%ed%98%bc%ec%9e%a1-%ea%b0%90%ec%a7%80">#</a>
+</h2>
+<p>혼잡을 해결하기 전에 먼저 감지해야 합니다. 혼잡 컨트롤러가 이를 담당하며, 빠르게 발전하는 주제입니다. 높은 수준에서는 모두 비슷하게 동작합니다.
+일부 입력을 받아 가용 대역폭을 추정합니다. 예시는 다음과 같습니다.</p>
+<ul>
+<li>패킷 손실: 혼잡해질수록 드롭이 늘어납니다.</li>
+<li>지터: 장비가 과부하되면 큐잉으로 시간 변동이 커집니다.</li>
+<li>RTT: 혼잡 시 패킷 도착 시간이 늘어나며, 지터와 달리 계속 증가하는 경향이 있습니다.</li>
+<li>ECN: 최신 네트워크는 드롭 위험 패킷을 태깅할 수 있습니다.</li>
+</ul>
+<p>이 값들은 통화 내내 계속 측정되어야 합니다. 네트워크 사용량이 변하므로 가용 대역폭도 계속 변할 수 있습니다.</p>
+<h2 id="혼잡-해결">
+  혼잡 해결
+  <a class="anchor" href="#%ed%98%bc%ec%9e%a1-%ed%95%b4%ea%b2%b0">#</a>
+</h2>
+<p>대역폭 추정치를 얻었으면 전송 방식을 조정해야 합니다. 무엇을 보낼지에 따라 방법이 달라집니다.</p>
+<h3 id="더-느리게-보내기">
+  더 느리게 보내기
+  <a class="anchor" href="#%eb%8d%94-%eb%8a%90%eb%a6%ac%ea%b2%8c-%eb%b3%b4%eb%82%b4%ea%b8%b0">#</a>
+</h3>
+<p>전송 속도를 제한하는 것이 첫 번째 방법입니다. 혼잡 컨트롤러가 추정치를 제공하면, 송신자가 레이트 리밋을 적용합니다. 대부분의 데이터 통신이 이 방식을 씁니다.
+TCP 같은 프로토콜에서는 운영체제가 이를 처리하므로 사용자/개발자에게 투명합니다.</p>
+<h3 id="더-적게-보내기">
+  더 적게 보내기
+  <a class="anchor" href="#%eb%8d%94-%ec%a0%81%ea%b2%8c-%eb%b3%b4%eb%82%b4%ea%b8%b0">#</a>
+</h3>
+<p>실시간 미디어처럼 도착 시간에 마감이 있는 경우 느리게 보낼 수 없습니다. 대신 전송 정보를 줄여 제한을 맞출 수 있습니다. 예컨대 사용 가능한 대역폭이 부족하면
+비디오 화질을 낮출 수 있습니다. 이를 위해서는 비디오 인코더와 혼잡 컨트롤러 간 긴밀한 피드백 루프가 필요합니다.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+  <div><a class="flex align-center" href="https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/commit/01066a6a0e2101e6d28825a0c5cc210c8ff91d0d" title='Last modified by seonghoon.baek | 9월 5, 2025' target="_blank" rel="noopener">
+      <img src="/webrtc-for-the-curious-kr/svg/calendar.svg" class="book-icon" alt="" />
+      <span>9월 5, 2025</span>
+    </a>
+  </div>
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/edit/master/content/docs/05-real-time-networking.md" target="_blank" rel="noopener">
+      <img src="/webrtc-for-the-curious-kr/svg/edit.svg" class="book-icon" alt="" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#왜-실시간-통신에서-네트워킹이-중요한가요">왜 실시간 통신에서 네트워킹이 중요한가요?</a></li>
+    <li><a href="#네트워크를-어렵게-만드는-속성은-무엇인가요">네트워크를 어렵게 만드는 속성은 무엇인가요?</a>
+      <ul>
+        <li></li>
+        <li><a href="#혼잡congestion">혼잡(Congestion)</a></li>
+        <li><a href="#동적dynamic">동적(Dynamic)</a></li>
+      </ul>
+    </li>
+    <li><a href="#지터-버퍼jitter-buffer">지터 버퍼(Jitter Buffer)</a>
+      <ul>
+        <li><a href="#지터-버퍼-동작">지터 버퍼 동작</a></li>
+      </ul>
+    </li>
+    <li><a href="#혼잡-감지">혼잡 감지</a></li>
+    <li><a href="#혼잡-해결">혼잡 해결</a>
+      <ul>
+        <li><a href="#더-느리게-보내기">더 느리게 보내기</a></li>
+        <li><a href="#더-적게-보내기">더 적게 보내기</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

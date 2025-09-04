@@ -1,4 +1,9 @@
-<!doctype html><html lang=es dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/webrtc-for-the-curious-kr/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=webrtc-for-the-curious-kr/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
   FAQ
   #
 
@@ -35,25 +40,567 @@ sin sobrecargar la conexión.
 ¿Qué latencia puedo esperar con WebRTC?
   
     Para medios no sintonizados, puedes esperar menos de 500 milisegundos. Si esperar sintonizar o sacrificar
-la calidad por latencia, los desarrolladores han conseguido menos de 100 milisegundos de latencia."><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="https://lutece.github.io/webrtc-for-the-curious-kr/es/docs/11-faq/"><meta property="og:site_name" content="WebRTC para los curiosos"><meta property="og:title" content="FAQ"><meta property="og:description" content="FAQ # ¿Por qué WebRTC usa UDP? La NAT Transversal requiere UDP. Sin la NAT Transversal, establecer una conexión P2P no sería posible. UDP no provee una “entrega garantizada” como TCP, así que WebRTC lo hace a nivel de usuario.
+la calidad por latencia, los desarrolladores han conseguido menos de 100 milisegundos de latencia.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/webrtc-for-the-curious-kr/es/docs/11-faq/">
+  <meta property="og:site_name" content="WebRTC para los curiosos">
+  <meta property="og:title" content="FAQ">
+  <meta property="og:description" content="FAQ # ¿Por qué WebRTC usa UDP? La NAT Transversal requiere UDP. Sin la NAT Transversal, establecer una conexión P2P no sería posible. UDP no provee una “entrega garantizada” como TCP, así que WebRTC lo hace a nivel de usuario.
 Mira Conexión para más información.
-¿Qué tantos DataChannel puedo tener? 65534 canales como identificador de flujo tiene 16 bits. Puedes cerrar y abrir uno nuevo cuando quieras ¿WebRTC tiene limites en el ancho de banda? Tanto los DataChannels y RTP usan un control de congestión. Esto significa que WebRTC mide activamente tu ancho de banda e intenta usar la cantidad óptima. Es un balance entre mandar cuanto más se pueda, sin sobrecargar la conexión. ¿Puedo mandar datos binarios? Si, puedes mandar tanto datos en texto o binario vía DataChannels. ¿Qué latencia puedo esperar con WebRTC? Para medios no sintonizados, puedes esperar menos de 500 milisegundos. Si esperar sintonizar o sacrificar la calidad por latencia, los desarrolladores han conseguido menos de 100 milisegundos de latencia."><meta property="og:locale" content="es"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2022-12-13T12:17:49-05:00"><title>FAQ | WebRTC para los curiosos</title><link rel=manifest href=/webrtc-for-the-curious-kr/manifest.json><link rel=icon href=/webrtc-for-the-curious-kr/favicon.png><link rel=canonical href=https://lutece.github.io/webrtc-for-the-curious-kr/es/docs/11-faq/><link rel=alternate hreflang=en href=https://lutece.github.io/webrtc-for-the-curious-kr/docs/11-faq/ title=FAQ><link rel=alternate hreflang=ru href=https://lutece.github.io/webrtc-for-the-curious-kr/ru/docs/11-faq/ title=FAQ><link rel=alternate hreflang=sv href=https://lutece.github.io/webrtc-for-the-curious-kr/sv/docs/11-faq/ title=FAQ><link rel=alternate hreflang=zh href=https://lutece.github.io/webrtc-for-the-curious-kr/zh/docs/11-faq/ title=常见问题><link rel=alternate hreflang=ja href=https://lutece.github.io/webrtc-for-the-curious-kr/ja/docs/11-faq/ title=FAQ><link rel=alternate hreflang=fa href=https://lutece.github.io/webrtc-for-the-curious-kr/fa/docs/11-faq/ title="پرسش و پاسخ"><link rel=alternate hreflang=fr href=https://lutece.github.io/webrtc-for-the-curious-kr/fr/docs/11-faq/ title=FAQ><link rel=alternate hreflang=id href=https://lutece.github.io/webrtc-for-the-curious-kr/id/docs/11-faq/ title=FAQ><link rel=alternate hreflang=tr href=https://lutece.github.io/webrtc-for-the-curious-kr/tr/docs/11-faq/ title=SSS><link rel=alternate hreflang=ko href=https://lutece.github.io/webrtc-for-the-curious-kr/ko/docs/11-faq/ title="자주 묻는 질문(FAQ)"><link rel=stylesheet href=/webrtc-for-the-curious-kr/book.min.a1f8103544a99b89cb7808ead8d43817d98d4f3e608b9e0e5ff491b382e3434d.css integrity="sha256-ofgQNUSpm4nLeAjq2NQ4F9mNTz5gi54OX/SRs4LjQ00=" crossorigin=anonymous><script defer src=/webrtc-for-the-curious-kr/fuse.min.js></script><script defer src=/webrtc-for-the-curious-kr/es.search.min.b6b3487e51ff7dd7122d690a12e2fb88c6e7b284497112d2781cfb972e8195e1.js integrity="sha256-trNIflH/fdcSLWkKEuL7iMbnsoRJcRLSeBz7ly6BleE=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/webrtc-for-the-curious-kr/es/><span>WebRTC para los curiosos</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=Buscar aria-label=Buscar maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul class=book-languages><li><input type=checkbox id=languages class=toggle>
-<label for=languages class="flex justify-between"><a role=button class="flex align-center"><img src=/webrtc-for-the-curious-kr/svg/translate.svg class=book-icon alt=Languages>
-Español</a></label><ul><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/docs/11-faq/>English</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/ru/docs/11-faq/>Русский</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/sv/docs/11-faq/>Svenska</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/zh/docs/11-faq/>简体中文</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/ja/docs/11-faq/>日本語</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/fa/docs/11-faq/>Persian</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/fr/docs/11-faq/>Français</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/id/docs/11-faq/>Bahasa Indonesia</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/tr/docs/11-faq/>Türkçe</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/ko/docs/11-faq/>한국어</a></li></ul></li></ul><ul><li><a href=/webrtc-for-the-curious-kr/es/docs/01-what-why-and-how/>¿Qué, Por qué y Cómo?</a></li><li><a href=/webrtc-for-the-curious-kr/es/docs/02-signaling/>Signaling</a></li><li><a href=/webrtc-for-the-curious-kr/es/docs/03-connecting/>Connecting</a></li><li><a href=/webrtc-for-the-curious-kr/es/docs/04-securing/>Securing</a></li><li><a href=/webrtc-for-the-curious-kr/es/docs/05-real-time-networking/>Real-time Networking</a></li><li><a href=/webrtc-for-the-curious-kr/es/docs/06-media-communication/>Media Communication</a></li><li><a href=/webrtc-for-the-curious-kr/es/docs/07-data-communication/>Data Communication</a></li><li><a href=/webrtc-for-the-curious-kr/es/docs/08-applied-webrtc/>Applied WebRTC</a></li><li><a href=/webrtc-for-the-curious-kr/es/docs/09-debugging/>Debugging</a></li><li><a href=/webrtc-for-the-curious-kr/es/docs/10-history-of-webrtc/>History</a></li><li><a href=/webrtc-for-the-curious-kr/es/docs/11-faq/ class=active>FAQ</a></li><li><a href=/webrtc-for-the-curious-kr/es/docs/12-glossary/>Glossary</a></li><li><a href=/webrtc-for-the-curious-kr/es/docs/13-reference/>Reference</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/webrtc-for-the-curious-kr/svg/menu.svg class=book-icon alt=Menu>
-</label><strong>FAQ</strong>
-<label for=toc-control><img src=/webrtc-for-the-curious-kr/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents></nav></aside></header><article class="markdown book-article"><h1 id=faq>FAQ
-<a class=anchor href=#faq>#</a></h1><details><summary>¿Por qué WebRTC usa UDP?</summary><div class=markdown-inner><p>La NAT Transversal requiere UDP. Sin la NAT Transversal, establecer una conexión P2P
+¿Qué tantos DataChannel puedo tener? 65534 canales como identificador de flujo tiene 16 bits. Puedes cerrar y abrir uno nuevo cuando quieras ¿WebRTC tiene limites en el ancho de banda? Tanto los DataChannels y RTP usan un control de congestión. Esto significa que WebRTC mide activamente tu ancho de banda e intenta usar la cantidad óptima. Es un balance entre mandar cuanto más se pueda, sin sobrecargar la conexión. ¿Puedo mandar datos binarios? Si, puedes mandar tanto datos en texto o binario vía DataChannels. ¿Qué latencia puedo esperar con WebRTC? Para medios no sintonizados, puedes esperar menos de 500 milisegundos. Si esperar sintonizar o sacrificar la calidad por latencia, los desarrolladores han conseguido menos de 100 milisegundos de latencia.">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:modified_time" content="2022-12-13T12:17:49-05:00">
+<title>FAQ | WebRTC para los curiosos</title>
+<link rel="manifest" href="/webrtc-for-the-curious-kr/manifest.json">
+<link rel="icon" href="/webrtc-for-the-curious-kr/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/webrtc-for-the-curious-kr/es/docs/11-faq/">
+  <link rel="alternate" hreflang="ko" href="http://localhost:1313/webrtc-for-the-curious-kr/docs/11-faq/" title="자주 묻는 질문(FAQ)">
+  <link rel="alternate" hreflang="ru" href="http://localhost:1313/webrtc-for-the-curious-kr/ru/docs/11-faq/" title="FAQ">
+  <link rel="alternate" hreflang="sv" href="http://localhost:1313/webrtc-for-the-curious-kr/sv/docs/11-faq/" title="FAQ">
+  <link rel="alternate" hreflang="zh" href="http://localhost:1313/webrtc-for-the-curious-kr/zh/docs/11-faq/" title="常见问题">
+  <link rel="alternate" hreflang="ja" href="http://localhost:1313/webrtc-for-the-curious-kr/ja/docs/11-faq/" title="FAQ">
+  <link rel="alternate" hreflang="fa" href="http://localhost:1313/webrtc-for-the-curious-kr/fa/docs/11-faq/" title="پرسش و پاسخ">
+  <link rel="alternate" hreflang="fr" href="http://localhost:1313/webrtc-for-the-curious-kr/fr/docs/11-faq/" title="FAQ">
+  <link rel="alternate" hreflang="id" href="http://localhost:1313/webrtc-for-the-curious-kr/id/docs/11-faq/" title="FAQ">
+  <link rel="alternate" hreflang="tr" href="http://localhost:1313/webrtc-for-the-curious-kr/tr/docs/11-faq/" title="SSS">
+<link rel="stylesheet" href="/webrtc-for-the-curious-kr/book.min.a1f8103544a99b89cb7808ead8d43817d98d4f3e608b9e0e5ff491b382e3434d.css" integrity="sha256-ofgQNUSpm4nLeAjq2NQ4F9mNTz5gi54OX/SRs4LjQ00=" crossorigin="anonymous">
+  <script defer src="/webrtc-for-the-curious-kr/fuse.min.js"></script>
+  <script defer src="/webrtc-for-the-curious-kr/es.search.min.b6b3487e51ff7dd7122d690a12e2fb88c6e7b284497112d2781cfb972e8195e1.js" integrity="sha256-trNIflH/fdcSLWkKEuL7iMbnsoRJcRLSeBz7ly6BleE=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/webrtc-for-the-curious-kr/es/"><span>WebRTC para los curiosos</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Buscar" aria-label="Buscar" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/webrtc-for-the-curious-kr/svg/translate.svg" class="book-icon" alt="Languages" />
+        Español
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/docs/11-faq/">
+          한국어
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/en/">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/ru/docs/11-faq/">
+          Русский
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/sv/docs/11-faq/">
+          Svenska
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/zh/docs/11-faq/">
+          简体中文
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/ja/docs/11-faq/">
+          日本語
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/fa/docs/11-faq/">
+          Persian
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/fr/docs/11-faq/">
+          Français
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/id/docs/11-faq/">
+          Bahasa Indonesia
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/tr/docs/11-faq/">
+          Türkçe
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/es/docs/01-what-why-and-how/" class="">¿Qué, Por qué y Cómo?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/es/docs/02-signaling/" class="">Signaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/es/docs/03-connecting/" class="">Connecting</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/es/docs/04-securing/" class="">Securing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/es/docs/05-real-time-networking/" class="">Real-time Networking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/es/docs/06-media-communication/" class="">Media Communication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/es/docs/07-data-communication/" class="">Data Communication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/es/docs/08-applied-webrtc/" class="">Applied WebRTC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/es/docs/09-debugging/" class="">Debugging</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/es/docs/10-history-of-webrtc/" class="">History</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/es/docs/11-faq/" class="active">FAQ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/es/docs/12-glossary/" class="">Glossary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/es/docs/13-reference/" class="">Reference</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/webrtc-for-the-curious-kr/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>FAQ</strong>
+
+  <label for="toc-control">
+    
+    <img src="/webrtc-for-the-curious-kr/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents"></nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="faq">
+  FAQ
+  <a class="anchor" href="#faq">#</a>
+</h1>
+<details ><summary>¿Por qué WebRTC usa UDP?</summary>
+  <div class="markdown-inner">
+    <p>La NAT Transversal requiere UDP. Sin la NAT Transversal, establecer una conexión P2P
 no sería posible. UDP no provee una &ldquo;entrega garantizada&rdquo; como TCP, así que WebRTC lo hace a nivel de
-usuario.</p><p>Mira <a href=https://lutece.github.io/webrtc-for-the-curious-kr/es/docs/03-connecting/>Conexión</a> para más información.</p></div></details><details><summary>¿Qué tantos DataChannel puedo tener?</summary><div class=markdown-inner>65534 canales como identificador de flujo tiene 16 bits. Puedes cerrar y abrir uno nuevo cuando quieras</div></details><details><summary>¿WebRTC tiene limites en el ancho de banda?</summary><div class=markdown-inner>Tanto los DataChannels y RTP usan un control de congestión. Esto significa que WebRTC mide activamente
+usuario.</p>
+<p>Mira <a href="http://localhost:1313/webrtc-for-the-curious-kr/es/docs/03-connecting/">Conexión</a> para más información.</p>
+
+  </div>
+</details>
+
+<details ><summary>¿Qué tantos DataChannel puedo tener?</summary>
+  <div class="markdown-inner">
+    65534 canales como identificador de flujo tiene 16 bits. Puedes cerrar y abrir uno nuevo cuando quieras
+  </div>
+</details>
+
+<details ><summary>¿WebRTC tiene limites en el ancho de banda?</summary>
+  <div class="markdown-inner">
+    Tanto los DataChannels y RTP usan un control de congestión. Esto significa que WebRTC mide activamente
 tu ancho de banda e intenta usar la cantidad óptima. Es un balance entre mandar cuanto más se pueda,
-sin sobrecargar la conexión.</div></details><details><summary>¿Puedo mandar datos binarios?</summary><div class=markdown-inner>Si, puedes mandar tanto datos en texto o binario vía DataChannels.</div></details><details><summary>¿Qué latencia puedo esperar con WebRTC?</summary><div class=markdown-inner><p>Para medios no sintonizados, puedes esperar menos de 500 milisegundos. Si esperar sintonizar o sacrificar
-la calidad por latencia, los desarrolladores han conseguido menos de 100 milisegundos de latencia.</p><p>Los DataChannels soportan la opción de &ldquo;Confiabilidad parcial&rdquo; la cual puede reducir la latencia
+sin sobrecargar la conexión.
+  </div>
+</details>
+
+<details ><summary>¿Puedo mandar datos binarios?</summary>
+  <div class="markdown-inner">
+    Si, puedes mandar tanto datos en texto o binario vía DataChannels.
+  </div>
+</details>
+
+<details ><summary>¿Qué latencia puedo esperar con WebRTC?</summary>
+  <div class="markdown-inner">
+    <p>Para medios no sintonizados, puedes esperar menos de 500 milisegundos. Si esperar sintonizar o sacrificar
+la calidad por latencia, los desarrolladores han conseguido menos de 100 milisegundos de latencia.</p>
+<p>Los DataChannels soportan la opción de &ldquo;Confiabilidad parcial&rdquo; la cual puede reducir la latencia
 causada por los datos retransmitidos por una perdida de conexión. Si la propiedad está configurada,
-se ha demostrado que que supera las conexiones TCP y TLS.</p></div></details><details><summary>¿¿Por qué querría una entrega desordenada de DataChannels??</summary><div class=markdown-inner>Cuando la nueva información deja obsoleta a la vieja, como la información posicional
+se ha demostrado que que supera las conexiones TCP y TLS.</p>
+
+  </div>
+</details>
+
+<details ><summary>¿¿Por qué querría una entrega desordenada de DataChannels??</summary>
+  <div class="markdown-inner">
+    Cuando la nueva información deja obsoleta a la vieja, como la información posicional
 de un objeto, o cada mensaje es independiente del otro y necesita evitar
-el retraso del bloqueo de cabecera de línea.</div></details><details><summary>¿Puedo mandar audio o vídeo a través de un DataChannel?</summary><div class=markdown-inner>Si, puedes mandar cualquier dato a través de un DataChannel. En el casos del navegador,
+el retraso del bloqueo de cabecera de línea.
+  </div>
+</details>
+
+<details ><summary>¿Puedo mandar audio o vídeo a través de un DataChannel?</summary>
+  <div class="markdown-inner">
+    Si, puedes mandar cualquier dato a través de un DataChannel. En el casos del navegador,
 será tu responsabilidad descifrar los datos y pasarlos a un reproductor multimedia para renderizar,
-mientras que todo eso se hace automáticamente si se usa canales multimedia.</div></details></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/commit/ee847e948df783fb962c896cb779c21cabc34aea title='Última modificación por Isaac Zamora | diciembre 14, 2022' target=_blank rel=noopener><img src=/webrtc-for-the-curious-kr/svg/calendar.svg class=book-icon alt>
-<span>diciembre 14, 2022</span></a></div><div><a class="flex align-center" href=https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/edit/master/content/docs/11-faq.md target=_blank rel=noopener><img src=/webrtc-for-the-curious-kr/svg/edit.svg class=book-icon alt>
-<span>Editar esta página</span></a></div></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents></nav></div></aside></main></body></html>
+mientras que todo eso se hace automáticamente si se usa canales multimedia.
+  </div>
+</details>
+
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+  <div><a class="flex align-center" href="https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/commit/ee847e948df783fb962c896cb779c21cabc34aea" title='Última modificación por Isaac Zamora | diciembre 14, 2022' target="_blank" rel="noopener">
+      <img src="/webrtc-for-the-curious-kr/svg/calendar.svg" class="book-icon" alt="" />
+      <span>diciembre 14, 2022</span>
+    </a>
+  </div>
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/edit/master/content/docs/11-faq.md" target="_blank" rel="noopener">
+      <img src="/webrtc-for-the-curious-kr/svg/edit.svg" class="book-icon" alt="" />
+      <span>Editar esta página</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents"></nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

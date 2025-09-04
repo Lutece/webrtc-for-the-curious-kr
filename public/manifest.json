@@ -1,6 +1,6 @@
 {
-  "name": "WebRTC for the Curious",
-  "short_name": "WebRTC for the Curious",
+  "name": "호기심 많은 이를 위한 WebRTC",
+  "short_name": "호기심 많은 이를 위한 WebRTC",
   "start_url": "/webrtc-for-the-curious-kr/",
   "scope": "/webrtc-for-the-curious-kr/",
   "display": "standalone",

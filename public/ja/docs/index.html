@@ -1,6 +1,487 @@
-<!doctype html><html lang=ja dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="https://lutece.github.io/webrtc-for-the-curious-kr/ja/docs/"><meta property="og:site_name" content="好奇心旺盛な人のためのWebRTC"><meta property="og:title" content="Docs"><meta property="og:locale" content="ja"><meta property="og:type" content="website"><title>Docs | 好奇心旺盛な人のためのWebRTC</title><link rel=manifest href=/webrtc-for-the-curious-kr/manifest.json><link rel=icon href=/webrtc-for-the-curious-kr/favicon.png><link rel=canonical href=https://lutece.github.io/webrtc-for-the-curious-kr/ja/docs/><link rel=alternate hreflang=en href=https://lutece.github.io/webrtc-for-the-curious-kr/docs/ title=Docs><link rel=alternate hreflang=ru href=https://lutece.github.io/webrtc-for-the-curious-kr/ru/docs/ title=Docs><link rel=alternate hreflang=sv href=https://lutece.github.io/webrtc-for-the-curious-kr/sv/docs/ title=Docs><link rel=alternate hreflang=zh href=https://lutece.github.io/webrtc-for-the-curious-kr/zh/docs/ title=Docs><link rel=alternate hreflang=fa href=https://lutece.github.io/webrtc-for-the-curious-kr/fa/docs/ title=Docs><link rel=alternate hreflang=fr href=https://lutece.github.io/webrtc-for-the-curious-kr/fr/docs/ title=Docs><link rel=alternate hreflang=id href=https://lutece.github.io/webrtc-for-the-curious-kr/id/docs/ title=Docs><link rel=alternate hreflang=es href=https://lutece.github.io/webrtc-for-the-curious-kr/es/docs/ title=Docs><link rel=alternate hreflang=tr href=https://lutece.github.io/webrtc-for-the-curious-kr/tr/docs/ title=Docs><link rel=alternate hreflang=ko href=https://lutece.github.io/webrtc-for-the-curious-kr/ko/docs/ title=Docs><link rel=stylesheet href=/webrtc-for-the-curious-kr/book.min.a1f8103544a99b89cb7808ead8d43817d98d4f3e608b9e0e5ff491b382e3434d.css integrity="sha256-ofgQNUSpm4nLeAjq2NQ4F9mNTz5gi54OX/SRs4LjQ00=" crossorigin=anonymous><script defer src=/webrtc-for-the-curious-kr/fuse.min.js></script><script defer src=/webrtc-for-the-curious-kr/ja.search.min.614ddd571a9094cada92f64b8eb49eaf5d1d56dc19ddc04b0fca2410e148b0f8.js integrity="sha256-YU3dVxqQlMrakvZLjrSer10dVtwZ3cBLD8okEOFIsPg=" crossorigin=anonymous></script><link rel=alternate type=application/rss+xml href=https://lutece.github.io/webrtc-for-the-curious-kr/ja/docs/index.xml title=好奇心旺盛な人のためのWebRTC></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/webrtc-for-the-curious-kr/ja/><span>好奇心旺盛な人のためのWebRTC</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=検索 aria-label=検索 maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul class=book-languages><li><input type=checkbox id=languages class=toggle>
-<label for=languages class="flex justify-between"><a role=button class="flex align-center"><img src=/webrtc-for-the-curious-kr/svg/translate.svg class=book-icon alt=Languages>
-日本語</a></label><ul><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/docs/>English</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/ru/docs/>Русский</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/sv/docs/>Svenska</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/zh/docs/>简体中文</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/fa/docs/>Persian</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/fr/docs/>Français</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/id/docs/>Bahasa Indonesia</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/es/docs/>Español</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/tr/docs/>Türkçe</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/ko/docs/>한국어</a></li></ul></li></ul><ul><li><a href=/webrtc-for-the-curious-kr/ja/docs/01-what-why-and-how/>何を、なぜ、どのように</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/02-signaling/>シグナリング</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/03-connecting/>接続</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/04-securing/>セキュリティ対策</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/05-real-time-networking/>リアルタイム・ネットワーキング</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/06-media-communication/>メディア・コミュニケーション</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/07-data-communication/>データ・コミュニケーション</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/08-applied-webrtc/>応用WebRTC</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/09-debugging/>デバッグ</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/10-history-of-webrtc/>歴史</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/11-faq/>FAQ</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/12-glossary/>用語集</a></li><li><a href=/webrtc-for-the-curious-kr/ja/docs/13-reference/>参考文献</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/webrtc-for-the-curious-kr/svg/menu.svg class=book-icon alt=Menu>
-</label><strong>Docs</strong>
-<label for=toc-control><img src=/webrtc-for-the-curious-kr/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents></nav></aside></header><article class="markdown book-article"></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents></nav></div></aside></main></body></html>
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head><script src="/webrtc-for-the-curious-kr/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=webrtc-for-the-curious-kr/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/webrtc-for-the-curious-kr/ja/docs/">
+  <meta property="og:site_name" content="好奇心旺盛な人のためのWebRTC">
+  <meta property="og:title" content="Docs">
+  <meta property="og:locale" content="ja">
+  <meta property="og:type" content="website">
+<title>Docs | 好奇心旺盛な人のためのWebRTC</title>
+<link rel="manifest" href="/webrtc-for-the-curious-kr/manifest.json">
+<link rel="icon" href="/webrtc-for-the-curious-kr/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/webrtc-for-the-curious-kr/ja/docs/">
+  <link rel="alternate" hreflang="ko" href="http://localhost:1313/webrtc-for-the-curious-kr/docs/" title="Docs">
+  <link rel="alternate" hreflang="ru" href="http://localhost:1313/webrtc-for-the-curious-kr/ru/docs/" title="Docs">
+  <link rel="alternate" hreflang="sv" href="http://localhost:1313/webrtc-for-the-curious-kr/sv/docs/" title="Docs">
+  <link rel="alternate" hreflang="zh" href="http://localhost:1313/webrtc-for-the-curious-kr/zh/docs/" title="Docs">
+  <link rel="alternate" hreflang="fa" href="http://localhost:1313/webrtc-for-the-curious-kr/fa/docs/" title="Docs">
+  <link rel="alternate" hreflang="fr" href="http://localhost:1313/webrtc-for-the-curious-kr/fr/docs/" title="Docs">
+  <link rel="alternate" hreflang="id" href="http://localhost:1313/webrtc-for-the-curious-kr/id/docs/" title="Docs">
+  <link rel="alternate" hreflang="es" href="http://localhost:1313/webrtc-for-the-curious-kr/es/docs/" title="Docs">
+  <link rel="alternate" hreflang="tr" href="http://localhost:1313/webrtc-for-the-curious-kr/tr/docs/" title="Docs">
+<link rel="stylesheet" href="/webrtc-for-the-curious-kr/book.min.a1f8103544a99b89cb7808ead8d43817d98d4f3e608b9e0e5ff491b382e3434d.css" integrity="sha256-ofgQNUSpm4nLeAjq2NQ4F9mNTz5gi54OX/SRs4LjQ00=" crossorigin="anonymous">
+  <script defer src="/webrtc-for-the-curious-kr/fuse.min.js"></script>
+  <script defer src="/webrtc-for-the-curious-kr/ja.search.min.614ddd571a9094cada92f64b8eb49eaf5d1d56dc19ddc04b0fca2410e148b0f8.js" integrity="sha256-YU3dVxqQlMrakvZLjrSer10dVtwZ3cBLD8okEOFIsPg=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/webrtc-for-the-curious-kr/ja/docs/index.xml" title="好奇心旺盛な人のためのWebRTC" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/webrtc-for-the-curious-kr/ja/"><span>好奇心旺盛な人のためのWebRTC</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="検索" aria-label="検索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/webrtc-for-the-curious-kr/svg/translate.svg" class="book-icon" alt="Languages" />
+        日本語
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/docs/">
+          한국어
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/en/">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/ru/docs/">
+          Русский
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/sv/docs/">
+          Svenska
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/zh/docs/">
+          简体中文
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/fa/docs/">
+          Persian
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/fr/docs/">
+          Français
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/id/docs/">
+          Bahasa Indonesia
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/es/docs/">
+          Español
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/tr/docs/">
+          Türkçe
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/01-what-why-and-how/" class="">何を、なぜ、どのように</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/02-signaling/" class="">シグナリング</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/03-connecting/" class="">接続</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/04-securing/" class="">セキュリティ対策</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/05-real-time-networking/" class="">リアルタイム・ネットワーキング</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/06-media-communication/" class="">メディア・コミュニケーション</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/07-data-communication/" class="">データ・コミュニケーション</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/08-applied-webrtc/" class="">応用WebRTC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/09-debugging/" class="">デバッグ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/10-history-of-webrtc/" class="">歴史</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/11-faq/" class="">FAQ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/12-glossary/" class="">用語集</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/ja/docs/13-reference/" class="">参考文献</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/webrtc-for-the-curious-kr/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Docs</strong>
+
+  <label for="toc-control">
+    
+    <img src="/webrtc-for-the-curious-kr/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents"></nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents"></nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

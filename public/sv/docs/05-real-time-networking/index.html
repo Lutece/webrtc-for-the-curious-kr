@@ -1,4 +1,9 @@
-<!doctype html><html lang=sv dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="
+<!DOCTYPE html>
+<html lang="sv" dir="ltr">
+<head><script src="/webrtc-for-the-curious-kr/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=webrtc-for-the-curious-kr/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
   Realtidsnätverk
   #
 
@@ -9,61 +14,595 @@
 Nätverk är den begränsande faktorn i realtidskommunikation. I en idealisk värld skulle vi ha obegränsad bandbredd
 och paket skulle komma omedelbart. Detta är dock inte fallet. Nätverk är begränsade och villkoren
 kan ändras när som helst. Att mäta och observera nätverksförhållanden är också ett svårt problem. Du kan få olika beteenden
-beroende på hårdvara, programvara och konfigurationen av den."><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="https://lutece.github.io/webrtc-for-the-curious-kr/sv/docs/05-real-time-networking/"><meta property="og:site_name" content="WebRTC för nyfikna"><meta property="og:title" content="Realtidsnätverk"><meta property="og:description" content="Realtidsnätverk # Varför är nätverket så viktigt i realtidskommunikation? # Nätverk är den begränsande faktorn i realtidskommunikation. I en idealisk värld skulle vi ha obegränsad bandbredd och paket skulle komma omedelbart. Detta är dock inte fallet. Nätverk är begränsade och villkoren kan ändras när som helst. Att mäta och observera nätverksförhållanden är också ett svårt problem. Du kan få olika beteenden beroende på hårdvara, programvara och konfigurationen av den."><meta property="og:locale" content="sv"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2022-10-19T21:09:32-04:00"><title>Realtidsnätverk | WebRTC för nyfikna</title><link rel=manifest href=/webrtc-for-the-curious-kr/manifest.json><link rel=icon href=/webrtc-for-the-curious-kr/favicon.png><link rel=canonical href=https://lutece.github.io/webrtc-for-the-curious-kr/sv/docs/05-real-time-networking/><link rel=alternate hreflang=en href=https://lutece.github.io/webrtc-for-the-curious-kr/docs/05-real-time-networking/ title="Real-time Networking"><link rel=alternate hreflang=ru href=https://lutece.github.io/webrtc-for-the-curious-kr/ru/docs/05-real-time-networking/ title="Real-time Networking"><link rel=alternate hreflang=zh href=https://lutece.github.io/webrtc-for-the-curious-kr/zh/docs/05-real-time-networking/ title=搭建实时网络><link rel=alternate hreflang=ja href=https://lutece.github.io/webrtc-for-the-curious-kr/ja/docs/05-real-time-networking/ title=リアルタイム・ネットワーキング><link rel=alternate hreflang=fa href=https://lutece.github.io/webrtc-for-the-curious-kr/fa/docs/05-real-time-networking/ title="شبکه بی درنگ"><link rel=alternate hreflang=fr href=https://lutece.github.io/webrtc-for-the-curious-kr/fr/docs/05-real-time-networking/ title="Real-time Networking"><link rel=alternate hreflang=id href=https://lutece.github.io/webrtc-for-the-curious-kr/id/docs/05-real-time-networking/ title="Real-time Networking"><link rel=alternate hreflang=es href=https://lutece.github.io/webrtc-for-the-curious-kr/es/docs/05-real-time-networking/ title="Real-time Networking"><link rel=alternate hreflang=tr href=https://lutece.github.io/webrtc-for-the-curious-kr/tr/docs/05-real-time-networking/ title="Gerçek Zamanlı Ağ İletişimi"><link rel=alternate hreflang=ko href=https://lutece.github.io/webrtc-for-the-curious-kr/ko/docs/05-real-time-networking/ title="실시간 네트워킹"><link rel=stylesheet href=/webrtc-for-the-curious-kr/book.min.a1f8103544a99b89cb7808ead8d43817d98d4f3e608b9e0e5ff491b382e3434d.css integrity="sha256-ofgQNUSpm4nLeAjq2NQ4F9mNTz5gi54OX/SRs4LjQ00=" crossorigin=anonymous><script defer src=/webrtc-for-the-curious-kr/fuse.min.js></script><script defer src=/webrtc-for-the-curious-kr/sv.search.min.2a793360b4304ee9083926235510b8e6ac83ec42e432919d9f5b95d2ea32c23a.js integrity="sha256-KnkzYLQwTukIOSYjVRC45qyD7ELkMpGdn1uV0uoywjo=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/webrtc-for-the-curious-kr/sv/><span>WebRTC för nyfikna</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=Sök aria-label=Sök maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul class=book-languages><li><input type=checkbox id=languages class=toggle>
-<label for=languages class="flex justify-between"><a role=button class="flex align-center"><img src=/webrtc-for-the-curious-kr/svg/translate.svg class=book-icon alt=Languages>
-Svenska</a></label><ul><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/docs/05-real-time-networking/>English</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/ru/docs/05-real-time-networking/>Русский</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/zh/docs/05-real-time-networking/>简体中文</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/ja/docs/05-real-time-networking/>日本語</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/fa/docs/05-real-time-networking/>Persian</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/fr/docs/05-real-time-networking/>Français</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/id/docs/05-real-time-networking/>Bahasa Indonesia</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/es/docs/05-real-time-networking/>Español</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/tr/docs/05-real-time-networking/>Türkçe</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/ko/docs/05-real-time-networking/>한국어</a></li></ul></li></ul><ul><li><a href=/webrtc-for-the-curious-kr/sv/docs/01-what-why-and-how/>Vad, varför och hur</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/02-signaling/>Signalering</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/03-connecting/>Anslutning</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/04-securing/>Säkerhet</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/05-real-time-networking/ class=active>Realtidsnätverk</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/06-media-communication/>Mediakommunikation</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/07-data-communication/>Datakommunikation</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/08-applied-webrtc/>Hur WebRTC används</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/09-debugging/>Felsökning</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/10-history-of-webrtc/>Historia</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/11-faq/>FAQ</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/12-glossary/>Ordlista</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/13-reference/>Referenser</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/webrtc-for-the-curious-kr/svg/menu.svg class=book-icon alt=Menu>
-</label><strong>Realtidsnätverk</strong>
-<label for=toc-control><img src=/webrtc-for-the-curious-kr/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#varför-är-nätverket-så-viktigt-i-realtidskommunikation>Varför är nätverket så viktigt i realtidskommunikation?</a></li><li><a href=#vilka-egenskaper-har-nätverk-som-gör-det-svårt>Vilka egenskaper har nätverk som gör det svårt?</a><ul><li><a href=#bandbredd>Bandbredd</a></li><li><a href=#sändningstid-och-rundturstid-round-trip-time>Sändningstid och rundturstid (Round Trip Time)</a></li><li><a href=#jitter>Jitter</a></li><li><a href=#paketförlust>Paketförlust</a></li><li><a href=#maximal-överföringsenhet>Maximal överföringsenhet</a></li><li><a href=#trängsel>Trängsel</a></li><li><a href=#dynamisk>Dynamisk</a></li></ul></li><li><a href=#lösa-paketförlust>Lösa paketförlust</a><ul><li><a href=#bekräftelser>Bekräftelser</a></li><li><a href=#selektiva-bekräftelser>Selektiva bekräftelser</a></li><li><a href=#negativa-bekräftelser>Negativa bekräftelser</a></li><li><a href=#forward-error-correction>Forward Error Correction</a></li></ul></li><li><a href=#hantera-jitter>Hantera jitter</a><ul><li><a href=#jitterbuffer-funktion>JitterBuffer-funktion</a></li></ul></li><li><a href=#upptäcka-trängsel>Upptäcka trängsel</a></li><li><a href=#lösa-trängsel>Lösa trängsel</a><ul><li><a href=#skicka-långsammare>Skicka långsammare</a></li><li><a href=#skicka-mindre>Skicka mindre</a></li></ul></li></ul></nav></aside></header><article class="markdown book-article"><h1 id=realtidsnätverk>Realtidsnätverk
-<a class=anchor href=#realtidsn%c3%a4tverk>#</a></h1><h2 id=varför-är-nätverket-så-viktigt-i-realtidskommunikation>Varför är nätverket så viktigt i realtidskommunikation?
-<a class=anchor href=#varf%c3%b6r-%c3%a4r-n%c3%a4tverket-s%c3%a5-viktigt-i-realtidskommunikation>#</a></h2><p>Nätverk är den begränsande faktorn i realtidskommunikation. I en idealisk värld skulle vi ha obegränsad bandbredd
+beroende på hårdvara, programvara och konfigurationen av den.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/webrtc-for-the-curious-kr/sv/docs/05-real-time-networking/">
+  <meta property="og:site_name" content="WebRTC för nyfikna">
+  <meta property="og:title" content="Realtidsnätverk">
+  <meta property="og:description" content="Realtidsnätverk # Varför är nätverket så viktigt i realtidskommunikation? # Nätverk är den begränsande faktorn i realtidskommunikation. I en idealisk värld skulle vi ha obegränsad bandbredd och paket skulle komma omedelbart. Detta är dock inte fallet. Nätverk är begränsade och villkoren kan ändras när som helst. Att mäta och observera nätverksförhållanden är också ett svårt problem. Du kan få olika beteenden beroende på hårdvara, programvara och konfigurationen av den.">
+  <meta property="og:locale" content="sv">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:modified_time" content="2022-10-19T21:09:32-04:00">
+<title>Realtidsnätverk | WebRTC för nyfikna</title>
+<link rel="manifest" href="/webrtc-for-the-curious-kr/manifest.json">
+<link rel="icon" href="/webrtc-for-the-curious-kr/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/webrtc-for-the-curious-kr/sv/docs/05-real-time-networking/">
+  <link rel="alternate" hreflang="ko" href="http://localhost:1313/webrtc-for-the-curious-kr/docs/05-real-time-networking/" title="실시간 네트워킹">
+  <link rel="alternate" hreflang="ru" href="http://localhost:1313/webrtc-for-the-curious-kr/ru/docs/05-real-time-networking/" title="Real-time Networking">
+  <link rel="alternate" hreflang="zh" href="http://localhost:1313/webrtc-for-the-curious-kr/zh/docs/05-real-time-networking/" title="搭建实时网络">
+  <link rel="alternate" hreflang="ja" href="http://localhost:1313/webrtc-for-the-curious-kr/ja/docs/05-real-time-networking/" title="リアルタイム・ネットワーキング">
+  <link rel="alternate" hreflang="fa" href="http://localhost:1313/webrtc-for-the-curious-kr/fa/docs/05-real-time-networking/" title="شبکه بی درنگ">
+  <link rel="alternate" hreflang="fr" href="http://localhost:1313/webrtc-for-the-curious-kr/fr/docs/05-real-time-networking/" title="Real-time Networking">
+  <link rel="alternate" hreflang="id" href="http://localhost:1313/webrtc-for-the-curious-kr/id/docs/05-real-time-networking/" title="Real-time Networking">
+  <link rel="alternate" hreflang="es" href="http://localhost:1313/webrtc-for-the-curious-kr/es/docs/05-real-time-networking/" title="Real-time Networking">
+  <link rel="alternate" hreflang="tr" href="http://localhost:1313/webrtc-for-the-curious-kr/tr/docs/05-real-time-networking/" title="Gerçek Zamanlı Ağ İletişimi">
+<link rel="stylesheet" href="/webrtc-for-the-curious-kr/book.min.a1f8103544a99b89cb7808ead8d43817d98d4f3e608b9e0e5ff491b382e3434d.css" integrity="sha256-ofgQNUSpm4nLeAjq2NQ4F9mNTz5gi54OX/SRs4LjQ00=" crossorigin="anonymous">
+  <script defer src="/webrtc-for-the-curious-kr/fuse.min.js"></script>
+  <script defer src="/webrtc-for-the-curious-kr/sv.search.min.2a793360b4304ee9083926235510b8e6ac83ec42e432919d9f5b95d2ea32c23a.js" integrity="sha256-KnkzYLQwTukIOSYjVRC45qyD7ELkMpGdn1uV0uoywjo=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/webrtc-for-the-curious-kr/sv/"><span>WebRTC för nyfikna</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Sök" aria-label="Sök" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/webrtc-for-the-curious-kr/svg/translate.svg" class="book-icon" alt="Languages" />
+        Svenska
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/docs/05-real-time-networking/">
+          한국어
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/en/">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/ru/docs/05-real-time-networking/">
+          Русский
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/zh/docs/05-real-time-networking/">
+          简体中文
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/ja/docs/05-real-time-networking/">
+          日本語
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/fa/docs/05-real-time-networking/">
+          Persian
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/fr/docs/05-real-time-networking/">
+          Français
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/id/docs/05-real-time-networking/">
+          Bahasa Indonesia
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/es/docs/05-real-time-networking/">
+          Español
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/tr/docs/05-real-time-networking/">
+          Türkçe
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/01-what-why-and-how/" class="">Vad, varför och hur</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/02-signaling/" class="">Signalering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/03-connecting/" class="">Anslutning</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/04-securing/" class="">Säkerhet</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/05-real-time-networking/" class="active">Realtidsnätverk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/06-media-communication/" class="">Mediakommunikation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/07-data-communication/" class="">Datakommunikation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/08-applied-webrtc/" class="">Hur WebRTC används</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/09-debugging/" class="">Felsökning</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/10-history-of-webrtc/" class="">Historia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/11-faq/" class="">FAQ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/12-glossary/" class="">Ordlista</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/13-reference/" class="">Referenser</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/webrtc-for-the-curious-kr/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Realtidsnätverk</strong>
+
+  <label for="toc-control">
+    
+    <img src="/webrtc-for-the-curious-kr/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#varför-är-nätverket-så-viktigt-i-realtidskommunikation">Varför är nätverket så viktigt i realtidskommunikation?</a></li>
+    <li><a href="#vilka-egenskaper-har-nätverk-som-gör-det-svårt">Vilka egenskaper har nätverk som gör det svårt?</a>
+      <ul>
+        <li><a href="#bandbredd">Bandbredd</a></li>
+        <li><a href="#sändningstid-och-rundturstid-round-trip-time">Sändningstid och rundturstid (Round Trip Time)</a></li>
+        <li><a href="#jitter">Jitter</a></li>
+        <li><a href="#paketförlust">Paketförlust</a></li>
+        <li><a href="#maximal-överföringsenhet">Maximal överföringsenhet</a></li>
+        <li><a href="#trängsel">Trängsel</a></li>
+        <li><a href="#dynamisk">Dynamisk</a></li>
+      </ul>
+    </li>
+    <li><a href="#lösa-paketförlust">Lösa paketförlust</a>
+      <ul>
+        <li><a href="#bekräftelser">Bekräftelser</a></li>
+        <li><a href="#selektiva-bekräftelser">Selektiva bekräftelser</a></li>
+        <li><a href="#negativa-bekräftelser">Negativa bekräftelser</a></li>
+        <li><a href="#forward-error-correction">Forward Error Correction</a></li>
+      </ul>
+    </li>
+    <li><a href="#hantera-jitter">Hantera jitter</a>
+      <ul>
+        <li><a href="#jitterbuffer-funktion">JitterBuffer-funktion</a></li>
+      </ul>
+    </li>
+    <li><a href="#upptäcka-trängsel">Upptäcka trängsel</a></li>
+    <li><a href="#lösa-trängsel">Lösa trängsel</a>
+      <ul>
+        <li><a href="#skicka-långsammare">Skicka långsammare</a></li>
+        <li><a href="#skicka-mindre">Skicka mindre</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="realtidsnätverk">
+  Realtidsnätverk
+  <a class="anchor" href="#realtidsn%c3%a4tverk">#</a>
+</h1>
+<h2 id="varför-är-nätverket-så-viktigt-i-realtidskommunikation">
+  Varför är nätverket så viktigt i realtidskommunikation?
+  <a class="anchor" href="#varf%c3%b6r-%c3%a4r-n%c3%a4tverket-s%c3%a5-viktigt-i-realtidskommunikation">#</a>
+</h2>
+<p>Nätverk är den begränsande faktorn i realtidskommunikation. I en idealisk värld skulle vi ha obegränsad bandbredd
 och paket skulle komma omedelbart. Detta är dock inte fallet. Nätverk är begränsade och villkoren
 kan ändras när som helst. Att mäta och observera nätverksförhållanden är också ett svårt problem. Du kan få olika beteenden
-beroende på hårdvara, programvara och konfigurationen av den.</p><p>Realtidskommunikation medför också ett problem som inte finns i många andra domäner. För en webbutvecklare är det inte avgörande
+beroende på hårdvara, programvara och konfigurationen av den.</p>
+<p>Realtidskommunikation medför också ett problem som inte finns i många andra domäner. För en webbutvecklare är det inte avgörande
 om din webbplats är långsammare i vissa nätverk. Så länge all data kommer fram är användarna nöjda. Med WebRTC, om din data kommer fram
 sent är den värdelös. Ingen bryr sig om vad som sagts i ett konferenssamtal för 5 sekunder sedan. Det betyder att när man utvecklar ett realtidskommunikationssystem
-måste man göra en avvägning. Vad är min tidsgräns och hur mycket data kan jag skicka?</p><p>Detta kapitel handlar om de koncept som gäller både data- och mediekommunikation. I senare kapitel går vi igenom mer i detalj hur WebRTCs media- och data-subsystem löser dessa problem.</p><h2 id=vilka-egenskaper-har-nätverk-som-gör-det-svårt>Vilka egenskaper har nätverk som gör det svårt?
-<a class=anchor href=#vilka-egenskaper-har-n%c3%a4tverk-som-g%c3%b6r-det-sv%c3%a5rt>#</a></h2><p>Kod som effektivt fungerar i alla nätverk är komplicerad. Du har många olika faktorer, och de
-kan alla påverka varandra på subtila sätt. Här är några av de vanligaste problemen som utvecklare stöter på.</p><h3 id=bandbredd>Bandbredd
-<a class=anchor href=#bandbredd>#</a></h3><p>Bandbredd är den maximala datahastigheten som kan uppnås via en viss väg genom nätet. Det är viktigt att komma ihåg
-att värdet kommer att ändras under tiden. Bandbredden ändras längs en rutt (route) beroende på om fler (eller färre) människor använder den.</p><h3 id=sändningstid-och-rundturstid-round-trip-time>Sändningstid och rundturstid (Round Trip Time)
-<a class=anchor href=#s%c3%a4ndningstid-och-rundturstid-round-trip-time>#</a></h3><p>Sändningstid är hur lång tid det tar för ett paket att anlända till sitt mål. Precis som bandbredd är den inte konstant utan kan variera när som helst.</p><p><code>transmission_time = mottagningstid - send_time</code></p><p>För att beräkna sändningstiden behöver klockorna på avsändaren och mottagaren vara synkroniserade med millisekunders precision.
+måste man göra en avvägning. Vad är min tidsgräns och hur mycket data kan jag skicka?</p>
+<p>Detta kapitel handlar om de koncept som gäller både data- och mediekommunikation. I senare kapitel går vi igenom mer i detalj hur WebRTCs media- och data-subsystem löser dessa problem.</p>
+<h2 id="vilka-egenskaper-har-nätverk-som-gör-det-svårt">
+  Vilka egenskaper har nätverk som gör det svårt?
+  <a class="anchor" href="#vilka-egenskaper-har-n%c3%a4tverk-som-g%c3%b6r-det-sv%c3%a5rt">#</a>
+</h2>
+<p>Kod som effektivt fungerar i alla nätverk är komplicerad. Du har många olika faktorer, och de
+kan alla påverka varandra på subtila sätt. Här är några av de vanligaste problemen som utvecklare stöter på.</p>
+<h3 id="bandbredd">
+  Bandbredd
+  <a class="anchor" href="#bandbredd">#</a>
+</h3>
+<p>Bandbredd är den maximala datahastigheten som kan uppnås via en viss väg genom nätet. Det är viktigt att komma ihåg
+att värdet kommer att ändras under tiden. Bandbredden ändras längs en rutt (route) beroende på om fler (eller färre) människor använder den.</p>
+<h3 id="sändningstid-och-rundturstid-round-trip-time">
+  Sändningstid och rundturstid (Round Trip Time)
+  <a class="anchor" href="#s%c3%a4ndningstid-och-rundturstid-round-trip-time">#</a>
+</h3>
+<p>Sändningstid är hur lång tid det tar för ett paket att anlända till sitt mål. Precis som bandbredd är den inte konstant utan kan variera när som helst.</p>
+<p><code>transmission_time = mottagningstid - send_time</code></p>
+<p>För att beräkna sändningstiden behöver klockorna på avsändaren och mottagaren vara synkroniserade med millisekunders precision.
 Till och med en väldigt liten avvikelse ger oss en opålitlig mätning av sändningstiden.
-Eftersom WebRTC används i väldigt blandade miljöer är det nästan omöjligt att förlita sig på perfekt tidssynkronisering mellan klienterna.</p><p>Tidsmätning tur och retur är en bättre lösning när klocksynkronisering inte är möjligt.</p><p>Istället för att använda distribuerade klockor skickar en WebRTC-klient ett specialpaket med sin egen tidsstämpel <code>sendertime1</code>.
+Eftersom WebRTC används i väldigt blandade miljöer är det nästan omöjligt att förlita sig på perfekt tidssynkronisering mellan klienterna.</p>
+<p>Tidsmätning tur och retur är en bättre lösning när klocksynkronisering inte är möjligt.</p>
+<p>Istället för att använda distribuerade klockor skickar en WebRTC-klient ett specialpaket med sin egen tidsstämpel <code>sendertime1</code>.
 En mottagande klient tar emot paketet och skickar tillbaka tidsstämpeln till avsändaren.
 När den ursprungliga avsändaren får tillbaka tidsstämpeln drar den av <code>sendertime1</code> från aktuella tiden <code>sendertime2</code>.
-Denna tidsdelta kallas &ldquo;round-trip propagation delay&rdquo; eller rundturstid.</p><p><code>rtt = sendertime2 - sendertime1</code></p><p>Hälften av tur- och returresan anses vara en tillräckligt bra approximation av sändningstiden.
+Denna tidsdelta kallas &ldquo;round-trip propagation delay&rdquo; eller rundturstid.</p>
+<p><code>rtt = sendertime2 - sendertime1</code></p>
+<p>Hälften av tur- och returresan anses vara en tillräckligt bra approximation av sändningstiden.
 Denna lösning är dock inte utan nackdelar.
 Den antar att det tar lika lång tid att skicka som att ta emot paket.
 Men i mobilnätverk kan sändnings- och mottagnings-tider vara väldigt olika.
-Du har kanske märkt att uppladdningshastigheter på din telefon nästan alltid är lägre än nedladdningshastigheter.</p><p><code>transmission_time = rtt/2</code></p><p>Tekniken WebRTC använder för att mäta rundturstid beskrivs mer detaljerat i <a href=../06-media-communication/#mottagar--och-avs%c3%a4ndarrapporter>kapitlet om RTCP Sender and Receiver Reports</a>.</p><h3 id=jitter>Jitter
-<a class=anchor href=#jitter>#</a></h3><p>Jitter är det faktum att &ldquo;sändningstid&rdquo; (<code>Transmission Time</code>) kan variera för varje paket. Dina paket kan bli fördröjda, men sen kommer alla på en gång.</p><h3 id=paketförlust>Paketförlust
-<a class=anchor href=#paketf%c3%b6rlust>#</a></h3><p>Paketförlust är när meddelanden går förlorade vid överföring. Förlusten kan vara jämn, eller så kan den komma i korta perioder.
-Detta kan bero på olika nätverkstyper som satellit eller Wi-Fi, eller introduceras av programvara längs vägen.</p><h3 id=maximal-överföringsenhet>Maximal överföringsenhet
-<a class=anchor href=#maximal-%c3%b6verf%c3%b6ringsenhet>#</a></h3><p>Maximal paket storlek (MTU) är gränsen för hur stort ett enskilt data-paket kan vara. Nätverk tillåter dig inte att skicka
-hur stora meddelanden som helst. På protokollnivå kan meddelanden behöva delas upp i flera mindre paket.</p><p>MTU kommer också att skilja sig beroende på vilken nätverksväg du tar. Du kan
-använda ett protokoll som <a href=https://tools.ietf.org/html/rfc1191>Path MTU Discovery</a> för att räkna ut den största paketstorleken du kan skicka utan att det måste fragmenteras.</p><h3 id=trängsel>Trängsel
-<a class=anchor href=#tr%c3%a4ngsel>#</a></h3><p>Trängsel är när nätverksgränserna har uppnåtts. Detta beror vanligtvis på att du har nått den maximala
-bandbredd som den aktuella rutten klarar. Eller så kan det vara operatören som begränsar din datamängd per timme.</p><p>Trängsel visar sig på många olika sätt. Det finns inget standardiserat beteende. I de flesta fall brukar
+Du har kanske märkt att uppladdningshastigheter på din telefon nästan alltid är lägre än nedladdningshastigheter.</p>
+<p><code>transmission_time = rtt/2</code></p>
+<p>Tekniken WebRTC använder för att mäta rundturstid beskrivs mer detaljerat i <a href="../06-media-communication/#mottagar--och-avs%c3%a4ndarrapporter">kapitlet om RTCP Sender and Receiver Reports</a>.</p>
+<h3 id="jitter">
+  Jitter
+  <a class="anchor" href="#jitter">#</a>
+</h3>
+<p>Jitter är det faktum att &ldquo;sändningstid&rdquo; (<code>Transmission Time</code>) kan variera för varje paket. Dina paket kan bli fördröjda, men sen kommer alla på en gång.</p>
+<h3 id="paketförlust">
+  Paketförlust
+  <a class="anchor" href="#paketf%c3%b6rlust">#</a>
+</h3>
+<p>Paketförlust är när meddelanden går förlorade vid överföring. Förlusten kan vara jämn, eller så kan den komma i korta perioder.
+Detta kan bero på olika nätverkstyper som satellit eller Wi-Fi, eller introduceras av programvara längs vägen.</p>
+<h3 id="maximal-överföringsenhet">
+  Maximal överföringsenhet
+  <a class="anchor" href="#maximal-%c3%b6verf%c3%b6ringsenhet">#</a>
+</h3>
+<p>Maximal paket storlek (MTU) är gränsen för hur stort ett enskilt data-paket kan vara. Nätverk tillåter dig inte att skicka
+hur stora meddelanden som helst. På protokollnivå kan meddelanden behöva delas upp i flera mindre paket.</p>
+<p>MTU kommer också att skilja sig beroende på vilken nätverksväg du tar. Du kan
+använda ett protokoll som <a href="https://tools.ietf.org/html/rfc1191">Path MTU Discovery</a> för att räkna ut den största paketstorleken du kan skicka utan att det måste fragmenteras.</p>
+<h3 id="trängsel">
+  Trängsel
+  <a class="anchor" href="#tr%c3%a4ngsel">#</a>
+</h3>
+<p>Trängsel är när nätverksgränserna har uppnåtts. Detta beror vanligtvis på att du har nått den maximala
+bandbredd som den aktuella rutten klarar. Eller så kan det vara operatören som begränsar din datamängd per timme.</p>
+<p>Trängsel visar sig på många olika sätt. Det finns inget standardiserat beteende. I de flesta fall brukar
 nätverket tappa överflödiga paket. I andra fall kommer nätverket att buffra. Detta gör att sändningstiden
 för dina paket kommer att öka. Du kan också märka mer jitter när ditt nätverk blir överbelastat. Detta här är ett område där mycket ändras
-och nya algoritmer för att upptäcka överbelastning utvecklas fortfarande.</p><h3 id=dynamisk>Dynamisk
-<a class=anchor href=#dynamisk>#</a></h3><p>Nätverk är oerhört dynamiska och förhållandena kan förändras snabbt. Under ett samtal kan du skicka och ta emot hundratusentals paket.
+och nya algoritmer för att upptäcka överbelastning utvecklas fortfarande.</p>
+<h3 id="dynamisk">
+  Dynamisk
+  <a class="anchor" href="#dynamisk">#</a>
+</h3>
+<p>Nätverk är oerhört dynamiska och förhållandena kan förändras snabbt. Under ett samtal kan du skicka och ta emot hundratusentals paket.
 Dessa paket kommer att resa genom flera nätverkshopp. De här nätverkshoppen kommer att delas med miljontals andra användare. Även i ditt lokala nätverk kan du ha
-HD-filmer som laddas ner eller kanske en enhet bestämmer sig för att ladda ner en stor programuppdatering.</p><p>För att ha ett bra videosamtal räcker det inte att bara mäta nätverket vid starten. Du måste ständigt utvärdera och hantera alla förändringar
-som kommer från nätverket och programvaran som är inblandad.</p><h2 id=lösa-paketförlust>Lösa paketförlust
-<a class=anchor href=#l%c3%b6sa-paketf%c3%b6rlust>#</a></h2><p>Att hantera paketförlust är det första problemet att lösa. Det finns flera sätt att lösa det, alla med olika för- och nackdelar. Dels beror det på vad du skickar och hur mycket
+HD-filmer som laddas ner eller kanske en enhet bestämmer sig för att ladda ner en stor programuppdatering.</p>
+<p>För att ha ett bra videosamtal räcker det inte att bara mäta nätverket vid starten. Du måste ständigt utvärdera och hantera alla förändringar
+som kommer från nätverket och programvaran som är inblandad.</p>
+<h2 id="lösa-paketförlust">
+  Lösa paketförlust
+  <a class="anchor" href="#l%c3%b6sa-paketf%c3%b6rlust">#</a>
+</h2>
+<p>Att hantera paketförlust är det första problemet att lösa. Det finns flera sätt att lösa det, alla med olika för- och nackdelar. Dels beror det på vad du skickar och hur mycket
 latens som är acceptabelt. Det är också viktigt att notera att inte all paketförlust är kritisk. Att förlora lite video behöver inte vara ett problem, det mänskliga ögat kanske inte
-även uppfattar det. Att förlora en användares textmeddelanden är ödesdigert.</p><p>Låt oss säga att du skickar 10 paket, och paket 5 och 6 går förlorade. Här är några exempel på hur man kan lösa det.</p><h3 id=bekräftelser>Bekräftelser
-<a class=anchor href=#bekr%c3%a4ftelser>#</a></h3><p>Bekräftelser är när mottagaren meddelar avsändaren om varje paket de har fått. Avsändaren är medveten om paketförlust när den får ett bekräftelse
-för samma paket två gånger som inte är det sista paketet. När avsändaren får ett <code>ACK</code> för paket nummer 4 två gånger, vet den att paket nummer 5 inte har levererats än.</p><h3 id=selektiva-bekräftelser>Selektiva bekräftelser
-<a class=anchor href=#selektiva-bekr%c3%a4ftelser>#</a></h3><p>Selektiva bekräftelser är en förbättring jämfört med bekräftelser. En mottagare kan skicka ett <code>SACK</code> som bekräftar flera paket och meddelar avsändaren om luckor.
-Om avsändaren får ett <code>SACK</code> för paket 4 och 7. Då vet den att den måste skicka paket 5 och 6 igen.</p><h3 id=negativa-bekräftelser>Negativa bekräftelser
-<a class=anchor href=#negativa-bekr%c3%a4ftelser>#</a></h3><p>Negativa bekräftelser löser problemet tvärtom. Istället för att meddela avsändaren vad den har fått, meddelar mottagaren avsändaren vad den saknar. I vårt fall kommer ett <code>NACK</code>
-att skickas för paket 5 och 6. Avsändaren får bara reda på paket som mottagaren vill ska skickas igen.</p><h3 id=forward-error-correction>Forward Error Correction
-<a class=anchor href=#forward-error-correction>#</a></h3><p>Forward Error Correction är ett sätt att tåla viss paketförlust. Avsändaren skickar redundant data, vilket innebär att ett enstaka förlorat paket inte påverkar den slutliga strömmen. En populär algoritm för detta är Reed–Solomon-felkorrigering.</p><p>Detta minskar latensen och komplexiteten för att skicka och hantera bekräftelser. Forward Error Correction är ett slöseri med bandbredd om nätverket du använder inte har någon paketförlust.</p><h2 id=hantera-jitter>Hantera jitter
-<a class=anchor href=#hantera-jitter>#</a></h2><p>Jitter finns i de flesta nätverk. Även på ett lokalt nätverk har du många enheter som skickar data med varierande hastigheter. Du kan enkelt se jitter genom att pinga en annan enhet med kommandot <code>ping</code> och notera variationen i tiden det tar att få svar.</p><p>För att hantera jitter använder du en JitterBuffer. En JitterBuffer garanterar en stabil leveranstid för paketen. Nackdelen är att JitterBuffer lägger till lite extra latens för varje paket som kommer i tid.
-Fördelen är att sena paket inte orsakar något jitter. Föreställ dig att du ser följande ankomsttider för några paket under ett samtal:</p><pre tabindex=0><code>* time=1.46 ms
+även uppfattar det. Att förlora en användares textmeddelanden är ödesdigert.</p>
+<p>Låt oss säga att du skickar 10 paket, och paket 5 och 6 går förlorade. Här är några exempel på hur man kan lösa det.</p>
+<h3 id="bekräftelser">
+  Bekräftelser
+  <a class="anchor" href="#bekr%c3%a4ftelser">#</a>
+</h3>
+<p>Bekräftelser är när mottagaren meddelar avsändaren om varje paket de har fått. Avsändaren är medveten om paketförlust när den får ett bekräftelse
+för samma paket två gånger som inte är det sista paketet. När avsändaren får ett <code>ACK</code> för paket nummer 4 två gånger, vet den att paket nummer 5 inte har levererats än.</p>
+<h3 id="selektiva-bekräftelser">
+  Selektiva bekräftelser
+  <a class="anchor" href="#selektiva-bekr%c3%a4ftelser">#</a>
+</h3>
+<p>Selektiva bekräftelser är en förbättring jämfört med bekräftelser. En mottagare kan skicka ett <code>SACK</code> som bekräftar flera paket och meddelar avsändaren om luckor.
+Om avsändaren får ett <code>SACK</code> för paket 4 och 7. Då vet den att den måste skicka paket 5 och 6 igen.</p>
+<h3 id="negativa-bekräftelser">
+  Negativa bekräftelser
+  <a class="anchor" href="#negativa-bekr%c3%a4ftelser">#</a>
+</h3>
+<p>Negativa bekräftelser löser problemet tvärtom. Istället för att meddela avsändaren vad den har fått, meddelar mottagaren avsändaren vad den saknar. I vårt fall kommer ett <code>NACK</code>
+att skickas för paket 5 och 6. Avsändaren får bara reda på paket som mottagaren vill ska skickas igen.</p>
+<h3 id="forward-error-correction">
+  Forward Error Correction
+  <a class="anchor" href="#forward-error-correction">#</a>
+</h3>
+<p>Forward Error Correction är ett sätt att tåla viss paketförlust. Avsändaren skickar redundant data, vilket innebär att ett enstaka förlorat paket inte påverkar den slutliga strömmen. En populär algoritm för detta är Reed–Solomon-felkorrigering.</p>
+<p>Detta minskar latensen och komplexiteten för att skicka och hantera bekräftelser. Forward Error Correction är ett slöseri med bandbredd om nätverket du använder inte har någon paketförlust.</p>
+<h2 id="hantera-jitter">
+  Hantera jitter
+  <a class="anchor" href="#hantera-jitter">#</a>
+</h2>
+<p>Jitter finns i de flesta nätverk. Även på ett lokalt nätverk har du många enheter som skickar data med varierande hastigheter. Du kan enkelt se jitter genom att pinga en annan enhet med kommandot <code>ping</code> och notera variationen i tiden det tar att få svar.</p>
+<p>För att hantera jitter använder du en JitterBuffer. En JitterBuffer garanterar en stabil leveranstid för paketen. Nackdelen är att JitterBuffer lägger till lite extra latens för varje paket som kommer i tid.
+Fördelen är att sena paket inte orsakar något jitter. Föreställ dig att du ser följande ankomsttider för några paket under ett samtal:</p>
+<pre tabindex="0"><code>* time=1.46 ms
 * time=1.93 ms
 * time=1.57 ms
 * time=1.55 ms
@@ -73,20 +612,161 @@ Fördelen är att sena paket inte orsakar något jitter. Föreställ dig att du 
 * time=1.73 ms
 * time=1.80 ms
 </code></pre><p>I det här fallet skulle cirka 1,8 ms vara ett bra val. Paket som kommer försent kommer att använda vårt latensfönster. Paket som kommer tidigt kommer att fördröjas lite och kan
-fylla ut luckan från sena paket. Det betyder att videoströmmen inte längre stammar och ger klienten en jämn leveranshastighet.</p><h3 id=jitterbuffer-funktion>JitterBuffer-funktion
-<a class=anchor href=#jitterbuffer-funktion>#</a></h3><p><img src=../../images/05-jitterbuffer.png alt=JitterBuffer title=JitterBuffer></p><p>Varje paket läggs till jitterbufferten så snart det tas emot.
+fylla ut luckan från sena paket. Det betyder att videoströmmen inte längre stammar och ger klienten en jämn leveranshastighet.</p>
+<h3 id="jitterbuffer-funktion">
+  JitterBuffer-funktion
+  <a class="anchor" href="#jitterbuffer-funktion">#</a>
+</h3>
+<p><img src="../../images/05-jitterbuffer.png" alt="JitterBuffer" title="JitterBuffer"/></p>
+<p>Varje paket läggs till jitterbufferten så snart det tas emot.
 När det finns tillräckligt med paket för att återskapa hela bilden släpps paketen som utgör bilden från bufferten och skickas för avkodning.
 Avkodaren i sin tur ritar upp bilden på användarens skärm.
-Eftersom jitterbufferten har en begränsad storlek kommer paket som fastnat för länge i bufferten att kasseras.</p><p>Läs mer om hur video konverteras till RTP-paket och varför rekonstruktion är nödvändig <a href=../06-media-communication/#rtp>i kapitlet om mediekommunikation</a>.</p><p><code>jitterBufferDelay</code> visar tydligt ditt nätverks prestanda och hur den påverkar videouppspelningens jämnhet.
-Det är en del av <a href=https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-jitterbufferdelay>WebRTC Statistics API</a> och spelar roll för mottagarens inkommande videoström.
+Eftersom jitterbufferten har en begränsad storlek kommer paket som fastnat för länge i bufferten att kasseras.</p>
+<p>Läs mer om hur video konverteras till RTP-paket och varför rekonstruktion är nödvändig <a href="../06-media-communication/#rtp">i kapitlet om mediekommunikation</a>.</p>
+<p><code>jitterBufferDelay</code> visar tydligt ditt nätverks prestanda och hur den påverkar videouppspelningens jämnhet.
+Det är en del av <a href="https://www.w3.org/TR/webrtc-stats/#dom-rtcinboundrtpstreamstats-jitterbufferdelay">WebRTC Statistics API</a> och spelar roll för mottagarens inkommande videoström.
 Förseningen definierar hur mycket tid bilder spenderar i jitterbuffern innan de skickas vidare för avkodning.
-En lång jitterbuffertfördröjning innebär att ditt nätverk är överbelastat.</p><h2 id=upptäcka-trängsel>Upptäcka trängsel
-<a class=anchor href=#uppt%c3%a4cka-tr%c3%a4ngsel>#</a></h2><p>Innan vi ens kan lösa trängsel måste vi upptäcka det. För att upptäcka det använder vi en trängselregulator (congestion controller). Detta är ett komplicerat ämne och förändras fortfarande snabbt.
+En lång jitterbuffertfördröjning innebär att ditt nätverk är överbelastat.</p>
+<h2 id="upptäcka-trängsel">
+  Upptäcka trängsel
+  <a class="anchor" href="#uppt%c3%a4cka-tr%c3%a4ngsel">#</a>
+</h2>
+<p>Innan vi ens kan lösa trängsel måste vi upptäcka det. För att upptäcka det använder vi en trängselregulator (congestion controller). Detta är ett komplicerat ämne och förändras fortfarande snabbt.
 Nya algoritmer publiceras fortfarande och testas. På en hög nivå fungerar de alla på samma sätt. En överbelastningsregulator ger en uppskattning av bandbredd givet en viss indata.
-Det här är några möjliga indata:</p><ul><li><strong>Paketförlust</strong> - Paket tappas när nätverket blir överbelastat.</li><li><strong>Jitter</strong> - När nätverksutrustningen blir mer överbelastad kommer köande av paket orsaka oregelbundna leveranstider.</li><li><strong>Rundturstid</strong> - Paket tar längre tid att anlända när uppkopplingen är överbelastad. Till skillnad från jitter fortsätter rundturstiden bara att öka.</li><li><strong>Explicit trängselnotis</strong> - Nyare nätverk kan märka paket som riskerar att tappas för att undvika trängsel.</li></ul><p>Dessa värden måste mätas kontinuerligt under samtalet. Användningen av nätverket kan öka eller minska, så den tillgängliga bandbredden kan ständigt förändras.</p><h2 id=lösa-trängsel>Lösa trängsel
-<a class=anchor href=#l%c3%b6sa-tr%c3%a4ngsel>#</a></h2><p>Nu när vi har en uppskattad bandbredd måste vi justera vad vi skickar. Hur vi justerar beror på vilken typ av data vi vill skicka.</p><h3 id=skicka-långsammare>Skicka långsammare
-<a class=anchor href=#skicka-l%c3%a5ngsammare>#</a></h3><p>Att begränsa hastigheten med vilken du skickar data är ett enkelt sätt att förhindra trängsel. Trängselregulatorn ger dig en uppskattning, och det är
-avsändarens ansvar att bedöma hur mycket hastigheten ska begränsas.</p><p>Detta är den vanligaste metoden som brukar användas. Med protokoll som TCP görs allt detta av operativsystemet och helt transparent för både användare och utvecklare.</p><h3 id=skicka-mindre>Skicka mindre
-<a class=anchor href=#skicka-mindre>#</a></h3><p>I vissa fall kan vi skicka mindre information för att undvika att slå i taket. Vi kan också ha hårda tidsbegränsningar för när våra data ska levereras, så vi kanske kan inte skicka långsammare. Det här är en typisk begränsning som realtidsmedier faller under.</p><p>Om vi inte har tillräckligt med bandbredd kan vi sänka kvaliteten på den video vi skickar. Detta kräver en tät feedbackslinga mellan din videoencoder och din trängselregulator.</p></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/commit/47789f2a3370aba068ff21e81e7bee70cafef36d title='Senast modifierad av Claes Mogren | oktober 20, 2022' target=_blank rel=noopener><img src=/webrtc-for-the-curious-kr/svg/calendar.svg class=book-icon alt>
-<span>oktober 20, 2022</span></a></div><div><a class="flex align-center" href=https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/edit/master/content/docs/05-real-time-networking.md target=_blank rel=noopener><img src=/webrtc-for-the-curious-kr/svg/edit.svg class=book-icon alt>
-<span>Redigera denna sida</span></a></div></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#varför-är-nätverket-så-viktigt-i-realtidskommunikation>Varför är nätverket så viktigt i realtidskommunikation?</a></li><li><a href=#vilka-egenskaper-har-nätverk-som-gör-det-svårt>Vilka egenskaper har nätverk som gör det svårt?</a><ul><li><a href=#bandbredd>Bandbredd</a></li><li><a href=#sändningstid-och-rundturstid-round-trip-time>Sändningstid och rundturstid (Round Trip Time)</a></li><li><a href=#jitter>Jitter</a></li><li><a href=#paketförlust>Paketförlust</a></li><li><a href=#maximal-överföringsenhet>Maximal överföringsenhet</a></li><li><a href=#trängsel>Trängsel</a></li><li><a href=#dynamisk>Dynamisk</a></li></ul></li><li><a href=#lösa-paketförlust>Lösa paketförlust</a><ul><li><a href=#bekräftelser>Bekräftelser</a></li><li><a href=#selektiva-bekräftelser>Selektiva bekräftelser</a></li><li><a href=#negativa-bekräftelser>Negativa bekräftelser</a></li><li><a href=#forward-error-correction>Forward Error Correction</a></li></ul></li><li><a href=#hantera-jitter>Hantera jitter</a><ul><li><a href=#jitterbuffer-funktion>JitterBuffer-funktion</a></li></ul></li><li><a href=#upptäcka-trängsel>Upptäcka trängsel</a></li><li><a href=#lösa-trängsel>Lösa trängsel</a><ul><li><a href=#skicka-långsammare>Skicka långsammare</a></li><li><a href=#skicka-mindre>Skicka mindre</a></li></ul></li></ul></nav></div></aside></main></body></html>
+Det här är några möjliga indata:</p>
+<ul>
+<li><strong>Paketförlust</strong> - Paket tappas när nätverket blir överbelastat.</li>
+<li><strong>Jitter</strong> - När nätverksutrustningen blir mer överbelastad kommer köande av paket orsaka oregelbundna leveranstider.</li>
+<li><strong>Rundturstid</strong> - Paket tar längre tid att anlända när uppkopplingen är överbelastad. Till skillnad från jitter fortsätter rundturstiden bara att öka.</li>
+<li><strong>Explicit trängselnotis</strong> - Nyare nätverk kan märka paket som riskerar att tappas för att undvika trängsel.</li>
+</ul>
+<p>Dessa värden måste mätas kontinuerligt under samtalet. Användningen av nätverket kan öka eller minska, så den tillgängliga bandbredden kan ständigt förändras.</p>
+<h2 id="lösa-trängsel">
+  Lösa trängsel
+  <a class="anchor" href="#l%c3%b6sa-tr%c3%a4ngsel">#</a>
+</h2>
+<p>Nu när vi har en uppskattad bandbredd måste vi justera vad vi skickar. Hur vi justerar beror på vilken typ av data vi vill skicka.</p>
+<h3 id="skicka-långsammare">
+  Skicka långsammare
+  <a class="anchor" href="#skicka-l%c3%a5ngsammare">#</a>
+</h3>
+<p>Att begränsa hastigheten med vilken du skickar data är ett enkelt sätt att förhindra trängsel. Trängselregulatorn ger dig en uppskattning, och det är
+avsändarens ansvar att bedöma hur mycket hastigheten ska begränsas.</p>
+<p>Detta är den vanligaste metoden som brukar användas. Med protokoll som TCP görs allt detta av operativsystemet och helt transparent för både användare och utvecklare.</p>
+<h3 id="skicka-mindre">
+  Skicka mindre
+  <a class="anchor" href="#skicka-mindre">#</a>
+</h3>
+<p>I vissa fall kan vi skicka mindre information för att undvika att slå i taket. Vi kan också ha hårda tidsbegränsningar för när våra data ska levereras, så vi kanske kan inte skicka långsammare. Det här är en typisk begränsning som realtidsmedier faller under.</p>
+<p>Om vi inte har tillräckligt med bandbredd kan vi sänka kvaliteten på den video vi skickar. Detta kräver en tät feedbackslinga mellan din videoencoder och din trängselregulator.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+  <div><a class="flex align-center" href="https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/commit/47789f2a3370aba068ff21e81e7bee70cafef36d" title='Senast modifierad av Claes Mogren | oktober 20, 2022' target="_blank" rel="noopener">
+      <img src="/webrtc-for-the-curious-kr/svg/calendar.svg" class="book-icon" alt="" />
+      <span>oktober 20, 2022</span>
+    </a>
+  </div>
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/edit/master/content/docs/05-real-time-networking.md" target="_blank" rel="noopener">
+      <img src="/webrtc-for-the-curious-kr/svg/edit.svg" class="book-icon" alt="" />
+      <span>Redigera denna sida</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#varför-är-nätverket-så-viktigt-i-realtidskommunikation">Varför är nätverket så viktigt i realtidskommunikation?</a></li>
+    <li><a href="#vilka-egenskaper-har-nätverk-som-gör-det-svårt">Vilka egenskaper har nätverk som gör det svårt?</a>
+      <ul>
+        <li><a href="#bandbredd">Bandbredd</a></li>
+        <li><a href="#sändningstid-och-rundturstid-round-trip-time">Sändningstid och rundturstid (Round Trip Time)</a></li>
+        <li><a href="#jitter">Jitter</a></li>
+        <li><a href="#paketförlust">Paketförlust</a></li>
+        <li><a href="#maximal-överföringsenhet">Maximal överföringsenhet</a></li>
+        <li><a href="#trängsel">Trängsel</a></li>
+        <li><a href="#dynamisk">Dynamisk</a></li>
+      </ul>
+    </li>
+    <li><a href="#lösa-paketförlust">Lösa paketförlust</a>
+      <ul>
+        <li><a href="#bekräftelser">Bekräftelser</a></li>
+        <li><a href="#selektiva-bekräftelser">Selektiva bekräftelser</a></li>
+        <li><a href="#negativa-bekräftelser">Negativa bekräftelser</a></li>
+        <li><a href="#forward-error-correction">Forward Error Correction</a></li>
+      </ul>
+    </li>
+    <li><a href="#hantera-jitter">Hantera jitter</a>
+      <ul>
+        <li><a href="#jitterbuffer-funktion">JitterBuffer-funktion</a></li>
+      </ul>
+    </li>
+    <li><a href="#upptäcka-trängsel">Upptäcka trängsel</a></li>
+    <li><a href="#lösa-trängsel">Lösa trängsel</a>
+      <ul>
+        <li><a href="#skicka-långsammare">Skicka långsammare</a></li>
+        <li><a href="#skicka-mindre">Skicka mindre</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

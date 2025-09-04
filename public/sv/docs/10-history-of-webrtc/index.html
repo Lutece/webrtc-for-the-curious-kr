@@ -1,4 +1,9 @@
-<!doctype html><html lang=sv dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="
+<!DOCTYPE html>
+<html lang="sv" dir="ltr">
+<head><script src="/webrtc-for-the-curious-kr/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=webrtc-for-the-curious-kr/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
   Historia
   #
 
@@ -9,24 +14,480 @@ Detta kapitel skrivs fortfarande och vi har inte alla fakta än. Vi genomför in
 
 RTP och RTCP är protokollet som hanterar all mediatransport för WebRTC. Det definierades i RFC 1889 i januari 1996.
 Vi är väldigt lyckliga att få en av författarna Ron Frederick prata om det själv. Ron laddade nyligen upp
-Network Video tool på GitHub, ett projekt som la grunden till RTP."><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="https://lutece.github.io/webrtc-for-the-curious-kr/sv/docs/10-history-of-webrtc/"><meta property="og:site_name" content="WebRTC för nyfikna"><meta property="og:title" content="Historia"><meta property="og:description" content="Historia # Detta kapitel skrivs fortfarande och vi har inte alla fakta än. Vi genomför intervjuer för att bygga en mer samlad historia av digital kommunikation.
-RTP # RTP och RTCP är protokollet som hanterar all mediatransport för WebRTC. Det definierades i RFC 1889 i januari 1996. Vi är väldigt lyckliga att få en av författarna Ron Frederick prata om det själv. Ron laddade nyligen upp Network Video tool på GitHub, ett projekt som la grunden till RTP."><meta property="og:locale" content="sv"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2021-06-20T01:50:07-07:00"><title>Historia | WebRTC för nyfikna</title><link rel=manifest href=/webrtc-for-the-curious-kr/manifest.json><link rel=icon href=/webrtc-for-the-curious-kr/favicon.png><link rel=canonical href=https://lutece.github.io/webrtc-for-the-curious-kr/sv/docs/10-history-of-webrtc/><link rel=alternate hreflang=en href=https://lutece.github.io/webrtc-for-the-curious-kr/docs/10-history-of-webrtc/ title=History><link rel=alternate hreflang=ru href=https://lutece.github.io/webrtc-for-the-curious-kr/ru/docs/10-history-of-webrtc/ title=History><link rel=alternate hreflang=zh href=https://lutece.github.io/webrtc-for-the-curious-kr/zh/docs/10-history-of-webrtc/ title=历史><link rel=alternate hreflang=ja href=https://lutece.github.io/webrtc-for-the-curious-kr/ja/docs/10-history-of-webrtc/ title=歴史><link rel=alternate hreflang=fa href=https://lutece.github.io/webrtc-for-the-curious-kr/fa/docs/10-history-of-webrtc/ title=تاریخچه><link rel=alternate hreflang=fr href=https://lutece.github.io/webrtc-for-the-curious-kr/fr/docs/10-history-of-webrtc/ title=History><link rel=alternate hreflang=id href=https://lutece.github.io/webrtc-for-the-curious-kr/id/docs/10-history-of-webrtc/ title=History><link rel=alternate hreflang=es href=https://lutece.github.io/webrtc-for-the-curious-kr/es/docs/10-history-of-webrtc/ title=History><link rel=alternate hreflang=tr href=https://lutece.github.io/webrtc-for-the-curious-kr/tr/docs/10-history-of-webrtc/ title=Tarihçe><link rel=alternate hreflang=ko href=https://lutece.github.io/webrtc-for-the-curious-kr/ko/docs/10-history-of-webrtc/ title=역사><link rel=stylesheet href=/webrtc-for-the-curious-kr/book.min.a1f8103544a99b89cb7808ead8d43817d98d4f3e608b9e0e5ff491b382e3434d.css integrity="sha256-ofgQNUSpm4nLeAjq2NQ4F9mNTz5gi54OX/SRs4LjQ00=" crossorigin=anonymous><script defer src=/webrtc-for-the-curious-kr/fuse.min.js></script><script defer src=/webrtc-for-the-curious-kr/sv.search.min.2a793360b4304ee9083926235510b8e6ac83ec42e432919d9f5b95d2ea32c23a.js integrity="sha256-KnkzYLQwTukIOSYjVRC45qyD7ELkMpGdn1uV0uoywjo=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/webrtc-for-the-curious-kr/sv/><span>WebRTC för nyfikna</span></a></h2><div class="book-search hidden"><input type=text id=book-search-input placeholder=Sök aria-label=Sök maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul class=book-languages><li><input type=checkbox id=languages class=toggle>
-<label for=languages class="flex justify-between"><a role=button class="flex align-center"><img src=/webrtc-for-the-curious-kr/svg/translate.svg class=book-icon alt=Languages>
-Svenska</a></label><ul><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/docs/10-history-of-webrtc/>English</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/ru/docs/10-history-of-webrtc/>Русский</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/zh/docs/10-history-of-webrtc/>简体中文</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/ja/docs/10-history-of-webrtc/>日本語</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/fa/docs/10-history-of-webrtc/>Persian</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/fr/docs/10-history-of-webrtc/>Français</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/id/docs/10-history-of-webrtc/>Bahasa Indonesia</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/es/docs/10-history-of-webrtc/>Español</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/tr/docs/10-history-of-webrtc/>Türkçe</a></li><li><a href=https://lutece.github.io/webrtc-for-the-curious-kr/ko/docs/10-history-of-webrtc/>한국어</a></li></ul></li></ul><ul><li><a href=/webrtc-for-the-curious-kr/sv/docs/01-what-why-and-how/>Vad, varför och hur</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/02-signaling/>Signalering</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/03-connecting/>Anslutning</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/04-securing/>Säkerhet</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/05-real-time-networking/>Realtidsnätverk</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/06-media-communication/>Mediakommunikation</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/07-data-communication/>Datakommunikation</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/08-applied-webrtc/>Hur WebRTC används</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/09-debugging/>Felsökning</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/10-history-of-webrtc/ class=active>Historia</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/11-faq/>FAQ</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/12-glossary/>Ordlista</a></li><li><a href=/webrtc-for-the-curious-kr/sv/docs/13-reference/>Referenser</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/webrtc-for-the-curious-kr/svg/menu.svg class=book-icon alt=Menu>
-</label><strong>Historia</strong>
-<label for=toc-control><img src=/webrtc-for-the-curious-kr/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#rtp>RTP</a><ul><li><a href=#i-hans-egna-ord>I hans egna ord</a></li><li><a href=#kommer-du-ihåg-de-andra-personernas-motividéer-i-utkastet>Kommer du ihåg de andra personernas motiv/idéer i utkastet?</a></li><li><a href=#multicast-är-superfascinerande-webrtc-är-enkelsändning-kan-du-utveckla-det-lite-mer>Multicast är superfascinerande. WebRTC är enkelsändning, kan du utveckla det lite mer?</a></li><li><a href=#vilka-saker-trodde-du-skulle-byggas-med-rtp-har-något-coolt-rtp>Vilka saker trodde du skulle byggas med RTP? Har något coolt RTP</a></li><li><a href=#varför-var-du-tvungen-att-bygga-din-egen-videokomprimering-fanns-det-inget-annat-tillgängligt-då>Varför var du tvungen att bygga din egen videokomprimering. Fanns det inget annat tillgängligt då?</a></li></ul></li><li><a href=#webrtc>WebRTC</a><ul><li><a href=#vad-fick-dig-att-börja-jobba-på-webrtc>Vad fick dig att börja jobba på WebRTC?</a></li><li><a href=#det-första-google-projektet>Det första Google-projektet</a></li><li><a href=#chrome>Chrome</a></li><li><a href=#hur-webrtc-kom-till>Hur WebRTC kom till</a></li><li><a href=#standardisering>Standardisering</a></li><li><a href=#att-stå-på-jättarnas-axlar>Att stå på jättarnas axlar</a></li><li><a href=#framtiden>Framtiden</a></li></ul></li></ul></nav></aside></header><article class="markdown book-article"><h1 id=historia>Historia
-<a class=anchor href=#historia>#</a></h1><p>Detta kapitel skrivs fortfarande och vi har inte alla fakta än. Vi genomför intervjuer för att bygga en mer samlad historia av digital kommunikation.</p><h2 id=rtp>RTP
-<a class=anchor href=#rtp>#</a></h2><p>RTP och RTCP är protokollet som hanterar all mediatransport för WebRTC. Det definierades i <a href=https://tools.ietf.org/html/rfc1889>RFC 1889</a> i januari 1996.
-Vi är väldigt lyckliga att få en av författarna <a href=https://github.com/ronf>Ron Frederick</a> prata om det själv. Ron laddade nyligen upp
-<a href=https://github.com/ronf/nv>Network Video tool</a> på GitHub, ett projekt som la grunden till RTP.</p><h3 id=i-hans-egna-ord>I hans egna ord
-<a class=anchor href=#i-hans-egna-ord>#</a></h3><p>(<a href=../../../docs/10-history-of-webrtc/#rtp>Originaltext på engelska</a>)</p><p>I oktober 1992 började jag experimentera med Sun VideoPix frame grabber
+Network Video tool på GitHub, ett projekt som la grunden till RTP.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/webrtc-for-the-curious-kr/sv/docs/10-history-of-webrtc/">
+  <meta property="og:site_name" content="WebRTC för nyfikna">
+  <meta property="og:title" content="Historia">
+  <meta property="og:description" content="Historia # Detta kapitel skrivs fortfarande och vi har inte alla fakta än. Vi genomför intervjuer för att bygga en mer samlad historia av digital kommunikation.
+RTP # RTP och RTCP är protokollet som hanterar all mediatransport för WebRTC. Det definierades i RFC 1889 i januari 1996. Vi är väldigt lyckliga att få en av författarna Ron Frederick prata om det själv. Ron laddade nyligen upp Network Video tool på GitHub, ett projekt som la grunden till RTP.">
+  <meta property="og:locale" content="sv">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:modified_time" content="2021-06-20T01:50:07-07:00">
+<title>Historia | WebRTC för nyfikna</title>
+<link rel="manifest" href="/webrtc-for-the-curious-kr/manifest.json">
+<link rel="icon" href="/webrtc-for-the-curious-kr/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/webrtc-for-the-curious-kr/sv/docs/10-history-of-webrtc/">
+  <link rel="alternate" hreflang="ko" href="http://localhost:1313/webrtc-for-the-curious-kr/docs/10-history-of-webrtc/" title="역사">
+  <link rel="alternate" hreflang="ru" href="http://localhost:1313/webrtc-for-the-curious-kr/ru/docs/10-history-of-webrtc/" title="History">
+  <link rel="alternate" hreflang="zh" href="http://localhost:1313/webrtc-for-the-curious-kr/zh/docs/10-history-of-webrtc/" title="历史">
+  <link rel="alternate" hreflang="ja" href="http://localhost:1313/webrtc-for-the-curious-kr/ja/docs/10-history-of-webrtc/" title="歴史">
+  <link rel="alternate" hreflang="fa" href="http://localhost:1313/webrtc-for-the-curious-kr/fa/docs/10-history-of-webrtc/" title="تاریخچه">
+  <link rel="alternate" hreflang="fr" href="http://localhost:1313/webrtc-for-the-curious-kr/fr/docs/10-history-of-webrtc/" title="History">
+  <link rel="alternate" hreflang="id" href="http://localhost:1313/webrtc-for-the-curious-kr/id/docs/10-history-of-webrtc/" title="History">
+  <link rel="alternate" hreflang="es" href="http://localhost:1313/webrtc-for-the-curious-kr/es/docs/10-history-of-webrtc/" title="History">
+  <link rel="alternate" hreflang="tr" href="http://localhost:1313/webrtc-for-the-curious-kr/tr/docs/10-history-of-webrtc/" title="Tarihçe">
+<link rel="stylesheet" href="/webrtc-for-the-curious-kr/book.min.a1f8103544a99b89cb7808ead8d43817d98d4f3e608b9e0e5ff491b382e3434d.css" integrity="sha256-ofgQNUSpm4nLeAjq2NQ4F9mNTz5gi54OX/SRs4LjQ00=" crossorigin="anonymous">
+  <script defer src="/webrtc-for-the-curious-kr/fuse.min.js"></script>
+  <script defer src="/webrtc-for-the-curious-kr/sv.search.min.2a793360b4304ee9083926235510b8e6ac83ec42e432919d9f5b95d2ea32c23a.js" integrity="sha256-KnkzYLQwTukIOSYjVRC45qyD7ELkMpGdn1uV0uoywjo=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/webrtc-for-the-curious-kr/sv/"><span>WebRTC för nyfikna</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Sök" aria-label="Sök" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/webrtc-for-the-curious-kr/svg/translate.svg" class="book-icon" alt="Languages" />
+        Svenska
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/docs/10-history-of-webrtc/">
+          한국어
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/en/">
+          English
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/ru/docs/10-history-of-webrtc/">
+          Русский
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/zh/docs/10-history-of-webrtc/">
+          简体中文
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/ja/docs/10-history-of-webrtc/">
+          日本語
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/fa/docs/10-history-of-webrtc/">
+          Persian
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/fr/docs/10-history-of-webrtc/">
+          Français
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/id/docs/10-history-of-webrtc/">
+          Bahasa Indonesia
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/es/docs/10-history-of-webrtc/">
+          Español
+        </a>
+      </li>
+      
+      <li>
+        <a href="http://localhost:1313/webrtc-for-the-curious-kr/tr/docs/10-history-of-webrtc/">
+          Türkçe
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/01-what-why-and-how/" class="">Vad, varför och hur</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/02-signaling/" class="">Signalering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/03-connecting/" class="">Anslutning</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/04-securing/" class="">Säkerhet</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/05-real-time-networking/" class="">Realtidsnätverk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/06-media-communication/" class="">Mediakommunikation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/07-data-communication/" class="">Datakommunikation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/08-applied-webrtc/" class="">Hur WebRTC används</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/09-debugging/" class="">Felsökning</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/10-history-of-webrtc/" class="active">Historia</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/11-faq/" class="">FAQ</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/12-glossary/" class="">Ordlista</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/webrtc-for-the-curious-kr/sv/docs/13-reference/" class="">Referenser</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/webrtc-for-the-curious-kr/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Historia</strong>
+
+  <label for="toc-control">
+    
+    <img src="/webrtc-for-the-curious-kr/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#rtp">RTP</a>
+      <ul>
+        <li><a href="#i-hans-egna-ord">I hans egna ord</a></li>
+        <li><a href="#kommer-du-ihåg-de-andra-personernas-motividéer-i-utkastet">Kommer du ihåg de andra personernas motiv/idéer i utkastet?</a></li>
+        <li><a href="#multicast-är-superfascinerande-webrtc-är-enkelsändning-kan-du-utveckla-det-lite-mer">Multicast är superfascinerande. WebRTC är enkelsändning, kan du utveckla det lite mer?</a></li>
+        <li><a href="#vilka-saker-trodde-du-skulle-byggas-med-rtp-har-något-coolt-rtp">Vilka saker trodde du skulle byggas med RTP? Har något coolt RTP</a></li>
+        <li><a href="#varför-var-du-tvungen-att-bygga-din-egen-videokomprimering-fanns-det-inget-annat-tillgängligt-då">Varför var du tvungen att bygga din egen videokomprimering. Fanns det inget annat tillgängligt då?</a></li>
+      </ul>
+    </li>
+    <li><a href="#webrtc">WebRTC</a>
+      <ul>
+        <li><a href="#vad-fick-dig-att-börja-jobba-på-webrtc">Vad fick dig att börja jobba på WebRTC?</a></li>
+        <li><a href="#det-första-google-projektet">Det första Google-projektet</a></li>
+        <li><a href="#chrome">Chrome</a></li>
+        <li><a href="#hur-webrtc-kom-till">Hur WebRTC kom till</a></li>
+        <li><a href="#standardisering">Standardisering</a></li>
+        <li><a href="#att-stå-på-jättarnas-axlar">Att stå på jättarnas axlar</a></li>
+        <li><a href="#framtiden">Framtiden</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="historia">
+  Historia
+  <a class="anchor" href="#historia">#</a>
+</h1>
+<p>Detta kapitel skrivs fortfarande och vi har inte alla fakta än. Vi genomför intervjuer för att bygga en mer samlad historia av digital kommunikation.</p>
+<h2 id="rtp">
+  RTP
+  <a class="anchor" href="#rtp">#</a>
+</h2>
+<p>RTP och RTCP är protokollet som hanterar all mediatransport för WebRTC. Det definierades i <a href="https://tools.ietf.org/html/rfc1889">RFC 1889</a> i januari 1996.
+Vi är väldigt lyckliga att få en av författarna <a href="https://github.com/ronf">Ron Frederick</a> prata om det själv. Ron laddade nyligen upp
+<a href="https://github.com/ronf/nv">Network Video tool</a> på GitHub, ett projekt som la grunden till RTP.</p>
+<h3 id="i-hans-egna-ord">
+  I hans egna ord
+  <a class="anchor" href="#i-hans-egna-ord">#</a>
+</h3>
+<p>(<a href="../../../docs/10-history-of-webrtc/#rtp">Originaltext på engelska</a>)</p>
+<p>I oktober 1992 började jag experimentera med Sun VideoPix frame grabber
 med tanken att skriva ett nätverksvideokonferensverktyg baserat på IP
 multicast. Det modellerades efter &ldquo;vat&rdquo; - ett telefonkonferensverktyg utvecklat
 på LBL, eftersom det använde ett liknande enkelt protokoll där användare som vill
 gå med i konferenser helt enkelt bara skickade data till en viss
 multicast-grupp och samtidigt lyssnade på den gruppen för ta emot video från andra
-medlemmar.</p><p>För att programmet verkligen skulle lyckas behövde det komprimera
+medlemmar.</p>
+<p>För att programmet verkligen skulle lyckas behövde det komprimera
 videodata innan den skickas till nätverket. Mitt mål var att göra en tillräkligt
 bra videoström som skulle rymmas i cirka 128 kbps, eller en den normala
 bandbredden tillgänglig på en vanlig ISDN-modem linje. Jag hoppades också att göra
@@ -34,43 +495,55 @@ något som fortfarande såg ok ut men bara använde halva denna bandbredd. Detta
 betydde att jag behövde ungefär en faktor 20 i kompression för den specifika
 bildstorlek och bildhastighet jag arbetade med. Jag kunde uppnå denna
 komprimering och ansökte om patent på de tekniker som jag använde, senare beviljat
-i patent <a href=https://patents.google.com/patent/US5485212A>US5485212A</a>: Videokomprimering av programvara för telekonferenser.</p><p>I början av november 1992 släppte jag videokonferensverktyget &ldquo;nv&rdquo; (själva
+i patent <a href="https://patents.google.com/patent/US5485212A">US5485212A</a>: Videokomprimering av programvara för telekonferenser.</p>
+<p>I början av november 1992 släppte jag videokonferensverktyget &ldquo;nv&rdquo; (själva
 programmet) gratis på nätet. Efter några initiala tester användes programmet
 för att sända delar av November Internet Engineering Task Force till hela
 världen. Cirka 200 subnät i 15 länder kunde ta emot denna sändning,
-och cirka 50-100 personer fick video med &ldquo;nv&rdquo; någon gång under veckan.</p><p>Under de kommande månaderna sändes tre andra workshops och några mindre
+och cirka 50-100 personer fick video med &ldquo;nv&rdquo; någon gång under veckan.</p>
+<p>Under de kommande månaderna sändes tre andra workshops och några mindre
 möten via &ldquo;nv&rdquo; till internet, inklusive Australiska NetWorkshop,
 MCNC Packet Audio and Video workshoppen och MultiG-workshoppen om
-distribuerad virtuell verklighet från Sverige.</p><p>En release av källkoden för &ldquo;nv&rdquo; följde i februari 1993 och i mars släppte
+distribuerad virtuell verklighet från Sverige.</p>
+<p>En release av källkoden för &ldquo;nv&rdquo; följde i februari 1993 och i mars släppte
 jag en version av verktyget där jag introducerade ett nytt wavelet-baserat
-komprimeringsschema. I maj 1993 lade jag till stöd för färgvideo.</p><p>Nätverksprotokollet som används för &ldquo;nv&rdquo; och andra internetkonferensverktyg
+komprimeringsschema. I maj 1993 lade jag till stöd för färgvideo.</p>
+<p>Nätverksprotokollet som används för &ldquo;nv&rdquo; och andra internetkonferensverktyg
 blev grunden för Realtime Transport Protocol (RTP). Det standardiserades
 genom Internet Engineering Task Force (IETF), först publicerat i
-RFC <a href=https://tools.ietf.org/html/rfc1889>1889</a> - <a href=https://tools.ietf.org/html/rfc1890>1890</a> och senare reviderad i RFC <a href=https://tools.ietf.org/html/rfc3550>3550</a> - <a href=https://tools.ietf.org/html/rfc3551>3551</a>
+RFC <a href="https://tools.ietf.org/html/rfc1889">1889</a> - <a href="https://tools.ietf.org/html/rfc1890">1890</a> och senare reviderad i RFC <a href="https://tools.ietf.org/html/rfc3550">3550</a> - <a href="https://tools.ietf.org/html/rfc3551">3551</a>
 tillsammans med olika andra RFC:er som täcker profiler för att skicka specifika
-format av ljud och video.</p><p>Under de följande åren fortsatte arbetet med &ldquo;nv&rdquo; och verktyget portades
+format av ljud och video.</p>
+<p>Under de följande åren fortsatte arbetet med &ldquo;nv&rdquo; och verktyget portades
 till ytterligare ett antal hårdvaruplattformar och videoinspelare.
 Det fortsatte att användas som ett av de främsta verktygen för sändning
 konferenser på internet vid den tiden, inklusive av NASA för
-att sända live-video av uppskjutningar av rymdskytteln på nätet.</p><p>1994 lade jag till stöd i &ldquo;nv&rdquo; för videokomprimeringsalgoritmer
+att sända live-video av uppskjutningar av rymdskytteln på nätet.</p>
+<p>1994 lade jag till stöd i &ldquo;nv&rdquo; för videokomprimeringsalgoritmer
 utvecklat av andra, inklusive vissa hårdvarukomprimeringsscheman som
 CellB-format som stöds av SunVideo-videoinspelningskortet. Det gjorde det
 möjligt för &ldquo;nv&rdquo; att skicka video i CUSeeMe-format, för att skicka video
-till användare som körde CUSeeMe på Mac och PC.</p><p>Den senast släppta versionen av &ldquo;nv&rdquo; var version 3.3beta, släppt
+till användare som körde CUSeeMe på Mac och PC.</p>
+<p>Den senast släppta versionen av &ldquo;nv&rdquo; var version 3.3beta, släppt
 i juli 1994. Jag arbetade med en &ldquo;4.0alpha&rdquo;-release som var avsedd
 att migrera &ldquo;nv&rdquo; till version 2 av RTP-protokollet, men detta arbete blev
 aldrig slutfört på grund av att jag gick vidare till andra projekt. En
-kopia av 4.0alfa ingår i <a href=https://github.com/ronf/nv>Network Video tool</a>
+kopia av 4.0alfa ingår i <a href="https://github.com/ronf/nv">Network Video tool</a>
 arkivet, men det är oavslutat och det finns kända problem med det,
-särskilt i det ofullständiga RTPv2-stödet.</p><p>Ramverket i &ldquo;nv&rdquo; blev senare grunden för video
+särskilt i det ofullständiga RTPv2-stödet.</p>
+<p>Ramverket i &ldquo;nv&rdquo; blev senare grunden för video
 konferenser i projektet &ldquo;Jupiter multimedia MOO&rdquo; på Xerox PARC, som
 så småningom blev grunden för ett avknoppningsföretag &ldquo;PlaceWare&rdquo;, senare
 förvärvades av Microsoft. Det användes också som grund för ett antal
 hårdvarukonferensprojekt som tillät sändning av fullständig NTSC
 video över Ethernet och ATM-nätverk med hög bandbredd.
 Jag använde också senare en del av den här koden som grund för &ldquo;Mediastore&rdquo;,
-som var en nätverksbaserad videoinspelnings- och uppspelningstjänst.</p><h3 id=kommer-du-ihåg-de-andra-personernas-motividéer-i-utkastet>Kommer du ihåg de andra personernas motiv/idéer i utkastet?
-<a class=anchor href=#kommer-du-ih%c3%a5g-de-andra-personernas-motivid%c3%a9er-i-utkastet>#</a></h3><p>Vi var alla forskare som arbetade med IP-multicast och hjälpte till att skapa
+som var en nätverksbaserad videoinspelnings- och uppspelningstjänst.</p>
+<h3 id="kommer-du-ihåg-de-andra-personernas-motividéer-i-utkastet">
+  Kommer du ihåg de andra personernas motiv/idéer i utkastet?
+  <a class="anchor" href="#kommer-du-ih%c3%a5g-de-andra-personernas-motivid%c3%a9er-i-utkastet">#</a>
+</h3>
+<p>Vi var alla forskare som arbetade med IP-multicast och hjälpte till att skapa
 internet-multicast-systemet (även kallad MBONE). MBONE skapades av
 Steve Deering (som först utvecklade IP-multicast), Van Jacobson och Steve
 Casner. Steve Deering och jag hade samma rådgivare på Stanford och Steve
@@ -81,8 +554,12 @@ medan jag var på Stanford. Van Jacobson och Steve Casner var två av de fyra
 författarna på de första RTP-RFC:erna, tillsammans med Henning Schulzrinne
 och jag själv. Vi alla hade MBONE-verktyg som vi arbetade med som möjliggjorde
 olika former av online-samarbete och försöker komma på ett gemensamt basprotokoll
-alla dessa verktyg som kunde användas var det som ledde till RTP.</p><h3 id=multicast-är-superfascinerande-webrtc-är-enkelsändning-kan-du-utveckla-det-lite-mer>Multicast är superfascinerande. WebRTC är enkelsändning, kan du utveckla det lite mer?
-<a class=anchor href=#multicast-%c3%a4r-superfascinerande-webrtc-%c3%a4r-enkels%c3%a4ndning-kan-du-utveckla-det-lite-mer>#</a></h3><p>Innan jag kom till Stanford och lärde mig om IP-multicast hade jag en lång
+alla dessa verktyg som kunde användas var det som ledde till RTP.</p>
+<h3 id="multicast-är-superfascinerande-webrtc-är-enkelsändning-kan-du-utveckla-det-lite-mer">
+  Multicast är superfascinerande. WebRTC är enkelsändning, kan du utveckla det lite mer?
+  <a class="anchor" href="#multicast-%c3%a4r-superfascinerande-webrtc-%c3%a4r-enkels%c3%a4ndning-kan-du-utveckla-det-lite-mer">#</a>
+</h3>
+<p>Innan jag kom till Stanford och lärde mig om IP-multicast hade jag en lång
 historia av att arbeta med olika sätt för människor att använda datorer som ett
 sätt kommunicera med varandra. Detta började i början av 80-talet för mig
 när jag körde en digital anslagstavla (BBS) där människor kunde logga in
@@ -99,7 +576,8 @@ i realtid, och under de närmaste åren arbetade jag med några vänner med att
 utveckla mer sofistikerade versioner av kommunikationsverktyg i realtid
 på flera olika datorsystem och nätverk. I själva verket en av dessa
 system är fortfarande i drift, och jag använder det varje dag för att prata med
-folk jag gick till college med för 30+ år sedan!</p><p>Alla dessa verktyg var textbaserade, eftersom datorer på den tiden oftast
+folk jag gick till college med för 30+ år sedan!</p>
+<p>Alla dessa verktyg var textbaserade, eftersom datorer på den tiden oftast
 saknade ljud- och videofunktioner, men när jag kom till Stanford och
 lärde mig om IP-multicast blev jag fascinerad av tanken att använda multicast
 för att bygga något mer som en riktig “radio”, där du kan skicka en signal
@@ -111,12 +589,15 @@ i hårdvaran! Du kan digitalisera ljud från en mikrofon och spela upp det igen
 på inbyggda högtalare (eller via ett headset). Så min första tanke var att
 ta reda på hur man skickar ljud över nätverket i realtid med IP-multicast,
 och se om jag kunde bygga en motsvarande &ldquo;CB-radio&rdquo;, men med riktigt
-ljud istället för text.</p><p>Det fanns några knepiga problem att lösa, som det faktum att datorn
+ljud istället för text.</p>
+<p>Det fanns några knepiga problem att lösa, som det faktum att datorn
 kunde bara spela en ljudström åt gången, så om flera personer pratade
 du behövde man matematiskt &ldquo;blanda&rdquo; flera ljudströmmar till en enda så att
 du kunde spela upp det, men det kunde göras i mjukvara när man förstått
 hur ljud-samplingen fungerade. Den ljudapplikationen ledde mig till att
-arbeta med MBONE och så småningom gå från ljud till video med “nv”.</p><p>###Har något som utelämnats från protokollet som du önskar att du hade lagt till? Är det något i protokollet du ångrar?</p><p>Jag skulle inte säga att jag ångrar det, men ett vanligt klagomål som människor
+arbeta med MBONE och så småningom gå från ljud till video med “nv”.</p>
+<p>###Har något som utelämnats från protokollet som du önskar att du hade lagt till? Är det något i protokollet du ångrar?</p>
+<p>Jag skulle inte säga att jag ångrar det, men ett vanligt klagomål som människor
 har om RTP är komplexiteten i att implementera RTCP, kontrollprotokollet
 som körs parallellt med RTP-datatrafiken. Jag tror att komplexiteten
 var en stor del av varför RTP inte antogs i större utsträckning, särskilt i
@@ -124,14 +605,20 @@ enkelsändningsfallet där det inte fanns lika stort behov av RTCPs funktioner.
 När nätverksbandbredden blev mindre begränsad och trängseln inte var ett lika
 stort problem, började många människor helt enkelt streama ljud och video över
 vanlig TCP (och senare HTTP), och i allmänhet fungerade det &ldquo;tillräckligt bra&rdquo;,
-så det var inte värt att använda RTP.</p><p>Tyvärr innebär användning av TCP eller HTTP att ljud och video från flera
+så det var inte värt att använda RTP.</p>
+<p>Tyvärr innebär användning av TCP eller HTTP att ljud och video från flera
 applikationer måste skicka samma data över nätverket flera gånger, till var
 och en av alla klienter som vill ta emot det, vilket gör det mycket mindre
 effektivt ur ett bandbreddsperspektiv. Jag önskar ibland att vi hade drivit
 på hårdare att få IP-multicast accepterat utanför forskarkretsarna.
 Jag tror att vi kunde ha sett övergången från kabel och analog TV till
-internetbaserad ljud och video mycket tidigare om vi hade gjort det.</p><h3 id=vilka-saker-trodde-du-skulle-byggas-med-rtp-har-något-coolt-rtp>Vilka saker trodde du skulle byggas med RTP? Har något coolt RTP
-<a class=anchor href=#vilka-saker-trodde-du-skulle-byggas-med-rtp-har-n%c3%a5got-coolt-rtp>#</a></h3><p>projekt eller idé som aldrig blev av?</p><p>En rolig sak jag byggde var en version av det klassiska ”Spacewar”-spelet
+internetbaserad ljud och video mycket tidigare om vi hade gjort det.</p>
+<h3 id="vilka-saker-trodde-du-skulle-byggas-med-rtp-har-något-coolt-rtp">
+  Vilka saker trodde du skulle byggas med RTP? Har något coolt RTP
+  <a class="anchor" href="#vilka-saker-trodde-du-skulle-byggas-med-rtp-har-n%c3%a5got-coolt-rtp">#</a>
+</h3>
+<p>projekt eller idé som aldrig blev av?</p>
+<p>En rolig sak jag byggde var en version av det klassiska ”Spacewar”-spelet
 som använde IP-multicast. Utan att ha någon form av central server kunde
 flera klienter var och en köra spacewar programmet och börja sända sina
 skepps plats, hastighet, riktning, och liknande information för eventuella
@@ -140,14 +627,17 @@ upp den informationen och använde den lokalt, så att användarna kan alla
 se varandras skepp och kulor, med skepp som &ldquo;exploderar&rdquo; om de kraschar
 in i varandra eller om kulorna träffar dem. Jag gjorde till och med ”skräp”
 från explosioner till levande föremål som kan ta ut andra skepp, ibland
-ledande till roliga kedjereaktioner!</p><p>I andan i det ursprungliga spelet byggde jag det med simulerad vektor
+ledande till roliga kedjereaktioner!</p>
+<p>I andan i det ursprungliga spelet byggde jag det med simulerad vektor
 grafik, så du kan göra saker som att zooma in och ut och se all grafik
 skala upp och ner. Fartygen själva var en massa linjesegment i vektorform
 som jag fick några av mina kollegor på PARC att hjälpte mig att designa,
-så alla spelares skepp hade ett unikt utseende.</p><p>I grund och botten kan alla program som kan dra nytta av en realtidsdataström
+så alla spelares skepp hade ett unikt utseende.</p>
+<p>I grund och botten kan alla program som kan dra nytta av en realtidsdataström
 som inte kräver perfekt leverans av paket i ordning dra nytta av RTP. Så förutom
 ljud och video kunde vi bygga saker som en delad whiteboard. Till och med
-fil-överföringar kan dra nytta av RTP, särskilt i samband med IP-multicast.</p><p>Tänk dig något som BitTorrent, men där du inte behöver skicka all daata
+fil-överföringar kan dra nytta av RTP, särskilt i samband med IP-multicast.</p>
+<p>Tänk dig något som BitTorrent, men där du inte behöver skicka all daata
 från punkt till punkt mellan klienterna. Den ursprungliga källan kunde skicka
 en multicast-ström till alla nerladdare på en gång och eventuella paketförluster
 på vägen kunde snabbt rensas upp genom en återöverföring från andra klienter som
@@ -155,15 +645,20 @@ redan fått den datan. Du kan till och med begränsa din återutsändningsförfr
 så att någon peer i närheten skickar kopian av datan, och även den sändningen
 kan vara multicast för andra i den regionen, eftersom en paketförlust i
 mitt i nätverket ofta betyder at en massa klienter nedströms från den punkten
-alla saknar samma data.</p><h3 id=varför-var-du-tvungen-att-bygga-din-egen-videokomprimering-fanns-det-inget-annat-tillgängligt-då>Varför var du tvungen att bygga din egen videokomprimering. Fanns det inget annat tillgängligt då?
-<a class=anchor href=#varf%c3%b6r-var-du-tvungen-att-bygga-din-egen-videokomprimering-fanns-det-inget-annat-tillg%c3%a4ngligt-d%c3%a5>#</a></h3><p>När jag började bygga &ldquo;nv&rdquo; använde de enda systemen jag kände till för
+alla saknar samma data.</p>
+<h3 id="varför-var-du-tvungen-att-bygga-din-egen-videokomprimering-fanns-det-inget-annat-tillgängligt-då">
+  Varför var du tvungen att bygga din egen videokomprimering. Fanns det inget annat tillgängligt då?
+  <a class="anchor" href="#varf%c3%b6r-var-du-tvungen-att-bygga-din-egen-videokomprimering-fanns-det-inget-annat-tillg%c3%a4ngligt-d%c3%a5">#</a>
+</h3>
+<p>När jag började bygga &ldquo;nv&rdquo; använde de enda systemen jag kände till för
 videokonferenser mycket dyr och specialiserad hårdvara. Till exempel,
 Steve Casner hade tillgång till ett system från BBN som kallades &ldquo;DVC&rdquo; (och
 senare kommersialiserad som &ldquo;PictureWindow&rdquo;). Komprimering krävde
 specialiserad hårdvara, men dekompressionen kunde göras i programvara.
 Det som gjorde &ldquo;nv&rdquo; unikt var att både kompression och dekompression
 gjordes i programvara, och det enda hårdvarukravet var att ha
-något för att digitalisera en inkommande analog videosignal.</p><p>Många av de grundläggande begreppen om hur man komprimerar video fanns redan
+något för att digitalisera en inkommande analog videosignal.</p>
+<p>Många av de grundläggande begreppen om hur man komprimerar video fanns redan
 då, till exempel dök MPEG-1-standarden upp precis vid samma tid som &ldquo;nv&rdquo;,
 men kodning i realtid med MPEG-1 var definitivt INTE möjligt på den tiden.
 De förändringar jag gjorde handlade om att ta dessa grundläggande koncept
@@ -172,85 +667,230 @@ cosinus transformerar och flyttalsberäkningar, och till och med undvvek
 heltalsmultiplikationer eftersom de var mycket långsamma på SPARC-stations.
 Jag försökte göra så mycket som möjligt med bara addition, subtraktion,
 bitmasker, och bitskiftning, och det blev tillräckligt snabbt för att
-fortfarande kännas som en video.</p><p>Inom ett år eller två från släppet av &ldquo;nv&rdquo; fanns det många olika ljud
+fortfarande kännas som en video.</p>
+<p>Inom ett år eller två från släppet av &ldquo;nv&rdquo; fanns det många olika ljud
 och videoverktyg att välja mellan, inte bara på MBONE utan på andra platser
 som CU-SeeMe-verktyget byggt på Mac. Så det var helt klart en idé vars tid
 hade kommit. Jag gjorde faktiskt &ldquo;nv&rdquo; kompatibelt med många av dessa verktyg,
 och i ett fåtal fall plockade andra verktyg upp min &ldquo;nv&rdquo;-codec, så att de
-kunde kommunicera via min komprimeringsalgoritm.</p><h2 id=webrtc>WebRTC
-<a class=anchor href=#webrtc>#</a></h2><p>WebRTC krävde ett störe standardiseringsarbete än alla andra insatser
+kunde kommunicera via min komprimeringsalgoritm.</p>
+<h2 id="webrtc">
+  WebRTC
+  <a class="anchor" href="#webrtc">#</a>
+</h2>
+<p>WebRTC krävde ett störe standardiseringsarbete än alla andra insatser
 som beskrivs i detta kapitel. Det krävde samarbete mellan två olika
 standardorgan (IETF och W3C) och hundratals individer i många
 företag och länder. För att ge oss en bild av motivationen och den
 monumentala ansträngning som krävdes för att få WebRTC att hända har vi
-frågat <a href=https://twitter.com/slac>Serge Lachapelle</a>.</p><p>Serge jobbar på Google, för närvarande produktchef
-för Google Workspace. Det här är min sammanfattning av intervjun.</p><h3 id=vad-fick-dig-att-börja-jobba-på-webrtc>Vad fick dig att börja jobba på WebRTC?
-<a class=anchor href=#vad-fick-dig-att-b%c3%b6rja-jobba-p%c3%a5-webrtc>#</a></h3><p>Jag har varit intresserad av att bygga kommunikationsverktyg ända sedan jag var i
-college. På 90-talet började teknik som <a href=https://github.com/ronf/nv>nv</a>
+frågat <a href="https://twitter.com/slac">Serge Lachapelle</a>.</p>
+<p>Serge jobbar på Google, för närvarande produktchef
+för Google Workspace. Det här är min sammanfattning av intervjun.</p>
+<h3 id="vad-fick-dig-att-börja-jobba-på-webrtc">
+  Vad fick dig att börja jobba på WebRTC?
+  <a class="anchor" href="#vad-fick-dig-att-b%c3%b6rja-jobba-p%c3%a5-webrtc">#</a>
+</h3>
+<p>Jag har varit intresserad av att bygga kommunikationsverktyg ända sedan jag var i
+college. På 90-talet började teknik som <a href="https://github.com/ronf/nv">nv</a>
 dyka up, men den var svår att använda. Jag skapade ett projekt som användarna gå
-med i ett videosamtal direkt från webbläsaren. Jag portade det också till Windows.</p><p>Jag tog med den erfarenheten till Marratech, ett företag som jag grundade. Vi
+med i ett videosamtal direkt från webbläsaren. Jag portade det också till Windows.</p>
+<p>Jag tog med den erfarenheten till Marratech, ett företag som jag grundade. Vi
 skapade programvara för gruppvideokonferenser. Tekniskt sett var landskapet
 helt annorlunda då. Lösningar i framkanten för video baserades på multicast-nätverk.
 En användare var beroende av nätverket för att leverera till ett videopaket till alla
 andra i samtalet. Detta innebar att vi hade mycket enkla servrar. Men det har också
 en stor nackdel, nätverket måste konfigureras för att stödja det. Branschen slutade
 använda multicast och gick över till paketblandare (packet shufflers), mer allmänt
-känt som SFU.</p><p>Marratech förvärvades av Google 2007. Jag fortsatte att arbeta med projektet som
-var föregångaren till WebRTC.</p><h3 id=det-första-google-projektet>Det första Google-projektet
-<a class=anchor href=#det-f%c3%b6rsta-google-projektet>#</a></h3><p>Det första projektet som det framtida WebRTC-teamet arbetade med var Gmail ljud och
+känt som SFU.</p>
+<p>Marratech förvärvades av Google 2007. Jag fortsatte att arbeta med projektet som
+var föregångaren till WebRTC.</p>
+<h3 id="det-första-google-projektet">
+  Det första Google-projektet
+  <a class="anchor" href="#det-f%c3%b6rsta-google-projektet">#</a>
+</h3>
+<p>Det första projektet som det framtida WebRTC-teamet arbetade med var Gmail ljud och
 videochatt. Att få in ljud och video i webbläsaren var ingen lätt uppgift. Det
 krävde specialkomponenter som vi var tvungna att licensiera från olika företag.
 Ljud licensierades från GIP, video licensierades för Vidyo och nätverket
-var libjingle. Magin var att få alla att fungera tillsammans.</p><p>Varje delsystem har helt olika API:er och antog att du löste olika problem. För
+var libjingle. Magin var att få alla att fungera tillsammans.</p>
+<p>Varje delsystem har helt olika API:er och antog att du löste olika problem. För
 att allt ska fungera tillsammans behöver du kunskap om nätverk, kryptografi, media
-med mera. <a href=https://juberti.com>Justin Uberti</a> var den som tog sig an detta arbete.
-Han kopplade ihop komponenterna till en användbar produkt.</p><p>Att rendera i realtid i webbläsaren var också riktigt svårt. Vi var tvungna att använda
+med mera. <a href="https://juberti.com">Justin Uberti</a> var den som tog sig an detta arbete.
+Han kopplade ihop komponenterna till en användbar produkt.</p>
+<p>Att rendera i realtid i webbläsaren var också riktigt svårt. Vi var tvungna att använda
 NPAPI (Netscape Plugin API) och göra massor av smarta saker för att få det att fungera.
-De lärdomar vi fick från det projektet påverkade WebRTC mycket.</p><h3 id=chrome>Chrome
-<a class=anchor href=#chrome>#</a></h3><p>Samtidigt startade Chrome-projektet hos Google. Det var så mycket entusiasm,
+De lärdomar vi fick från det projektet påverkade WebRTC mycket.</p>
+<h3 id="chrome">
+  Chrome
+  <a class="anchor" href="#chrome">#</a>
+</h3>
+<p>Samtidigt startade Chrome-projektet hos Google. Det var så mycket entusiasm,
 och detta projekt hade stora planer. Det pratades om WebGL, offline-stöd,
-databasfunktioner, låg latenskontroll för spel bara för att nämna några.</p><p>Att flytta bort från NPAPI blev ett stort fokus. Det är ett kraftfullt API, men
+databasfunktioner, låg latenskontroll för spel bara för att nämna några.</p>
+<p>Att flytta bort från NPAPI blev ett stort fokus. Det är ett kraftfullt API, men
 kommer med stora säkerhetsmässiga konsekvenser. Chrome använder en sandlåda för
 att skydda användarna.
 Operationer som kan vara potentiellt osäkra körs i olika processer.
 Även om något går fel har en angripare fortfarande inte tillgång till
-användardatan.</p><h3 id=hur-webrtc-kom-till>Hur WebRTC kom till
-<a class=anchor href=#hur-webrtc-kom-till>#</a></h3><p>För mig skapades WebRTC utifrån några specifika motiv som tillsammans ledde fram
-till projektet.</p><p>Det borde inte vara så svårt att bygga RTC-upplevelser. Så mycket ansträngning går
+användardatan.</p>
+<h3 id="hur-webrtc-kom-till">
+  Hur WebRTC kom till
+  <a class="anchor" href="#hur-webrtc-kom-till">#</a>
+</h3>
+<p>För mig skapades WebRTC utifrån några specifika motiv som tillsammans ledde fram
+till projektet.</p>
+<p>Det borde inte vara så svårt att bygga RTC-upplevelser. Så mycket ansträngning går
 åt till att återimplementera samma sak. Vi borde lösa dessa frustrerande
-integrationsproblem en gång för alla, och sen fokusera på andra saker.</p><p>Mänsklig kommunikation bör vara oförhindrad och öppen. Varför är det ok att
-text och HTML är öppet, men min röst och video i realtid är inte det?</p><p>Säkerhet är en prioritet. Att använda NPAPI var inte bäst för användarna.
-Detta var också en chans att skapa ett protokoll som är säkert från start.</p><p>För att få WebRTC att bli av köpte Google de komponenter vi hade använts tidigare
-och släppte källkoden till dem. <a href=https://en.wikipedia.org/wiki/On2_Technologies>On2</a> var
-förvärvat för sin videoteknik och <a href=https://en.wikipedia.org/wiki/Global_IP_Solutions>Global IP Solutions</a>
+integrationsproblem en gång för alla, och sen fokusera på andra saker.</p>
+<p>Mänsklig kommunikation bör vara oförhindrad och öppen. Varför är det ok att
+text och HTML är öppet, men min röst och video i realtid är inte det?</p>
+<p>Säkerhet är en prioritet. Att använda NPAPI var inte bäst för användarna.
+Detta var också en chans att skapa ett protokoll som är säkert från start.</p>
+<p>För att få WebRTC att bli av köpte Google de komponenter vi hade använts tidigare
+och släppte källkoden till dem. <a href="https://en.wikipedia.org/wiki/On2_Technologies">On2</a> var
+förvärvat för sin videoteknik och <a href="https://en.wikipedia.org/wiki/Global_IP_Solutions">Global IP Solutions</a>
 för sin RTC-teknik. Jag hade ansvaret för att förvärva GIPS. Vi fick arbeta med
-att kombinera dessa och göra dem lätta att använda inom och utanför webbläsaren.</p><h3 id=standardisering>Standardisering
-<a class=anchor href=#standardisering>#</a></h3><p>Standardisering av WebRTC var något vi verkligen ville göra, men inte något
+att kombinera dessa och göra dem lätta att använda inom och utanför webbläsaren.</p>
+<h3 id="standardisering">
+  Standardisering
+  <a class="anchor" href="#standardisering">#</a>
+</h3>
+<p>Standardisering av WebRTC var något vi verkligen ville göra, men inte något
 jag eller någon i vårt team hade gjort tidigare. Som tur var hade vi Harald
 Alvestrand på Google. Han hade gjort omfattande arbete i IETF redan och
-startade WebRTC-standardiseringsprocessen.</p><p>Sommaren 2010 planerades en informell lunch i Maastricht. Utvecklare från
+startade WebRTC-standardiseringsprocessen.</p>
+<p>Sommaren 2010 planerades en informell lunch i Maastricht. Utvecklare från
 många företag kom tillsammans för att diskutera vad WebRTC borde vara. Lunchen
 hade ingenjörer från Google, Cisco, Ericsson, Skype, Mozilla, Linden Labs med
 flera. En lista av alla närvarande och själva presentationen finns på
-<a href=http://rtc-web.alvestrand.com>rtc-web.alvestrand.com</a>.</p><p>Skype gav också bra vägledning på grund av det arbete de hade gjort med
-Opus i IETF.</p><h3 id=att-stå-på-jättarnas-axlar>Att stå på jättarnas axlar
-<a class=anchor href=#att-st%c3%a5-p%c3%a5-j%c3%a4ttarnas-axlar>#</a></h3><p>När du arbetar i IETF bygger du vidare det arbete som gjorts före dig. Med
+<a href="http://rtc-web.alvestrand.com">rtc-web.alvestrand.com</a>.</p>
+<p>Skype gav också bra vägledning på grund av det arbete de hade gjort med
+Opus i IETF.</p>
+<h3 id="att-stå-på-jättarnas-axlar">
+  Att stå på jättarnas axlar
+  <a class="anchor" href="#att-st%c3%a5-p%c3%a5-j%c3%a4ttarnas-axlar">#</a>
+</h3>
+<p>När du arbetar i IETF bygger du vidare det arbete som gjorts före dig. Med
 WebRTC hade vi turen att många saker redan fanns. Vi behövde inte ta oss an
 alla problem eftersom många redan var lösta. Om du inte gillar den redan
 befintliga tekniken kan det dock vara frustrerande. Det måste vara en ganska
 stark anledning att bortse från befintligt arbete, så att skapa en egen är
-sällan ett alternativ.</p><p>Vi valde medvetet inte att standardisera saker som signalering. Detta hade
+sällan ett alternativ.</p>
+<p>Vi valde medvetet inte att standardisera saker som signalering. Detta hade
 redan lösts med SIP och andra ansträngningar utanför IETF, och det kändes
 som att det kunde bli mycket politiska debatter. Slutsatsen var att det
-inte kändes some det fanns mycket att lägga till på det området.</p><p>Jag var inte lika involverad i standardiseringen som Justin och Harald, men
+inte kändes some det fanns mycket att lägga till på det området.</p>
+<p>Jag var inte lika involverad i standardiseringen som Justin och Harald, men
 jag tyckte det var kul att göra. Jag var mer intresserat att återvända till
-att bygga lösningar för användare.</p><h3 id=framtiden>Framtiden
-<a class=anchor href=#framtiden>#</a></h3><p>WebRTC är i ett bra läge idag. Det finns många inkrementella förändringar
-under utveckling, men inget speciellt som jag har jobbat med.</p><p>Jag är mest intresserad att se vad molnet kan göra för kommunikation. Genom
+att bygga lösningar för användare.</p>
+<h3 id="framtiden">
+  Framtiden
+  <a class="anchor" href="#framtiden">#</a>
+</h3>
+<p>WebRTC är i ett bra läge idag. Det finns många inkrementella förändringar
+under utveckling, men inget speciellt som jag har jobbat med.</p>
+<p>Jag är mest intresserad att se vad molnet kan göra för kommunikation. Genom
 att använda avancerade algoritmer kan vi ta bort bakgrundsbrus från ett samtal
 och göra kommunikation möjlig där det inte var möjligt tidigare. Vi ser också
 att WebRTC sträcker sig långt bortom kommunikation… Vem kunde tro att det
 skulle driva moln-baserade spel 9 år senare? Allt detta skulle vara omöjligt
-utan grunden från WebRTC.</p></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/commit/81e941a1f26895a8ce18e7a34a414c35f02e3910 title='Senast modifierad av Claes Mogren | juni 20, 2021' target=_blank rel=noopener><img src=/webrtc-for-the-curious-kr/svg/calendar.svg class=book-icon alt>
-<span>juni 20, 2021</span></a></div><div><a class="flex align-center" href=https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/edit/master/content/docs/10-history-of-webrtc.md target=_blank rel=noopener><img src=/webrtc-for-the-curious-kr/svg/edit.svg class=book-icon alt>
-<span>Redigera denna sida</span></a></div></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#rtp>RTP</a><ul><li><a href=#i-hans-egna-ord>I hans egna ord</a></li><li><a href=#kommer-du-ihåg-de-andra-personernas-motividéer-i-utkastet>Kommer du ihåg de andra personernas motiv/idéer i utkastet?</a></li><li><a href=#multicast-är-superfascinerande-webrtc-är-enkelsändning-kan-du-utveckla-det-lite-mer>Multicast är superfascinerande. WebRTC är enkelsändning, kan du utveckla det lite mer?</a></li><li><a href=#vilka-saker-trodde-du-skulle-byggas-med-rtp-har-något-coolt-rtp>Vilka saker trodde du skulle byggas med RTP? Har något coolt RTP</a></li><li><a href=#varför-var-du-tvungen-att-bygga-din-egen-videokomprimering-fanns-det-inget-annat-tillgängligt-då>Varför var du tvungen att bygga din egen videokomprimering. Fanns det inget annat tillgängligt då?</a></li></ul></li><li><a href=#webrtc>WebRTC</a><ul><li><a href=#vad-fick-dig-att-börja-jobba-på-webrtc>Vad fick dig att börja jobba på WebRTC?</a></li><li><a href=#det-första-google-projektet>Det första Google-projektet</a></li><li><a href=#chrome>Chrome</a></li><li><a href=#hur-webrtc-kom-till>Hur WebRTC kom till</a></li><li><a href=#standardisering>Standardisering</a></li><li><a href=#att-stå-på-jättarnas-axlar>Att stå på jättarnas axlar</a></li><li><a href=#framtiden>Framtiden</a></li></ul></li></ul></nav></div></aside></main></body></html>
+utan grunden från WebRTC.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+  <div><a class="flex align-center" href="https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/commit/81e941a1f26895a8ce18e7a34a414c35f02e3910" title='Senast modifierad av Claes Mogren | juni 20, 2021' target="_blank" rel="noopener">
+      <img src="/webrtc-for-the-curious-kr/svg/calendar.svg" class="book-icon" alt="" />
+      <span>juni 20, 2021</span>
+    </a>
+  </div>
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/edit/master/content/docs/10-history-of-webrtc.md" target="_blank" rel="noopener">
+      <img src="/webrtc-for-the-curious-kr/svg/edit.svg" class="book-icon" alt="" />
+      <span>Redigera denna sida</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#rtp">RTP</a>
+      <ul>
+        <li><a href="#i-hans-egna-ord">I hans egna ord</a></li>
+        <li><a href="#kommer-du-ihåg-de-andra-personernas-motividéer-i-utkastet">Kommer du ihåg de andra personernas motiv/idéer i utkastet?</a></li>
+        <li><a href="#multicast-är-superfascinerande-webrtc-är-enkelsändning-kan-du-utveckla-det-lite-mer">Multicast är superfascinerande. WebRTC är enkelsändning, kan du utveckla det lite mer?</a></li>
+        <li><a href="#vilka-saker-trodde-du-skulle-byggas-med-rtp-har-något-coolt-rtp">Vilka saker trodde du skulle byggas med RTP? Har något coolt RTP</a></li>
+        <li><a href="#varför-var-du-tvungen-att-bygga-din-egen-videokomprimering-fanns-det-inget-annat-tillgängligt-då">Varför var du tvungen att bygga din egen videokomprimering. Fanns det inget annat tillgängligt då?</a></li>
+      </ul>
+    </li>
+    <li><a href="#webrtc">WebRTC</a>
+      <ul>
+        <li><a href="#vad-fick-dig-att-börja-jobba-på-webrtc">Vad fick dig att börja jobba på WebRTC?</a></li>
+        <li><a href="#det-första-google-projektet">Det första Google-projektet</a></li>
+        <li><a href="#chrome">Chrome</a></li>
+        <li><a href="#hur-webrtc-kom-till">Hur WebRTC kom till</a></li>
+        <li><a href="#standardisering">Standardisering</a></li>
+        <li><a href="#att-stå-på-jättarnas-axlar">Att stå på jättarnas axlar</a></li>
+        <li><a href="#framtiden">Framtiden</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
