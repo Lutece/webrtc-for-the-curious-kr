@@ -1,4 +1,4 @@
-baseURL = "https://webrtcforthecurious.com"
+baseURL = "https://lutece.github.io/webrtc-for-the-curious-kr/"
 theme = "book"
 
 # Enable 'Last Modified by' date and git author information
