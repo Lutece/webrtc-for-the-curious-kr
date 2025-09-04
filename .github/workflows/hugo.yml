@@ -1,17 +1,7 @@
-name: Deploy Hugo to Pages (manual)
+name: Deploy Hugo to Pages
 on:
-  workflow_dispatch:
-    inputs:
-      ref:
-        description: "branch/tag/SHA to deploy"
-        required: true
-        default: "main"
-        type: string
-      include_drafts:
-        description: "Include drafts (-D)"
-        required: false
-        default: false
-        type: boolean
+  push:
+    branches: [main]
 
 permissions:
   contents: read
@@ -23,24 +13,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.ref }}
-          submodules: true
-          fetch-depth: 0
+        with: { submodules: true, fetch-depth: 0 }
       - uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: "0.128.0"
           extended: true
-      - run: |
-          if [ "${{ inputs.include_drafts }}" = "true" ]; then
-            hugo -D --minify
-          else
-            hugo --minify
-          fi
+      - run: hugo --minify
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
-
   deploy:
     needs: build
     runs-on: ubuntu-latest

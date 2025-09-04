@@ -1,55 +1,49 @@
-name: github pages
-
+name: Deploy Hugo to Pages (manual)
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "branch/tag/SHA to deploy"
+        required: true
+        default: "main"
+        type: string
+      include_drafts:
+        description: "Include drafts (-D)"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  deploy:
-    name: Publish Website
-    runs-on: ubuntu-24.04
+  build:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-
-      - run: |
-          echo "FILELIST=\"content/_index.md\" $(printf '"%s" ' content/docs/*.md)" >> $GITHUB_ENV
-          echo "FILELIST_SV=\"content.sv/_index.md\" $(printf '"%s" ' content.sv/docs/*.md)" >> $GITHUB_ENV
-
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
+          ref: ${{ inputs.ref }}
+          submodules: true
+          fetch-depth: 0
+      - uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.149.0'
+          hugo-version: "0.128.0"
           extended: true
-
-      - name: Build
-        run: hugo --minify
-
-      - uses: docker://pandoc/latex:3.3
+      - run: |
+          if [ "${{ inputs.include_drafts }}" = "true" ]; then
+            hugo -D --minify
+          else
+            hugo --minify
+          fi
+      - uses: actions/upload-pages-artifact@v3
         with:
-          args: --output=public/docs/webrtc-for-the-curious.pdf --resource-path=.:./content:./content/docs/images --toc ${{ env.FILELIST }} .pandoc/metadata_pdf_en.txt
-          
-      - uses: docker://pandoc/latex:3.3
-        with:
-          args: --output=public/docs/webrtc-for-the-curious.epub --resource-path=.:./content:./content/images --toc ${{ env.FILELIST }} .pandoc/metadata_en.txt
+          path: ./public
 
-      - uses: docker://pandoc/latex:3.3
-        with:
-          args: --output=public/docs/webrtc-for-the-curious-sv.pdf --resource-path=.:./content.sv:./content.sv/docs/images --toc ${{ env.FILELIST_SV }} .pandoc/metadata_pdf_sv.txt
-
-      - uses: docker://pandoc/latex:3.3
-        with:
-          args: --output=public/docs/webrtc-for-the-curious-sv.epub --resource-path=.:./content.sv:./content.sv/docs/images --toc ${{ env.FILELIST_SV }} .pandoc/metadata_sv.txt
-
-      - name: Copy images
-        run: cp -r ./content/docs/images public/docs/
-        
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          cname: webrtcforthecurious.com
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: { name: github-pages }
+    steps:
+      - uses: actions/deploy-pages@v4
